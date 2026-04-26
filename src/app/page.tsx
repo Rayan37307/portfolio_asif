@@ -16,17 +16,17 @@ export default async function Home() {
         {/* Top badge */}
         <div className="glass px-5 py-2.5 rounded-full flex items-center gap-3 mb-8 animate-fade-in-up border-white/10">
           <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
-          <span className="text-sm font-semibold tracking-widest uppercase text-zinc-300">Available for speaking engagements</span>
+          <span className="text-sm font-semibold tracking-widest uppercase text-muted">Available for speaking engagements</span>
         </div>
 
         <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-6 uppercase leading-none">
           Ignite Your <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-yellow-400 to-accent">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#D90429] to-accent">
             Potential
           </span>
         </h1>
 
-        <p className="max-w-2xl text-zinc-400 text-lg md:text-xl mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <p className="max-w-2xl text-muted text-lg md:text-xl mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           Passionate about creating intuitive and high-impact digital content that connects users with value and drives massive growth.
         </p>
 
@@ -35,7 +35,7 @@ export default async function Home() {
           <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="group relative px-8 py-4 glass border-[#FF0000]/20 hover:bg-[#FF0000]/10 hover:border-[#FF0000]/50 text-white rounded-full font-bold uppercase tracking-wider flex items-center gap-4 transition-all hover:scale-105 shadow-[0_0_30px_-10px_rgba(255,0,0,0.2)]">
             <FaYoutube className="w-7 h-7 text-[#FF0000] group-hover:scale-110 transition-transform" />
             <div className="flex flex-col items-start text-left leading-tight">
-              <span className="text-[10px] text-zinc-400 font-bold tracking-widest group-hover:text-zinc-300 transition-colors">Subscribe on YouTube</span>
+              <span className="text-[10px] text-muted font-bold tracking-widest group-hover:text-muted transition-colors">Subscribe on YouTube</span>
               <span className="font-heading text-xl md:text-2xl mt-0.5 tracking-wide text-white">130K+ Subs</span>
             </div>
           </a>
@@ -43,7 +43,7 @@ export default async function Home() {
           <a href="#" target="_blank" rel="noopener noreferrer" className="group relative px-8 py-4 glass border-[#1877F2]/20 hover:bg-[#1877F2]/10 hover:border-[#1877F2]/50 text-white rounded-full font-bold uppercase tracking-wider flex items-center gap-4 transition-all hover:scale-105 shadow-[0_0_30px_-10px_rgba(24,119,242,0.2)]">
             <FaFacebook className="w-7 h-7 text-[#1877F2] group-hover:scale-110 transition-transform" />
             <div className="flex flex-col items-start text-left leading-tight">
-              <span className="text-[10px] text-zinc-400 font-bold tracking-widest group-hover:text-zinc-300 transition-colors">Follow on Facebook</span>
+              <span className="text-[10px] text-muted font-bold tracking-widest group-hover:text-muted transition-colors">Follow on Facebook</span>
               <span className="font-heading text-xl md:text-2xl mt-0.5 tracking-wide text-white">300K+ Followers</span>
             </div>
           </a>
@@ -54,7 +54,7 @@ export default async function Home() {
       {/* Social Proof Section */}
       <section className="w-full border-y border-white/5 bg-white/[0.02] backdrop-blur-md py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 opacity-80">
-          <p className="text-sm font-bold tracking-widest text-zinc-400 uppercase">Trusted by millions across</p>
+          <p className="text-sm font-bold tracking-widest text-muted uppercase">Trusted by millions across</p>
           <div className="flex flex-wrap justify-center gap-12 items-center">
             <div className="flex items-center gap-2 text-2xl font-heading font-bold uppercase"><FaYoutube className="w-8 h-8 text-accent" /> YouTube</div>
             <div className="flex items-center gap-2 text-2xl font-heading font-bold uppercase"><FaInstagram className="w-8 h-8 text-accent" /> Instagram</div>
@@ -71,12 +71,12 @@ export default async function Home() {
         <div className="w-full md:w-1/2 flex flex-col items-start text-left space-y-8">
           <div className="glass px-5 py-2.5 rounded-full flex items-center gap-3 border-white/10 w-fit">
             <span className="w-2.5 h-2.5 rounded-full bg-accent" />
-            <span className="text-sm font-semibold tracking-widest uppercase text-zinc-300">The Story</span>
+            <span className="text-sm font-semibold tracking-widest uppercase text-muted">The Story</span>
           </div>
           <h2 className="font-heading text-4xl md:text-6xl font-bold uppercase tracking-wide leading-tight">
             Who <span className="text-accent">Am I?</span>
           </h2>
-          <div className="space-y-6 text-lg text-zinc-400 leading-relaxed">
+          <div className="space-y-6 text-lg text-muted leading-relaxed">
             <p>
               I started with nothing but a relentless drive to understand what makes people tick and what drives true, lasting success. For years, I navigated the noise of the digital world, distilling complex strategies into actionable systems.
             </p>
@@ -114,17 +114,17 @@ export default async function Home() {
           <div className="glass p-10 rounded-[2rem] text-left border border-white/5 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 group shadow-xl">
             <span className="font-heading text-7xl font-black text-white/5 group-hover:text-accent/20 transition-colors mb-6 block">01</span>
             <h3 className="font-heading text-3xl font-bold mb-4 uppercase tracking-wide">Awaken</h3>
-            <p className="text-zinc-400 leading-relaxed text-lg">Understanding your goals, fears, and challenges through deep introspection and reality checks.</p>
+            <p className="text-muted leading-relaxed text-lg">Understanding your goals, fears, and challenges through deep introspection and reality checks.</p>
           </div>
           <div className="glass p-10 rounded-[2rem] text-left border border-white/5 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 group shadow-xl md:translate-y-12">
             <span className="font-heading text-7xl font-black text-white/5 group-hover:text-accent/20 transition-colors mb-6 block">02</span>
             <h3 className="font-heading text-3xl font-bold mb-4 uppercase tracking-wide">Build</h3>
-            <p className="text-zinc-400 leading-relaxed text-lg">Transforming raw motivation into robust, repeatable systems and unbreakable habits.</p>
+            <p className="text-muted leading-relaxed text-lg">Transforming raw motivation into robust, repeatable systems and unbreakable habits.</p>
           </div>
           <div className="glass p-10 rounded-[2rem] text-left border border-white/5 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 group shadow-xl">
             <span className="font-heading text-7xl font-black text-white/5 group-hover:text-accent/20 transition-colors mb-6 block">03</span>
             <h3 className="font-heading text-3xl font-bold mb-4 uppercase tracking-wide">Conquer</h3>
-            <p className="text-zinc-400 leading-relaxed text-lg">Executing with clarity and precision to achieve your ultimate potential in life and business.</p>
+            <p className="text-muted leading-relaxed text-lg">Executing with clarity and precision to achieve your ultimate potential in life and business.</p>
           </div>
         </div>
       </section>
@@ -134,15 +134,15 @@ export default async function Home() {
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div className="text-left">
             <h2 className="font-heading text-4xl md:text-6xl font-bold mb-4 uppercase tracking-wide">Featured Work</h2>
-            <p className="text-zinc-400 max-w-lg text-lg">Deep dives into strategy, mindset, and execution that have driven massive results.</p>
+            <p className="text-muted max-w-lg text-lg">Deep dives into strategy, mindset, and execution that have driven massive results.</p>
           </div>
-          <button className="text-accent font-bold uppercase tracking-wider hover:text-yellow-400 mt-6 md:mt-0 flex items-center gap-2 transition-colors">View All Content <ArrowRight className="w-5 h-5" /></button>
+          <button className="text-accent font-bold uppercase tracking-wider hover:text-[#D90429] mt-6 md:mt-0 flex items-center gap-2 transition-colors">View All Content <ArrowRight className="w-5 h-5" /></button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {latestVideos.length > 0 ? latestVideos.map((video) => (
             <a key={video.id} href={video.link} target="_blank" rel="noopener noreferrer" className="glass rounded-[2rem] overflow-hidden group cursor-pointer border border-white/5 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 text-left flex flex-col shadow-xl">
-              <div className="w-full aspect-video bg-zinc-900 relative overflow-hidden">
+              <div className="w-full aspect-video bg-[#2B2D42] relative overflow-hidden">
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/50 z-10 scale-110 group-hover:scale-100">
                   <div className="w-20 h-20 rounded-full bg-accent text-white flex items-center justify-center backdrop-blur-md shadow-lg shadow-accent/50"><Play className="w-10 h-10 ml-2" /></div>
                 </div>
@@ -152,11 +152,11 @@ export default async function Home() {
               <div className="p-6">
                 <span className="text-xs font-bold uppercase tracking-widest text-accent mb-2 block">Video</span>
                 <h3 className="font-heading text-xl md:text-2xl font-bold mb-2 group-hover:text-accent transition-colors uppercase leading-tight line-clamp-2">{video.title}</h3>
-                <p className="text-zinc-400 text-sm md:text-base line-clamp-2">Watch the latest deep dive into strategy, mindset, and execution.</p>
+                <p className="text-muted text-sm md:text-base line-clamp-2">Watch the latest deep dive into strategy, mindset, and execution.</p>
               </div>
             </a>
           )) : (
-            <p className="text-zinc-500 col-span-1 md:col-span-2 lg:col-span-3">No videos found.</p>
+            <p className="text-muted/70 col-span-1 md:col-span-2 lg:col-span-3">No videos found.</p>
           )}
         </div>
       </section>
@@ -167,7 +167,7 @@ export default async function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div className="text-left">
               <h2 className="font-heading text-4xl md:text-6xl font-bold mb-4 uppercase tracking-wide">Latest Insights</h2>
-              <p className="text-zinc-400 max-w-lg text-lg">Written thoughts, essays, and deep dives into the mechanics of high performance.</p>
+              <p className="text-muted max-w-lg text-lg">Written thoughts, essays, and deep dives into the mechanics of high performance.</p>
             </div>
             <Link href="/blog" className="px-8 py-4 rounded-full border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all font-bold uppercase tracking-widest mt-6 md:mt-0">Read the Blog</Link>
           </div>
@@ -178,7 +178,7 @@ export default async function Home() {
                 <div className="flex flex-col text-left max-w-3xl">
                   <span className="font-heading text-accent uppercase tracking-widest text-sm mb-3">October {12 + item}, 2026 • 5 min read</span>
                   <h3 className="font-heading text-2xl md:text-3xl font-bold mb-3 group-hover:text-accent transition-colors uppercase">Why Your 'Perfect Plan' is Killing Your Progress</h3>
-                  <p className="text-zinc-400 text-lg">Stop over-analyzing and start executing. The friction you feel is a byproduct of inaction, not a lack of strategy.</p>
+                  <p className="text-muted text-lg">Stop over-analyzing and start executing. The friction you feel is a byproduct of inaction, not a lack of strategy.</p>
                 </div>
                 <div className="flex items-center text-white font-bold uppercase tracking-wider group-hover:text-accent transition-colors whitespace-nowrap">
                   Read Article <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
@@ -204,9 +204,9 @@ export default async function Home() {
               <div className="flex gap-1 text-accent mb-6 text-xl">
                 {"★★★★★".split('').map((star, j) => <span key={j}>{star}</span>)}
               </div>
-              <p className="text-zinc-300 text-lg mb-10 italic leading-relaxed">"{testimonial.text}"</p>
+              <p className="text-muted text-lg mb-10 italic leading-relaxed">"{testimonial.text}"</p>
               <div className="flex items-center gap-4 mt-auto">
-                <div className="w-14 h-14 rounded-full bg-zinc-800 border-2 border-white/10" />
+                <div className="w-14 h-14 rounded-full bg-[#2B2D42] border-2 border-white/10" />
                 <div>
                   <h4 className="font-heading font-bold text-xl uppercase tracking-wide">{testimonial.name}</h4>
                   <p className="text-accent text-sm font-semibold uppercase tracking-wider">{testimonial.role}</p>
@@ -222,7 +222,7 @@ export default async function Home() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-1/2 bg-[#25D366]/20 blur-[150px] rounded-t-full -z-10" />
         <div className="max-w-3xl mx-auto px-6 text-center flex flex-col items-center">
           <h2 className="font-heading text-5xl md:text-7xl font-bold mb-6 uppercase tracking-wide">Join the Movement</h2>
-          <p className="text-zinc-400 text-xl mb-12 max-w-2xl">Connect directly with me and a community of high-performers. Get exclusive voice notes, raw strategies, and real-time updates straight to your phone.</p>
+          <p className="text-muted text-xl mb-12 max-w-2xl">Connect directly with me and a community of high-performers. Get exclusive voice notes, raw strategies, and real-time updates straight to your phone.</p>
 
           <a 
             href="#" 
@@ -238,7 +238,7 @@ export default async function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="w-full py-12 border-t border-white/10 bg-black text-center text-zinc-500 text-sm font-medium uppercase tracking-widest">
+      <footer className="w-full py-12 border-t border-white/10 bg-black text-center text-muted/70 text-sm font-medium uppercase tracking-widest">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <p>© 2026 Ignite Content. All rights reserved.</p>
           <div className="flex items-center gap-8">
