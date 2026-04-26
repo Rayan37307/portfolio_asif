@@ -16,18 +16,18 @@ export default async function Home() {
         {/* Top badge */}
         <div className="glass px-5 py-2.5 rounded-full flex items-center gap-3 mb-8 animate-fade-in-up border-white/10">
           <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
-          <span className="text-sm font-semibold tracking-widest uppercase text-muted">Available for speaking engagements</span>
+          <span className="text-sm font-semibold tracking-widest uppercase text-muted">Where rebels become leaders</span>
         </div>
 
         <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-6 uppercase leading-none">
-          Ignite Your <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#D90429] to-accent">
-            Potential
+          Backbenchers <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#60A5FA] to-accent">
+            University
           </span>
         </h1>
 
         <p className="max-w-2xl text-muted text-lg md:text-xl mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          Passionate about creating intuitive and high-impact digital content that connects users with value and drives massive growth.
+          Where the rule-breakers, the rebellious dreamers, and the unconventional thinkers come to unlock their true potential.
         </p>
 
         {/* CTA Buttons */}
@@ -49,19 +49,6 @@ export default async function Home() {
           </a>
         </div>
 
-      </section>
-
-      {/* Social Proof Section */}
-      <section className="w-full border-y border-white/5 bg-white/[0.02] backdrop-blur-md py-12 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8 opacity-80">
-          <p className="text-sm font-bold tracking-widest text-muted uppercase">Trusted by millions across</p>
-          <div className="flex flex-wrap justify-center gap-12 items-center">
-            <div className="flex items-center gap-2 text-2xl font-heading font-bold uppercase"><FaYoutube className="w-8 h-8 text-accent" /> YouTube</div>
-            <div className="flex items-center gap-2 text-2xl font-heading font-bold uppercase"><FaInstagram className="w-8 h-8 text-accent" /> Instagram</div>
-            <div className="flex items-center gap-2 text-2xl font-heading font-bold uppercase"><FaXTwitter className="w-8 h-8 text-accent" /> Twitter</div>
-            <div className="flex items-center gap-2 text-2xl font-heading font-bold uppercase"><FaTwitch className="w-8 h-8 text-accent" /> Twitch</div>
-          </div>
-        </div>
       </section>
 
       {/* About / Who Am I Section */}
@@ -130,13 +117,14 @@ export default async function Home() {
       </section>
 
       {/* Featured Content Section */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-20 text-center">
+      <section className="w-full max-w-7xl mx-auto px-6 py-20">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12">
           <div className="text-left">
-            <h2 className="font-heading text-4xl md:text-6xl font-bold mb-4 uppercase tracking-wide">Featured Work</h2>
-            <p className="text-muted max-w-lg text-lg">Deep dives into strategy, mindset, and execution that have driven massive results.</p>
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-3 block">Fresh off the channel</span>
+            <h2 className="font-heading text-5xl md:text-7xl font-bold mb-4 uppercase tracking-wide leading-none">Latest Content</h2>
+            <p className="text-muted max-w-lg text-lg">Raw, unfiltered breakdowns of mindset, strategy, and the habits that separate winners from everyone else.</p>
           </div>
-          <button className="text-accent font-bold uppercase tracking-wider hover:text-[#D90429] mt-6 md:mt-0 flex items-center gap-2 transition-colors">View All Content <ArrowRight className="w-5 h-5" /></button>
+          <button className="text-accent font-bold uppercase tracking-wider hover:text-[#60A5FA] mt-6 md:mt-0 flex items-center gap-2 transition-colors text-sm border border-accent/30 hover:border-[#60A5FA]/50 px-5 py-2.5 rounded-full">View All <ArrowRight className="w-4 h-4" /></button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -240,7 +228,7 @@ export default async function Home() {
       {/* Footer */}
       <footer className="w-full py-12 border-t border-white/10 bg-black text-center text-muted/70 text-sm font-medium uppercase tracking-widest">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p>© 2026 Ignite Content. All rights reserved.</p>
+          <p>© 2026 Backbenchers University. All rights reserved.</p>
           <div className="flex items-center gap-8">
             <a href="#" className="hover:text-accent transition-colors">Twitter</a>
             <a href="#" className="hover:text-accent transition-colors">YouTube</a>
