@@ -109,7 +109,7 @@ export default async function Home() {
       </section>
 
       {/* ─────────────── LOGO MARQUEE ──────────────────── */}
-      <section className="px-4 md:px-8 border-y border-border py-4 bg-white flex items-center justify-between gap-8">
+      <section className="px-4 md:px-8 border-y border-white/5 py-8 bg-black flex items-center justify-between gap-8">
         <div className="flex-1 marquee-wrap opacity-70">
           <div className="marquee-track">
             <div className="marquee-content grayscale">
@@ -121,7 +121,7 @@ export default async function Home() {
             </div>
             <div className="marquee-content grayscale" aria-hidden="true">
               {["CONTENT", "CREATION", "EDUCATION", "TECHNOLOGY", "ENTERTAINMENT"].map((logo) => (
-                <span key={`dup-${logo}`} className="heading text-xl md:text-3xl text-black">
+                <span key={`dup-${logo}`} className="heading text-xl md:text-3xl text-white">
                   {logo}
                 </span>
               ))}
@@ -129,14 +129,6 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* Rating Right Side */}
-        <div className="hidden md:flex flex-col items-end flex-shrink-0">
-          <div className="flex gap-1 mb-1">
-            {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="fill-blue-500 text-blue-500" />)}
-            <span className="text-xs font-bold ml-1">4.9/5</span>
-          </div>
-          <span className="text-[10px] text-muted uppercase tracking-wider font-semibold">Trusted by 100+ businesses</span>
-        </div>
       </section>
 
       {/* ─────────────── QUOTE SECTION (REDESIGNED) ────────── */}
@@ -356,20 +348,21 @@ export default async function Home() {
 
       {/* ─────────────── PERSONAL INTERESTS (REDESIGNED) ── */}
       <section id="interests" className="px-4 md:px-8 max-w-[1500px] mx-auto w-full">
-        <div className="bg-white rounded-[40px] p-8 md:p-20 relative overflow-hidden border border-border/50">
+        <div className="bg-[#0a0f1e] rounded-[40px] p-8 md:p-20 relative overflow-hidden border border-white/5">
           {/* Ambient Glows */}
-          <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
 
           <Reveal>
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
               <div className="max-w-[600px]">
                 <p className="eyebrow mb-4">Beyond Work</p>
-                <h2 className="heading-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1]">
+                <h2 className="heading-display text-white text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1]">
                   What Drives <br />
-                  <span className="gradient-text">My Ambition.</span>
+                  <span className="text-blue-400">My Ambition.</span>
                 </h2>
               </div>
-              <p className="text-muted text-lg max-w-[300px] font-medium leading-relaxed">
+              <p className="text-white/50 text-lg max-w-[300px] font-medium leading-relaxed">
                 The core pillars that fuel my consistency and creativity.
               </p>
             </div>
@@ -400,44 +393,41 @@ export default async function Home() {
               },
             ].map(({ icon: Icon, title, desc, tags, n }) => (
               <StaggerItem key={title}>
-                <div className="glass-card p-10 h-full relative group overflow-hidden bg-[#fafafa] border-border/40">
+                <div className="group bg-white/[0.03] backdrop-blur-xl p-10 h-full relative overflow-hidden rounded-[32px] border border-white/5 hover:border-blue-400/30 transition-all duration-500">
                   {/* Large Background Icon Outline */}
-                  <div className="absolute -right-8 -bottom-8 opacity-20 group-hover:opacity-30 transition-opacity">
-                    <Icon className="w-[12rem] h-[12rem] text-blue-500/20 stroke-[1px]" />
+                  <div className="absolute -right-8 -bottom-8 opacity-[0.05] group-hover:opacity-10 transition-opacity">
+                    <Icon className="w-[12rem] h-[12rem] text-blue-400 stroke-[1px]" />
                   </div>
 
-                  <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-8 border border-border shadow-sm group-hover:border-blue-500/50 transition-colors">
-                    <Icon className="w-7 h-7 text-blue-500" />
+                  <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-8 border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors">
+                    <Icon className="w-7 h-7 text-blue-400" />
                   </div>
 
-                  <h3 className="heading text-2xl text-black mb-4 relative z-10 group-hover:text-blue-600 transition-colors">{title}</h3>
-                  <p className="text-muted text-sm leading-relaxed mb-8 relative z-10">{desc}</p>
+                  <h3 className="heading text-2xl !text-white mb-4 relative z-10 group-hover:!text-blue-300 transition-colors">{title}</h3>
+                  <p className="text-white/50 text-sm leading-relaxed mb-8 relative z-10 group-hover:text-white/80 transition-colors">{desc}</p>
                   
                   <div className="flex flex-wrap gap-2 mt-auto relative z-10">
                     {tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-bold px-3 py-1.5 rounded-full bg-white border border-border text-muted uppercase tracking-wider">
+                      <span key={tag} className="text-[10px] font-bold px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 uppercase tracking-wider">
                         {tag}
                       </span>
                     ))}
                   </div>
-
-                  {/* Hover Accent Line */}
-                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 group-hover:w-full transition-all duration-500" />
                 </div>
               </StaggerItem>
             ))}
           </StaggerContainer>
 
           <Reveal delay={0.2}>
-            <div className="glass-card bg-[#fcfcfc] p-8 md:p-12 border-border/60 relative z-10 overflow-hidden">
-              <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-r from-transparent to-blue-50/30 pointer-events-none" />
+            <div className="bg-white/[0.02] backdrop-blur-md p-8 md:p-12 rounded-[32px] border border-white/5 relative z-10 overflow-hidden">
+              <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-r from-transparent to-blue-500/5 pointer-events-none" />
               <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center relative z-10">
-                <div className="md:w-1/3">
+                <div className="md:w-1/3 text-left">
                   <div className="flex items-center gap-3 mb-2">
                     <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                    <h3 className="heading text-2xl">Currently Exploring</h3>
+                    <h3 className="heading text-2xl !text-white">Currently Exploring</h3>
                   </div>
-                  <p className="text-muted text-sm">The frontier I'm diving deep into right now.</p>
+                  <p className="text-white/40 text-sm">The frontier I'm diving deep into right now.</p>
                 </div>
                 <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-8">
                   {[
@@ -445,14 +435,14 @@ export default async function Home() {
                     { icon: Code, label: "No-Code Tools", sub: "Building without code" },
                     { icon: Zap, label: "Content Velocity", sub: "Scale without burnout" },
                   ].map(({ icon: Icon, label, sub }) => (
-                    <div key={label} className="group/item cursor-default">
+                    <div key={label} className="group/item cursor-default text-left">
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-white border border-border flex items-center justify-center shrink-0 shadow-sm group-hover/item:border-blue-400 group-hover/item:shadow-md transition-all">
-                          <Icon className="w-6 h-6 text-blue-500" />
+                        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover/item:border-blue-400 transition-all">
+                          <Icon className="w-6 h-6 text-blue-400" />
                         </div>
                         <div>
-                          <h4 className="heading text-sm mb-1 group-hover/item:text-blue-600 transition-colors">{label}</h4>
-                          <p className="text-muted text-[11px] leading-tight font-medium uppercase tracking-tighter">{sub}</p>
+                          <h4 className="heading text-sm !text-white mb-1 group-hover/item:!text-blue-400 transition-colors">{label}</h4>
+                          <p className="text-white/30 text-[11px] leading-tight font-medium uppercase tracking-tighter">{sub}</p>
                         </div>
                       </div>
                     </div>
@@ -482,7 +472,7 @@ export default async function Home() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {videos.length > 0 ? videos.map((v, idx) => (
             <StaggerItem key={v.id}>
-              <a href={v.link} target="_blank" rel="noopener noreferrer" className="vcard border-none bg-[#f9f9f9]">
+              <a href={v.link} target="_blank" rel="noopener noreferrer" className="vcard border-none bg-white/[0.03]">
                 <div className="relative aspect-video overflow-hidden rounded-t-[24px]">
                   <Image src={v.thumbnail} alt={v.title} fill className="vthumb object-cover" />
                   <div className="vplay">
@@ -518,7 +508,7 @@ export default async function Home() {
             { id: "O7cYmFH6GwE", thumb: "/banger-1.avif", title: "Education Trap: যেভাবে 99.63% মানুষ ভুল পথে দৌড়াচ্ছে 🤫", views: "Viral" },
           ].map((video, i) => (
             <StaggerItem key={i}>
-              <a href={`https://youtu.be/${video.id}`} target="_blank" rel="noopener noreferrer" className="vcard border-none bg-[#f9f9f9]">
+              <a href={`https://youtu.be/${video.id}`} target="_blank" rel="noopener noreferrer" className="vcard border-none bg-white/[0.03]">
                 <div className="relative aspect-video overflow-hidden rounded-t-[24px]">
                   <Image src={video.thumb} alt={video.title} fill className="vthumb object-cover" />
                   <div className="vplay">
@@ -579,8 +569,8 @@ export default async function Home() {
       <section className="py-12 md:py-20 w-full overflow-hidden">
         <div className="px-4 md:px-8 max-w-[1400px] mx-auto w-full mb-12">
           <Reveal>
-            <p className="eyebrow mb-4">Community Impact</p>
-            <h2 className="heading-display text-[clamp(2rem,5vw,3.5rem)]">Real Results.</h2>
+            <p className="eyebrow mb-4 !text-blue-400">Community Impact</p>
+            <h2 className="heading-display text-[clamp(2rem,5vw,3.5rem)] !text-white">Real Results.</h2>
           </Reveal>
         </div>
 
@@ -588,7 +578,7 @@ export default async function Home() {
           <div className="marquee-track" style={{ animationDuration: '40s' }}>
             <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }}>
               {TESTIMONIALS.map((t, i) => (
-                <div key={i} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
+                <div key={i} className="card p-8 bg-white/[0.03] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>
                     <div className="flex gap-1 mb-4">
                       {[1, 2, 3, 4, 5].map(star => <Star key={star} size={14} className="fill-blue-500 text-blue-500" />)}
@@ -607,7 +597,7 @@ export default async function Home() {
 
             <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }} aria-hidden="true">
               {TESTIMONIALS.map((t, i) => (
-                <div key={`dup-${i}`} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
+                <div key={`dup-${i}`} className="card p-8 bg-white/[0.03] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>
                     <div className="flex gap-1 mb-4">
                       {[1, 2, 3, 4, 5].map(star => <Star key={star} size={14} className="fill-blue-500 text-blue-500" />)}

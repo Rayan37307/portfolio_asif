@@ -25,13 +25,13 @@ const BUBBLES: BubbleData[] = [
 
 function Bubble({ data, scale }: { data: BubbleData; scale: number }) {
   const colorClasses: Record<string, string> = {
-    blue: "bg-blue-50 border-blue-200/50 text-blue-700",
-    indigo: "bg-indigo-50 border-indigo-200/50 text-indigo-700",
+    blue: "bg-blue-500/10 border-blue-500/30 text-blue-300 hover:bg-blue-500/20 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]",
+    indigo: "bg-indigo-500/10 border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]",
   };
 
   return (
     <motion.div
-      className={`absolute flex items-center justify-center rounded-full border backdrop-blur-sm shadow-lg cursor-pointer hover:shadow-xl ${colorClasses[data.color]}`}
+      className={`absolute flex items-center justify-center rounded-full border backdrop-blur-xl shadow-lg cursor-pointer transition-all duration-500 ${colorClasses[data.color]}`}
       style={{
         width: data.size * scale,
         height: data.size * scale,
@@ -50,9 +50,9 @@ function Bubble({ data, scale }: { data: BubbleData; scale: number }) {
         repeat: Infinity,
         ease: "easeInOut",
       }}
-      whileHover={{ scale: 1.1 }}
+      whileHover={{ scale: 1.1, zIndex: 50 }}
     >
-      <span className="text-center px-3 font-semibold leading-tight">{data.label}</span>
+      <span className="text-center px-4 font-bold tracking-tight uppercase leading-tight">{data.label}</span>
     </motion.div>
   );
 }
@@ -61,14 +61,16 @@ function FloatingParticles() {
   const [particles, setParticles] = useState<React.CSSProperties[]>([]);
 
   useEffect(() => {
-    const newParticles = Array.from({ length: 15 }, (_, i) => ({
+    const newParticles = Array.from({ length: 20 }, (_, i) => ({
       left: `${Math.random() * 100}%`,
       bottom: `-20px`,
-      animationDuration: `${12 + Math.random() * 10}s`,
-      animationDelay: `${Math.random() * 8}s`,
-      width: `${2 + Math.random() * 4}px`,
-      height: `${2 + Math.random() * 4}px`,
-      opacity: 0.2 + Math.random() * 0.3,
+      animationDuration: `${10 + Math.random() * 15}s`,
+      animationDelay: `${Math.random() * 10}s`,
+      width: `${1 + Math.random() * 3}px`,
+      height: `${1 + Math.random() * 3}px`,
+      opacity: 0.1 + Math.random() * 0.4,
+      background: Math.random() > 0.5 ? '#3b82f6' : '#6366f1',
+      boxShadow: '0 0 10px currentColor',
     }));
     setParticles(newParticles);
   }, []);
@@ -100,12 +102,22 @@ export default function IdeaMatrix() {
   }, []);
 
   return (
-    <div className="relative w-full aspect-[2/1] min-h-[500px] bg-gradient-to-br from-blue-50 via-white to-indigo-100 rounded-[32px] overflow-hidden">
+    <div className="relative w-full aspect-[2/1] min-h-[550px] bg-[#050910] rounded-[48px] overflow-hidden border border-white/5 shadow-2xl">
+      {/* Background Grid */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
+           style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+      
+      {/* Ambient Glows */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-blue-500/5 rounded-full blur-[150px] pointer-events-none" />
+      <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
+
       <FloatingParticles />
 
-      {BUBBLES.map((bubble) => (
-        <Bubble key={bubble.label} data={bubble} scale={scale} />
-      ))}
+      <div className="relative z-10 w-full h-full">
+        {BUBBLES.map((bubble) => (
+          <Bubble key={bubble.label} data={bubble} scale={scale} />
+        ))}
+      </div>
     </div>
   );
 }
