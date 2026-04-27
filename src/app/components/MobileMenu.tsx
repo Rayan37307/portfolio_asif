@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { FaYoutube, FaFacebookF, FaInstagram, FaXTwitter } from "react-icons/fa6";
 import { IoCloseOutline } from "react-icons/io5";
@@ -10,26 +10,28 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
-const menuVariants = {
+const menuVariants: Variants = {
   closed: {
     opacity: 0,
     y: "-100%",
     transition: {
+      type: "tween",
       duration: 0.5,
-      ease: [0.22, 1, 0.36, 1],
+      ease: "easeInOut" as any,
     },
   },
   open: {
     opacity: 1,
     y: 0,
     transition: {
+      type: "tween",
       duration: 0.6,
-      ease: [0.22, 1, 0.36, 1],
-    }, 
+      ease: "easeOut" as any,
+    },
   },
 };
 
-const linkVariants = {
+const linkVariants: Variants = {
   closed: { opacity: 0, y: 20 },
   open: (i: number) => ({
     opacity: 1,
@@ -37,7 +39,7 @@ const linkVariants = {
     transition: {
       delay: 0.3 + i * 0.1,
       duration: 0.5,
-      ease: "easeOut",
+      ease: "easeOut" as any,
     },
   }),
 };
