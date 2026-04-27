@@ -4,7 +4,7 @@ import { ArrowRight, Play, Star } from "lucide-react";
 import { FaYoutube, FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { getLatestVideos } from "../lib/youtube";
 import { getSortedPostsData } from "../lib/posts";
-import { Reveal, StaggerContainer, StaggerItem } from "./components/animations";
+import { Reveal, StaggerContainer, StaggerItem, ParallaxHeroImage, AnimatedSVGLines, CountUp } from "./components/animations";
 
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
 const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
@@ -22,11 +22,9 @@ export default async function Home() {
           <div className="relative w-full h-[75vh] min-h-[600px] rounded-[32px] overflow-hidden bg-[#111] flex flex-col justify-center items-center text-center">
             
             {/* Background Image */}
-            <Image 
+            <ParallaxHeroImage 
               src="/creator_portrait.jpg" 
               alt="Aesthetic background" 
-              fill 
-              priority
               className="object-cover opacity-80 mix-blend-luminosity blur-xl scale-110" 
             />
             
@@ -175,12 +173,18 @@ export default async function Home() {
           </Reveal>
           <Reveal delay={0.2}>
             <div className="flex gap-8 pt-8 border-t border-border">
-              {[["130K+","YouTube"],["300K+","Facebook"],["5Y+","Creating"]].map(([n, l]) => (
-                <div key={l}>
-                  <div className="heading-display text-3xl md:text-4xl">{n}</div>
-                  <div className="text-xs uppercase tracking-widest text-muted font-bold mt-1">{l}</div>
-                </div>
-              ))}
+              <div>
+                <CountUp target={130} suffix="K+" className="heading-display text-3xl md:text-4xl block" />
+                <div className="text-xs uppercase tracking-widest text-muted font-bold mt-1">YouTube</div>
+              </div>
+              <div>
+                <CountUp target={300} suffix="K+" className="heading-display text-3xl md:text-4xl block" />
+                <div className="text-xs uppercase tracking-widest text-muted font-bold mt-1">Facebook</div>
+              </div>
+              <div>
+                <CountUp target={5} suffix="Y+" className="heading-display text-3xl md:text-4xl block" />
+                <div className="text-xs uppercase tracking-widest text-muted font-bold mt-1">Creating</div>
+              </div>
             </div>
           </Reveal>
         </div>
@@ -203,12 +207,7 @@ export default async function Home() {
             <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(#d1d1d1 1px, transparent 1px)", backgroundSize: "32px 32px" }}></div>
 
             {/* Connecting SVG Lines */}
-            <svg className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-              <line x1="50%" y1="50%" x2="20%" y2="25%" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="4 4" />
-              <line x1="50%" y1="50%" x2="80%" y2="25%" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="4 4" />
-              <line x1="50%" y1="50%" x2="20%" y2="75%" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="4 4" />
-              <line x1="50%" y1="50%" x2="80%" y2="75%" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="4 4" />
-            </svg>
+            <AnimatedSVGLines />
 
             {/* Nodes */}
             <div className="relative z-10 w-full h-full max-w-[800px] mx-auto">

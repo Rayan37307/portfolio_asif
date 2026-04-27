@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform, useMotionValue, useAnimationFrame } from "framer-motion";
 import { useRef, type ReactNode } from "react";
+import Image from "next/image";
 
 /* ─── Scroll-triggered reveal ─────────────────────── */
 export function Reveal({
@@ -146,9 +147,9 @@ export function CountUp({
 
 function MotionNumber({ target, suffix }: { target: number; suffix: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const value = motion.useMotionValue(0);
+  const value = useMotionValue(0);
 
-  motion.useAnimationFrame(() => {
+  useAnimationFrame(() => {
     const current = value.get();
     if (current < target) {
       const step = Math.max(1, Math.ceil((target - current) / 20));
@@ -160,4 +161,86 @@ function MotionNumber({ target, suffix }: { target: number; suffix: string }) {
   });
 
   return <span ref={ref}>0{suffix}</span>;
+}
+
+/* ─── Parallax Hero Image ─────────────────────────── */
+export function ParallaxHeroImage({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
+  return (
+    <div ref={ref} className="absolute inset-0 w-full h-full">
+      <motion.div style={{ y }} className="w-full h-full relative">
+        <Image src={src} alt={alt} fill priority className={className} />
+      </motion.div>
+    </div>
+  );
+}
+
+/* ─── Animated SVG Lines ──────────────────────────── */
+export function AnimatedSVGLines() {
+  return (
+    <svg className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+      <motion.line
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
+        x1="50%"
+        y1="50%"
+        x2="20%"
+        y2="25%"
+        stroke="rgba(0,0,0,0.15)"
+        strokeWidth="1.5"
+        strokeDasharray="4 4"
+      />
+      <motion.line
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.2 }}
+        x1="50%"
+        y1="50%"
+        x2="80%"
+        y2="25%"
+        stroke="rgba(0,0,0,0.15)"
+        strokeWidth="1.5"
+        strokeDasharray="4 4"
+      />
+      <motion.line
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.4 }}
+        x1="50%"
+        y1="50%"
+        x2="20%"
+        y2="75%"
+        stroke="rgba(0,0,0,0.15)"
+        strokeWidth="1.5"
+        strokeDasharray="4 4"
+      />
+      <motion.line
+        initial={{ pathLength: 0 }}
+        whileInView={{ pathLength: 1 }}
+        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.6 }}
+        x1="50%"
+        y1="50%"
+        x2="80%"
+        y2="75%"
+        stroke="rgba(0,0,0,0.15)"
+        strokeWidth="1.5"
+        strokeDasharray="4 4"
+      />
+    </svg>
+  );
 }
