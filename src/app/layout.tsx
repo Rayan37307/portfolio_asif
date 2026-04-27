@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import SmoothScroll from "./components/SmoothScroll";
 import CustomCursor from "./components/CustomCursor";
+import LoadingScreen from "./components/LoadingScreen";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -62,6 +63,7 @@ export default function RootLayout({
         />
       </head>
       <body className="font-sans cursor-none">
+        <LoadingScreen />
         <CustomCursor />
         <SmoothScroll>
           <div className="app-wrapper">
