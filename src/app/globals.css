@@ -2,14 +2,18 @@
 
 /* ── Tokens ───────────────────────────────────────── */
 :root {
-  --bg-outer: #333333;
+  --bg-outer: #0a0f1a;
   --bg-app:   #f4f4f4;
   --bg-card:  #ffffff;
   --fg:       #111111;
   --fg-muted: #555555;
-  --accent:   #000000;
+  --accent:   #2563EB;
+  --accent-light: #3b82f6;
+  --accent-dark: #1d4ed8;
+  --accent-glow: rgba(37, 99, 235, 0.25);
+  --accent-soft: rgba(37, 99, 235, 0.08);
   --border:   rgba(0,0,0,0.1);
-  --border-h: rgba(0,0,0,0.25);
+  --border-h: rgba(37, 99, 235, 0.35);
   
   --app-radius: 40px;
   --card-radius: 24px;
@@ -19,6 +23,7 @@
   --color-background: var(--bg-app);
   --color-foreground: var(--fg);
   --color-accent:     var(--accent);
+  --color-accent-light: var(--accent-light);
   --color-muted:      var(--fg-muted);
   --font-sans:        'Satoshi', system-ui, sans-serif;
   --font-heading:     'Clash Display', system-ui, sans-serif;
@@ -30,7 +35,10 @@ html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--bg-outer);
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 80%, rgba(37, 99, 235, 0.06) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
   color: var(--fg);
   font-family: 'Satoshi', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,7 +60,7 @@ body {
   max-width: 1600px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.2);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.3), 0 0 120px rgba(37, 99, 235, 0.08);
   display: flex;
   flex-direction: column;
 }
@@ -71,37 +79,57 @@ body {
   line-height: 0.9;
 }
 
+/* ── Gradient text ───────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent) 0%, #60a5fa 50%, var(--accent-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-warm {
+  background: linear-gradient(135deg, var(--fg) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* ── Eyebrow label ────────────────────────────────── */
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--fg-muted);
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 .eyebrow::before {
-  content: '—';
-  color: var(--fg-muted);
-  font-weight: 400;
+  content: '';
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 /* ── Divider ──────────────────────────────────────── */
 .rule {
   width: 100%;
   height: 1px;
-  background: var(--border);
+  background: linear-gradient(90deg, transparent 0%, var(--border-h) 50%, transparent 100%);
 }
 
 /* ── Card ─────────────────────────────────────────── */
 .card {
   background: var(--bg-card);
   border-radius: var(--card-radius);
-  transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s;
+  border: 1px solid transparent;
+  transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s, border-color 0.35s;
 }
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.08);
+  border-color: var(--border-h);
 }
 
 /* ── Primary button ───────────────────────────────── */
@@ -117,16 +145,16 @@ body {
   border-radius: 99px;
   cursor: pointer;
   text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
 }
 .btn-fill {
-  background: var(--fg);
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   color: #fff;
   border: 1px solid transparent;
 }
 .btn-fill:hover { 
-  transform: scale(1.02); 
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15); 
+  transform: scale(1.04); 
+  box-shadow: 0 8px 28px var(--accent-glow); 
 }
 
 .btn-outline {
@@ -135,8 +163,10 @@ body {
   border: 1px solid var(--border);
 }
 .btn-outline:hover { 
-  border-color: var(--border-h); 
+  border-color: var(--accent);
+  color: var(--accent);
   transform: scale(1.02); 
+  box-shadow: 0 4px 16px var(--accent-glow);
 }
 
 /* ── Hover accent text ────────────────────────────── */
@@ -151,9 +181,10 @@ body {
   overflow: hidden;
   text-decoration: none;
   background: var(--bg-card);
-  transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s;
+  border: 1px solid transparent;
+  transition: transform 0.35s cubic-bezier(.16,1,.3,1), box-shadow 0.35s, border-color 0.35s;
 }
-.vcard:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); }
+.vcard:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(37, 99, 235, 0.1); border-color: var(--border-h); }
 .vcard:hover .vplay { opacity: 1; }
 .vcard:hover .vthumb { transform: scale(1.04); }
 
@@ -162,7 +193,7 @@ body {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; transition: opacity 0.25s; z-index: 2;
-  background: rgba(0,0,0,0.2);
+  background: rgba(37, 99, 235, 0.15);
 }
 
 /* ── Insight row ──────────────────────────────────── */
@@ -176,16 +207,16 @@ body {
   border: 1px solid var(--border);
   background: transparent;
   text-decoration: none;
-  transition: background 0.25s, border-color 0.25s;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
   flex-wrap: wrap;
 }
 .irow:hover { 
-  background: var(--bg-card); 
-  border-color: transparent;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+  background: var(--accent-soft); 
+  border-color: var(--border-h);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.06); 
 }
-.irow-arrow { transition: transform 0.2s; color: var(--fg); }
-.irow:hover .irow-arrow { transform: translateX(4px); }
+.irow-arrow { transition: transform 0.2s, color 0.2s; color: var(--fg); }
+.irow:hover .irow-arrow { transform: translateX(4px); color: var(--accent); }
 
 /* ── Footer link ──────────────────────────────────── */
 .flink {
@@ -237,7 +268,7 @@ body {
   position: absolute;
   width: 40px;
   height: 40px;
-  border: 2px solid rgba(255,255,255,0.4);
+  border: 2px solid rgba(37, 99, 235, 0.5);
   z-index: 10;
   pointer-events: none;
 }
@@ -245,6 +276,28 @@ body {
 .bracket-tr { top: 2rem; right: 2rem; border-left: none; border-bottom: none; border-top-right-radius: 12px; }
 .bracket-bl { bottom: 2rem; left: 2rem; border-right: none; border-top: none; border-bottom-left-radius: 12px; }
 .bracket-br { bottom: 2rem; right: 2rem; border-left: none; border-top: none; border-bottom-right-radius: 12px; }
+
+/* ── Accent utilities ────────────────────────────── */
+.text-accent { color: var(--accent) !important; }
+.bg-accent { background: var(--accent) !important; }
+.bg-accent-gradient { background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important; }
+.accent-glow { box-shadow: 0 0 32px var(--accent-glow), 0 0 64px rgba(37, 99, 235, 0.1); }
+.accent-border { border-color: var(--accent) !important; }
+
+/* ── Vibrant section tint ────────────────────────── */
+.section-tint {
+  background: linear-gradient(180deg, rgba(37, 99, 235, 0.03) 0%, transparent 100%);
+}
+
+/* ── Blue avatar ring ────────────────────────────── */
+.avatar-ring {
+  background: linear-gradient(135deg, var(--accent-light), var(--accent-dark));
+  padding: 2px;
+  border-radius: 50%;
+}
+.avatar-ring > * {
+  border-radius: 50%;
+}
 
 /* ── Keyframes ────────────────────────────────────── */
 @keyframes marquee {
@@ -255,4 +308,9 @@ body {
   from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes accent-pulse {
+  0%, 100% { box-shadow: 0 0 24px var(--accent-glow); }
+  50%      { box-shadow: 0 0 48px var(--accent-glow), 0 0 72px rgba(37, 99, 235, 0.08); }
+}
 .anim-fade-up { animation: fade-up 0.7s cubic-bezier(.16,1,.3,1) both; }
+.anim-accent-pulse { animation: accent-pulse 3s ease-in-out infinite; }
