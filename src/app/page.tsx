@@ -362,7 +362,7 @@ export default async function Home() {
             <StaggerItem key={i}>
               <a href={`https://youtu.be/${video.id}`} target="_blank" rel="noopener noreferrer" className="vcard border-none bg-[#f9f9f9]">
                 <div className="relative aspect-video overflow-hidden rounded-t-[24px]">
-                  <Image src={video.thumb} alt={video.title} fill className="vthumb object-cover grayscale" />
+                  <Image src={video.thumb} alt={video.title} fill className="vthumb object-cover" />
                   <div className="vplay">
                     <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
                       <Play className="w-4 h-4 text-white ml-1" />
