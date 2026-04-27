@@ -576,73 +576,74 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── FOOTER (REDESIGNED - LIGHT) ───────── */}
-      <footer className="mt-16 px-4 md:px-8">
-        <div className="bg-white rounded-[40px] p-8 md:p-24 flex flex-col items-center text-center relative overflow-hidden border border-border/50">
+      {/* ─────────────── CTA / COMMUNITY (REDESIGNED - IMAGE STYLE) ── */}
+      <footer className="mt-16 px-4 md:px-8 mb-8">
+        <div className="bg-[#4f46e5] rounded-[32px] p-12 md:p-24 flex flex-col items-center text-center relative overflow-hidden shadow-[0_24px_48px_rgba(79,70,229,0.2)]">
           
-          {/* Large Background Outlined Text */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
-            <span className="heading-display text-[20vw] text-outline select-none leading-none">
-              HUB
-            </span>
+          {/* Subtle Geometric Patterns (Optional, matching image) */}
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[60%] bg-white/5 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[60%] bg-white/5 rounded-full blur-[80px] pointer-events-none" />
+
+          {/* Top Icon / Logo */}
+          <div className="w-20 h-20 bg-[#0a0f1a] rounded-[24px] overflow-hidden flex items-center justify-center mb-10 shadow-2xl relative z-10 border border-white/10">
+            <Image 
+              src="/bu_logo.jpg" 
+              alt="Backbenchers University Logo" 
+              width={80} 
+              height={80} 
+              className="object-cover"
+            />
           </div>
 
-          {/* Subtle Ambient Glows */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-500/5 rounded-full blur-[160px] pointer-events-none" />
-          <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-blue-600/3 rounded-full blur-[100px] pointer-events-none" />
-
-          <Reveal className="relative z-10">
-            <p className="eyebrow mb-6">The Network</p>
-            <h2 className="heading-display text-black text-[clamp(3.5rem,10vw,7rem)] leading-[0.9] mb-12">
-              Join the <br /> 
-              <span className="gradient-text drop-shadow-[0_0_40px_rgba(37,99,235,0.1)]">Community.</span>
+          <Reveal className="relative z-10 w-full">
+            <h2 className="text-white text-3xl md:text-5xl font-medium mb-4 tracking-tight">
+              Let's Build Your <span className="font-bold">Next Vision</span>
             </h2>
             
-            <p className="text-muted text-lg md:text-xl max-w-[600px] mx-auto mb-16 font-medium leading-relaxed">
-              Stop consuming, start contributing. Join over <span className="text-black font-bold">500,000+</span> individuals building systems for freedom and performance.
-            </p>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
+              <h3 className="text-white text-3xl md:text-5xl font-bold">Together.</h3>
+              <a href="https://chat.whatsapp.com/FVioaoB7Ew7EI2w5ZSaVW4" target="_blank" rel="noopener noreferrer" className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg flex items-center gap-3 hover:scale-105 transition-transform shadow-lg group">
+                Join WhatsApp Hub
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
 
-            <div className="flex flex-wrap justify-center gap-6">
-              <a href="https://chat.whatsapp.com/FVioaoB7Ew7EI2w5ZSaVW4" target="_blank" rel="noopener noreferrer" className="btn btn-fill bg-[#25D366] text-white hover:bg-[#1ebe5a] text-lg px-10 py-5 flex items-center shadow-[0_20px_40px_rgba(37,211,102,0.1)] border-none group">
-                <FaWhatsapp className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform" />
-                WhatsApp Hub
-              </a>
-              <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="btn btn-fill bg-blue-600 text-white hover:bg-blue-700 text-lg px-10 py-5 flex items-center shadow-[0_20px_40px_rgba(37,99,235,0.15)] border-none group">
-                <FaYoutube className="w-6 h-6 mr-3 text-white group-hover:scale-110 transition-transform" />
-                Subscribe
-              </a>
+            {/* Checkmark Benefits */}
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 text-white/90 text-sm font-medium">
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
+                  <Star size={10} className="fill-white text-white" />
+                </div>
+                Real Raw Insights
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
+                  <Star size={10} className="fill-white text-white" />
+                </div>
+                No Fluff Content
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
+                  <Star size={10} className="fill-white text-white" />
+                </div>
+                Direct Access
+              </div>
             </div>
           </Reveal>
 
-          {/* Social Grid footer */}
-          <div className="w-full mt-32 pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
-            <div className="flex flex-col items-center md:items-start gap-2">
-              <div className="heading-display text-black text-3xl">
-                asif®
-              </div>
-              <p className="text-muted text-xs font-bold uppercase tracking-widest">Engineering Mindsets</p>
+          {/* Minimal Footer Bottom */}
+          <div className="w-full mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
+            <div className="heading-display text-white text-2xl">
+              asif®
             </div>
-
-            <div className="flex gap-10">
-              {[
-                ["YouTube", "https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g"], 
-                ["Facebook", "https://www.facebook.com/MuhammadAsifRayhanOfficial"],
-                ["LinkedIn", "#"],
-                ["Twitter", "#"]
-              ].map(([l, h]) => (
-                <a key={l} href={h} className="text-muted hover:text-blue-600 text-sm font-bold tracking-tight transition-all hover:translate-y-[-2px] block">{l}</a>
+            <div className="flex gap-8">
+              {["YouTube", "Facebook", "LinkedIn"].map((l) => (
+                <a key={l} href="#" className="text-white/60 hover:text-white text-sm font-bold transition-colors">{l}</a>
               ))}
             </div>
-
-            <div className="flex flex-col items-center md:items-end gap-2">
-              <p className="text-muted text-[10px] font-bold uppercase tracking-widest">
-                © 2026 MUHAMMAD ASIF RAIHAN
-              </p>
-              <div className="flex gap-4">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-muted text-[10px] font-bold uppercase tracking-wider">All Systems Operational</span>
-              </div>
-            </div>
+            <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">
+              © 2026 MUHAMMAD ASIF RAIHAN
+            </p>
           </div>
         </div>
       </footer>
