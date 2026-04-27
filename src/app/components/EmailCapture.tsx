@@ -34,13 +34,13 @@ export default function EmailCapture() {
           </div>
 
           <h2 className="heading-display text-white text-[clamp(2rem,5vw,3rem)] mb-4">
-            Get the 7-Day<br />
-            <span className="gradient-text">Execution Blueprint.</span>
+            Join the <br />
+            <span className="gradient-text">Inner Circle.</span>
           </h2>
 
           <p className="text-white/60 text-sm md:text-base mb-8 max-w-[440px] mx-auto leading-relaxed">
-            The exact framework I used to build a 450K+ audience. 
-            Delivered to your inbox — no fluff, pure signal.
+            Get weekly motivation, deep-dive strategies, and raw truths 
+            delivered to your inbox. No fluff, just pure value.
           </p>
 
           {!submitted ? (
@@ -54,7 +54,7 @@ export default function EmailCapture() {
                 className="email-input flex-1"
               />
               <button type="submit" className="btn email-submit-btn">
-                Get Free Access <ArrowRight className="w-4 h-4" />
+                Join Now <ArrowRight className="w-4 h-4" />
               </button>
             </form>
           ) : (

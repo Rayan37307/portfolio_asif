@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Play, Star } from "lucide-react";
+import { ArrowRight, Play, Star, Zap, Target, Rocket } from "lucide-react";
 import { FaYoutube, FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { getLatestVideos } from "../lib/youtube";
 import { getSortedPostsData } from "../lib/posts";
@@ -8,8 +8,6 @@ import { Reveal, StaggerContainer, StaggerItem, ParallaxHeroImage, AnimatedSVGLi
 import Hero3D from "./components/Hero3D";
 import EmailCapture from "./components/EmailCapture";
 import ScrollRevealQuote from "./components/ScrollRevealQuote";
-import CountdownTimer from "./components/CountdownTimer";
-import { Check, Calendar } from "lucide-react";
 
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
 const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
@@ -242,40 +240,6 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── BACKBENCHERS UNIVERSITY ──── */}
-      <section id="masterclass" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
-        <Reveal>
-          <div className="card bg-gradient-to-br from-[#eef2ff] to-[#f9f9ff] border-none p-8 md:p-16 flex flex-col items-center text-center relative overflow-hidden">
-            {/* Subtle glow behind */}
-            <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-blue-400/8 rounded-full blur-[100px] pointer-events-none" />
-            <p className="eyebrow mb-4">The Masterclass</p>
-            <h2 className="heading-display text-[clamp(2.5rem,6vw,4.5rem)] mb-6 relative">
-              Backbenchers <span className="gradient-text">University.</span>
-            </h2>
-            <p className="text-muted text-lg max-w-[600px] mx-auto mb-12">
-              Not for the apathetic. A rigorous, cohort-based curriculum designed to strip away your excuses, rebuild your mental models, and install the operating system of high performance.
-            </p>
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[1000px] text-left mb-12">
-              {[
-                { title: "Mindset Protocol", desc: "Eradicate limiting beliefs and build undeniable confidence." },
-                { title: "Execution Engine", desc: "Daily systems to guarantee deep work and compound output." },
-                { title: "The Inner Circle", desc: "Direct access to a network of like-minded builders." }
-              ].map((feature, i) => (
-                <StaggerItem key={i}>
-                  <div className="bg-white p-6 rounded-[16px] shadow-sm border border-border/50 hover:border-blue-400/30 hover:shadow-[0_4px_24px_rgba(37,99,235,0.08)] transition-all">
-                    <h3 className="heading text-xl mb-2">{feature.title}</h3>
-                    <p className="text-muted text-sm leading-relaxed">{feature.desc}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-            <a href="#" className="btn btn-fill">Apply for the next cohort</a>
-          </div>
-        </Reveal>
-      </section>
-
-      <div className="px-4 md:px-8"><div className="rule" /></div>
-
       {/* ─────────────── PHILOSOPHY (BENTO GRID) ───────── */}
       <section id="method" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
@@ -286,129 +250,60 @@ export default async function Home() {
         </Reveal>
 
         <div className="bento-grid">
-          <Reveal className="h-full">
-            <div className="bento-card bento-card-featured h-full min-h-[400px] relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-8">
-                <div className="heading-display text-8xl text-blue-500/10 group-hover:text-blue-500/20 transition-colors">01</div>
-              </div>
-              <div className="relative z-10">
-                <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center mb-6 shadow-lg shadow-blue-500/40">
-                  <span className="text-white font-bold">A</span>
+          <Reveal className="bento-item-1">
+            <div className="bento-card bento-card-blue group">
+              <div className="bento-number">01</div>
+              <div>
+                <div className="bento-icon-box">
+                  <Target className="w-6 h-6 text-blue-400" />
                 </div>
-                <h3 className="heading text-3xl mb-4 text-white">Awaken</h3>
+                <h3 className="heading text-3xl md:text-4xl mb-4">Awaken</h3>
                 <p className="text-white/60 leading-relaxed text-lg max-w-[400px]">
                   Understanding your goals, fears, and challenges through deep introspection and brutal reality checks. Identifying the "why" before the "how".
                 </p>
               </div>
+              <div className="pt-8 flex gap-4">
+                <div className="px-4 py-2 bg-white/5 rounded-full text-[10px] uppercase tracking-widest font-bold border border-white/10">Mindset</div>
+                <div className="px-4 py-2 bg-white/5 rounded-full text-[10px] uppercase tracking-widest font-bold border border-white/10">Reality Check</div>
+              </div>
             </div>
           </Reveal>
 
-          <div className="flex flex-col gap-5">
-            <Reveal className="h-full">
-              <div className="bento-card h-full min-h-[190px] bg-white border border-border group">
-                 <div className="flex justify-between items-start mb-4">
-                   <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
-                     <span className="text-blue-600 font-bold">B</span>
-                   </div>
-                   <div className="heading-display text-4xl text-blue-500/10 group-hover:text-blue-500/20 transition-colors">02</div>
-                 </div>
-                 <h3 className="heading text-xl mb-2">Build</h3>
-                 <p className="text-muted text-sm leading-relaxed">
-                   Transforming raw motivation into robust, repeatable systems and unbreakable daily habits.
-                 </p>
-              </div>
-            </Reveal>
-
-            <Reveal className="h-full" delay={0.1}>
-              <div className="bento-card h-full min-h-[190px] bg-white border border-border group">
-                <div className="flex justify-between items-start mb-4">
-                   <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
-                     <span className="text-blue-600 font-bold">C</span>
-                   </div>
-                   <div className="heading-display text-4xl text-blue-500/10 group-hover:text-blue-500/20 transition-colors">03</div>
-                 </div>
-                 <h3 className="heading text-xl mb-2">Conquer</h3>
-                 <p className="text-muted text-sm leading-relaxed">
-                   Executing with clarity and precision to achieve your ultimate potential in life and business.
-                 </p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      <div className="px-4 md:px-8"><div className="rule" /></div>
-
-      {/* ─────────────── PRICING / INVESTMENT ────────── */}
-      <section id="pricing" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full scroll-mt-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <Reveal>
-            <p className="eyebrow mb-4">Investment</p>
-            <h2 className="heading-display text-[clamp(2.5rem,6vw,4.5rem)] mb-6">
-              Join the <span className="gradient-text">Inner Circle.</span>
-            </h2>
-            <p className="text-muted text-lg mb-8 max-w-[500px]">
-              Secure your spot in the next cohort of Backbenchers University. The only program designed to turn creators into founders.
-            </p>
-            
-            <div className="flex flex-col gap-6 mb-8">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
-                  <Calendar className="text-blue-600 w-6 h-6" />
-                </div>
+          <Reveal className="bento-item-2">
+            <div className="bento-card group">
+              <div className="bento-number">02</div>
+              <div className="flex flex-col h-full justify-between">
                 <div>
-                  <div className="text-xs uppercase tracking-widest text-muted font-bold">Next Cohort Starts</div>
-                  <div className="text-lg font-bold">June 15, 2026</div>
+                  <div className="bento-icon-box">
+                    <Zap className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h3 className="heading text-2xl mb-2">Build</h3>
+                  <p className="text-muted text-sm leading-relaxed max-w-[280px]">
+                    Transforming raw motivation into robust, repeatable systems and unbreakable daily habits.
+                  </p>
                 </div>
-              </div>
-              
-              <div className="pt-4 border-t border-border max-w-max">
-                <div className="text-xs uppercase tracking-widest text-muted font-bold mb-3">Enrolling Closing In</div>
-                <CountdownTimer targetDate="2026-06-15T00:00:00" />
               </div>
             </div>
           </Reveal>
 
-          <Reveal delay={0.2} direction="left">
-            <div className="pricing-card">
-              <div className="pricing-badge">Limited to 50 creators</div>
-              <h3 className="heading text-2xl mb-2">Backbenchers Pro</h3>
-              <div className="flex items-baseline gap-1 mb-6">
-                <span className="text-4xl font-bold">$997</span>
-                <span className="text-muted text-sm">/ cohort access</span>
-              </div>
-              
-              <div className="space-y-4 mb-10">
-                {[
-                  "8 Weeks of Live Coaching Calls",
-                  "The Full Execution Operating System",
-                  "Direct Feedback on Your Content",
-                  "Access to Private Discord Community",
-                  "Lifetime Access to Material",
-                  "The 'Banger' Blueprint"
-                ].map((item, i) => (
-                  <div key={i} className="pricing-feature">
-                    <div className="pricing-feature-icon">
-                      <Check className="w-3 h-3 text-blue-600" />
-                    </div>
-                    {item}
+          <Reveal className="bento-item-3" delay={0.1}>
+            <div className="bento-card group">
+              <div className="bento-number">03</div>
+              <div className="flex flex-col h-full justify-between">
+                <div>
+                  <div className="bento-icon-box">
+                    <Rocket className="w-6 h-6 text-blue-600" />
                   </div>
-                ))}
+                  <h3 className="heading text-2xl mb-2">Conquer</h3>
+                  <p className="text-muted text-sm leading-relaxed max-w-[280px]">
+                    Executing with clarity and precision to achieve your ultimate potential in life and business.
+                  </p>
+                </div>
               </div>
-              
-              <a href="#" className="btn btn-fill w-full py-5 text-lg shadow-xl shadow-blue-500/20 group">
-                Apply for Enrollment <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-              
-              <p className="text-center text-[10px] text-muted uppercase tracking-widest mt-6">
-                100% Satisfaction Guarantee · Join 500+ Alumni
-              </p>
             </div>
           </Reveal>
         </div>
       </section>
-
-      <div className="px-4 md:px-8"><div className="rule" /></div>
 
       {/* ─────────────── CONTENT ──────────────────── */}
       <section id="content" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
@@ -533,11 +428,11 @@ export default async function Home() {
             {/* First Set */}
             <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }}>
               {[
-                { name: "Sarah J.", role: "Founder", text: "Revenue grew 340% in just 6 months after implementing the BU execution systems. A complete game changer." },
-                { name: "Marcus T.", role: "Content Creator", text: "Went from 2K to 47K followers in 90 days. The content frameworks are pure signal in a world of noise." },
-                { name: "Elena R.", role: "Scale-up Founder", text: "Built a 6-figure brand from absolute zero in under a year using the 'Inner Circle' strategies." },
-                { name: "David W.", role: "Agency Owner", text: "Landed 3 high-ticket brand deals worth $15K within 60 days of joining the BU cohort." },
-                { name: "Chloe M.", role: "Digital Artist", text: "Doubled my creative output while cutting my working hours in half. The mindset shifts are real." },
+                { name: "Sarah J.", role: "Entrepreneur", text: "Asif's insights on digital leverage completely reshaped how I view growth. Truly eye-opening." },
+                { name: "Marcus T.", role: "Creator", text: "Finally, someone who speaks the truth about what it actually takes to build something meaningful today." },
+                { name: "Elena R.", role: "Founder", text: "The mindset shifts I've experienced through this content are more valuable than any degree." },
+                { name: "David W.", role: "Builder", text: "Actionable, raw, and high-signal. I've stopped overthinking and started executing." },
+                { name: "Chloe M.", role: "Designer", text: "The only creator I follow who consistently delivers deep value without the fluff." },
               ].map((t, i) => (
                 <div key={i} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>
@@ -562,11 +457,11 @@ export default async function Home() {
             {/* Duplicated Set for Infinite Loop */}
             <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }} aria-hidden="true">
               {[
-                { name: "Sarah J.", role: "Founder", text: "Revenue grew 340% in just 6 months after implementing the BU execution systems. A complete game changer." },
-                { name: "Marcus T.", role: "Content Creator", text: "Went from 2K to 47K followers in 90 days. The content frameworks are pure signal in a world of noise." },
-                { name: "Elena R.", role: "Scale-up Founder", text: "Built a 6-figure brand from absolute zero in under a year using the 'Inner Circle' strategies." },
-                { name: "David W.", role: "Agency Owner", text: "Landed 3 high-ticket brand deals worth $15K within 60 days of joining the BU cohort." },
-                { name: "Chloe M.", role: "Digital Artist", text: "Doubled my creative output while cutting my working hours in half. The mindset shifts are real." },
+                { name: "Sarah J.", role: "Entrepreneur", text: "Asif's insights on digital leverage completely reshaped how I view growth. Truly eye-opening." },
+                { name: "Marcus T.", role: "Creator", text: "Finally, someone who speaks the truth about what it actually takes to build something meaningful today." },
+                { name: "Elena R.", role: "Founder", text: "The mindset shifts I've experienced through this content are more valuable than any degree." },
+                { name: "David W.", role: "Builder", text: "Actionable, raw, and high-signal. I've stopped overthinking and started executing." },
+                { name: "Chloe M.", role: "Designer", text: "The only creator I follow who consistently delivers deep value without the fluff." },
               ].map((t, i) => (
                 <div key={`dup-${i}`} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>

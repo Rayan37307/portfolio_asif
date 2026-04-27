@@ -4,8 +4,6 @@ import Header from "./components/Header";
 import SmoothScroll from "./components/SmoothScroll";
 import CustomCursor from "./components/CustomCursor";
 import LoadingScreen from "./components/LoadingScreen";
-import StickyBottomCTA from "./components/StickyBottomCTA";
-import ExitIntentPopup from "./components/ExitIntentPopup";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -67,8 +65,6 @@ export default function RootLayout({
       <body className="font-sans custom-cursor-active">
         <LoadingScreen />
         <CustomCursor />
-        <ExitIntentPopup />
-        <StickyBottomCTA />
         <SmoothScroll>
           <div className="app-wrapper">
             <Header />
