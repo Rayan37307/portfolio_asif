@@ -42,7 +42,6 @@ body {
   color: var(--fg);
   font-family: 'Satoshi', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
-  padding: 1.5rem;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -55,7 +54,7 @@ body {
 /* ── App Wrapper ──────────────────────────────────── */
 .app-wrapper {
   background: var(--bg-app);
-  border-radius: var(--app-radius);
+  /* border-radius: var(--app-radius); */
   width: 100%;
   max-width: 1600px;
   position: relative;
