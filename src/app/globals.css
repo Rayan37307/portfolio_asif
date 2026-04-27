@@ -27,6 +27,7 @@
   --color-muted:      var(--fg-muted);
   --font-sans:        'Satoshi', system-ui, sans-serif;
   --font-heading:     'Clash Display', system-ui, sans-serif;
+  --font-script:      'Sacramento', cursive;
 }
 
 /* ── Base ─────────────────────────────────────────── */
@@ -144,6 +145,17 @@ body {
   border-color: var(--accent);
   box-shadow: 0 12px 40px rgba(37, 99, 235, 0.1);
   transform: translateY(-4px);
+}
+
+.glass-dark {
+  background: rgba(10, 15, 26, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--card-radius);
+}
+
+.font-script {
+  font-family: var(--font-script);
 }
 
 .text-outline {

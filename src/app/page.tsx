@@ -27,64 +27,91 @@ export default async function Home() {
   return (
     <main className="flex flex-col gap-16 pb-16">
 
-      {/* ─────────────── HERO ─────────────────────── */}
-      <section className="px-4 md:px-8">
-        <Reveal delay={0}>
-          <div className="relative w-full h-[75vh] min-h-[600px] rounded-[32px] overflow-hidden bg-[#0a0f1a] flex flex-col justify-center items-center text-center">
+      {/* ─────────────── HERO (REDESIGNED - SYNTH STYLE) ────── */}
+      <section className="px-4 md:px-8 pt-4">
+        <div className="relative w-full h-[85vh] min-h-[700px] rounded-[40px] overflow-hidden bg-[#0a0f1a] flex flex-col items-center justify-center">
+          
+          {/* Large Background Typography */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden">
+            <h1 className="heading-display text-[25vw] text-white/[0.03] leading-none tracking-tighter uppercase">
+              ASIF
+            </h1>
+          </div>
 
-            {/* Background Image */}
-            <ParallaxHeroImage
-              src="/hero_bg.png"
-              alt="Aesthetic background"
-              className="object-cover opacity-50 scale-105"
-            />
+          {/* Script Overlay */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+            <Reveal delay={0.6}>
+              <span className="font-script text-[clamp(4rem,10vw,12rem)] text-blue-400 drop-shadow-[0_0_30px_rgba(37,99,235,0.4)] rotate-[-4deg] translate-y-[20%] translate-x-[10%]">
+                Engineering Mindsets
+              </span>
+            </Reveal>
+          </div>
 
-            {/* 3D Abstract Object */}
-            {/* <Hero3D /> */}
-
-            {/* Corner Brackets */}
-            <div className="bracket-tl hidden md:block"></div>
-            <div className="bracket-tr hidden md:block"></div>
-            <div className="bracket-bl hidden md:block"></div>
-            <div className="bracket-br hidden md:block"></div>
-
-            {/* Crosshairs */}
-            <div className="absolute left-[20%] top-[40%] text-blue-400/50 text-xl font-light hidden md:block">+</div>
-            <div className="absolute left-[50%] top-[40%] text-blue-400/50 text-xl font-light hidden md:block">+</div>
-            <div className="absolute right-[20%] top-[40%] text-blue-400/50 text-xl font-light hidden md:block">+</div>
-
-            {/* Main Title */}
-            <div className="relative z-10 flex flex-col items-center">
-              <div className="flex items-start">
-                <h1 className="heading-display text-white text-[clamp(4rem,15vw,12rem)] tracking-tighter leading-none drop-shadow-[0_4px_32px_rgba(37,99,235,0.3)]">
-                  asif
-                </h1>
-                <span className="text-white text-[clamp(1.5rem,4vw,3rem)] font-light mt-[clamp(0.5rem,2vw,1.5rem)] ml-1">®</span>
+          {/* Central Floating Image */}
+          <div className="relative z-10 w-full max-w-[500px] aspect-[4/5] md:aspect-square flex items-center justify-center">
+            <Reveal delay={0.2} direction="up">
+              <div className="relative w-[300px] h-[400px] md:w-[450px] md:h-[550px] rounded-[32px] overflow-hidden shadow-[0_48px_100px_rgba(0,0,0,0.8)] border border-white/10 group">
+                <Image
+                  src="/creator_portrait.jpg"
+                  alt="Muhammad Asif"
+                  fill
+                  className="object-cover opacity-50 scale-110 group-hover:scale-100 transition-transform duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1a] via-transparent to-transparent opacity-60" />
               </div>
-              <p className="text-white/80 text-xl md:text-3xl font-light tracking-wide mt-2">
-                through my mind
-              </p>
-            </div>
+            </Reveal>
+          </div>
 
-            {/* Floating Left Text */}
-            <Reveal delay={0.4} className="absolute bottom-8 left-8 md:bottom-12 md:left-12 max-w-[300px] text-left z-10 hidden md:block">
-              <p className="text-white/90 text-sm leading-relaxed font-medium mb-5">
-                — Build real momentum and turn fleeting motivation—habits, daily discipline, or shared visions into lasting results.
+          {/* Side Content: Left (Details) */}
+          <div className="absolute bottom-12 left-12 max-w-[280px] hidden lg:block z-30">
+            <Reveal delay={0.4} direction="left">
+              <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">The Vision</p>
+              <h4 className="text-white text-xl font-medium mb-4 leading-tight">
+                Built for those who refuse to be average.
+              </h4>
+              <p className="text-white/40 text-xs leading-relaxed mb-8">
+                Turning raw motivation into repeatable systems. Join the network of high-performance builders.
               </p>
-              <div className="flex gap-3">
-                <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="btn bg-blue-500/20 text-white border border-blue-400/30 hover:bg-blue-500/30 hover:border-blue-400/60 text-xs px-4 py-2 backdrop-blur-sm">
-                  <FaYoutube className="w-4 h-4" /> YouTube
+              <div className="flex gap-4">
+                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                  <FaYoutube size={16} />
                 </a>
-                <a href="https://www.facebook.com/MuhammadAsifRayhanOfficial" target="_blank" rel="noopener noreferrer" className="btn bg-blue-500/20 text-white border border-blue-400/30 hover:bg-blue-500/30 hover:border-blue-400/60 text-xs px-4 py-2 backdrop-blur-sm">
-                  <FaFacebook className="w-4 h-4" /> Facebook
+                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                  <FaFacebook size={16} />
                 </a>
               </div>
             </Reveal>
-
-            {/* Floating Right Card */}
-
           </div>
-        </Reveal>
+
+          {/* Side Content: Right (Card) */}
+          <div className="absolute bottom-12 right-12 hidden lg:block z-30">
+            <Reveal delay={0.5} direction="right">
+              <div className="glass-dark p-8 w-[320px] shadow-2xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
+                <p className="text-blue-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Latest Achievement</p>
+                <h4 className="text-white text-lg font-bold mb-2">500K+ Relentless Builders</h4>
+                <p className="text-white/40 text-xs mb-6">Across all platforms, we are building the largest performance network in Bangladesh.</p>
+                <a href="#" className="text-white text-xs font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                  Join the Network <ArrowRight size={14} className="text-blue-400" />
+                </a>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Nav Hint (Top Left) */}
+          <div className="absolute top-12 left-12 hidden md:flex items-center gap-3 z-30">
+            <div className="w-8 h-[1px] bg-white/20" />
+            <span className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">Muhammad Asif</span>
+          </div>
+
+          {/* CTA Hint (Top Right) */}
+          <div className="absolute top-12 right-12 hidden md:block z-30">
+            <button className="btn bg-white/5 border border-white/10 text-white text-[10px] uppercase font-bold tracking-widest px-8 py-3 rounded-xl hover:bg-white hover:text-black transition-all">
+              Pre-Order Mentorship
+            </button>
+          </div>
+
+        </div>
       </section>
 
       {/* ─────────────── LOGO MARQUEE ──────────────────── */}
