@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Play, Star } from "lucide-react";
+import { ArrowRight, Play, Star, Dumbbell, Laptop, Sparkles, Brain, Code, Zap } from "lucide-react";
 import { FaYoutube, FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { getLatestVideos } from "../lib/youtube";
 import { getSortedPostsData } from "../lib/posts";
 import { Reveal, StaggerContainer, StaggerItem, ParallaxHeroImage, AnimatedSVGLines, CountUp } from "./components/animations";
+import IdeaMatrix from "./components/IdeaMatrix";
 import Hero3D from "./components/Hero3D";
 
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
@@ -206,41 +207,7 @@ export default async function Home() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="relative w-full aspect-[2/1] min-h-[400px] bg-gradient-to-br from-blue-50 to-white rounded-[32px] p-8 md:p-16 border border-blue-200/40 flex items-center justify-center overflow-hidden">
-            {/* Grid Background */}
-            <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(rgba(37,99,235,0.12) 1px, transparent 1px)", backgroundSize: "32px 32px" }}></div>
-
-            {/* Connecting SVG Lines */}
-            <AnimatedSVGLines />
-
-            {/* Nodes */}
-            <div className="relative z-10 w-full h-full max-w-[800px] mx-auto">
-              {/* Center Node */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-br from-blue-600 to-blue-800 text-white px-8 py-3.5 rounded-full font-semibold shadow-2xl z-20 text-lg anim-accent-pulse">
-                asif®
-              </div>
-
-              {/* Node TL */}
-              <div className="absolute top-[25%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
-                Mindset Shifts
-              </div>
-
-              {/* Node TR */}
-              <div className="absolute top-[25%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
-                Daily Execution
-              </div>
-
-              {/* Node BL */}
-              <div className="absolute top-[75%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
-                Content Strategy
-              </div>
-
-              {/* Node BR */}
-              <div className="absolute top-[75%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
-                Brand Building
-              </div>
-            </div>
-          </div>
+          <IdeaMatrix />
         </Reveal>
       </section>
 
@@ -304,6 +271,86 @@ export default async function Home() {
             </StaggerItem>
           ))}
         </StaggerContainer>
+      </section>
+
+      <div className="px-4 md:px-8"><div className="rule" /></div>
+
+      {/* ─────────────── PERSONAL INTERESTS ──────────── */}
+      <section id="interests" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
+        <Reveal>
+          <p className="eyebrow mb-4">Beyond Work</p>
+          <h2 className="heading-display text-4xl md:text-5xl mb-12">
+            What Drives Me.
+          </h2>
+        </Reveal>
+
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          {[
+            {
+              icon: Dumbbell,
+              title: "Fitness & Health",
+              desc: "Discipline starts with the body. Early morning workouts aren't optional—they're the foundation.",
+              tags: ["Early Riser", "Strength Training", "Mental Clarity"],
+            },
+            {
+              icon: Laptop,
+              title: "Tech & Tools",
+              desc: "Obsessed with optimizing workflows. The right system can 10x your output overnight.",
+              tags: ["Productivity", "Automation", "Workflow Design"],
+            },
+            {
+              icon: Sparkles,
+              title: "AI Specialist",
+              desc: "Living at the edge of what's possible. Exploring AI tools before they go mainstream.",
+              tags: ["Machine Learning", "Prompt Engineering", "Future Tech"],
+            },
+          ].map(({ icon: Icon, title, desc, tags }) => (
+            <StaggerItem key={title}>
+              <div className="card p-8 h-full flex flex-col">
+                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6">
+                  <Icon className="w-6 h-6 text-blue-500" />
+                </div>
+                <h3 className="heading text-xl mb-3">{title}</h3>
+                <p className="text-muted text-sm leading-relaxed flex-1 mb-6">{desc}</p>
+                <div className="flex flex-wrap gap-2">
+                  {tags.map((tag) => (
+                    <span key={tag} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f4f4f4] text-muted">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+
+        <Reveal delay={0.2}>
+          <div className="bg-gradient-to-br from-[#f9f9f9] to-white rounded-[24px] p-8 md:p-12 border border-border/50">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+              <div className="md:w-1/3">
+                <h3 className="heading text-2xl mb-2">Currently Exploring</h3>
+                <p className="text-muted text-sm">The frontier I'm diving deep into right now.</p>
+              </div>
+              <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {[
+                  { icon: Brain, label: "AI Agents", sub: "Autonomous workflows" },
+                  { icon: Code, label: "No-Code Tools", sub: "Building without code" },
+                  { icon: Zap, label: "Content Velocity", sub: "Scale without burnout" },
+                ].map(({ icon: Icon, label, sub }) => (
+                  <div key={label} className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
+                      <Icon className="w-5 h-5 text-blue-500" />
+                    </div>
+                    <div>
+                      <h4 className="heading text-sm mb-0.5">{label}</h4>
+                      <p className="text-muted text-xs">{sub}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
