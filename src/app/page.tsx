@@ -41,7 +41,7 @@ export default async function Home() {
           {/* Script Overlay */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
             <Reveal delay={0.6}>
-              <span className="font-script text-[clamp(4rem,10vw,12rem)] text-blue-400 drop-shadow-[0_0_30px_rgba(37,99,235,0.4)] rotate-[-4deg] translate-y-[20%] translate-x-[10%]">
+              <span className="font-script text-[clamp(2rem,6vw,6rem)] text-blue-400 drop-shadow-[0_0_40px_rgba(37,99,235,0.5)] rotate-[-4deg] translate-y-[35%] translate-x-[2%] opacity-90 leading-tight">
                 Engineering Mindsets
               </span>
             </Reveal>
@@ -55,7 +55,7 @@ export default async function Home() {
                   src="/creator_portrait.jpg"
                   alt="Muhammad Asif"
                   fill
-                  className="object-cover opacity-50 scale-110 group-hover:scale-100 transition-transform duration-1000"
+                  className="object-cover opacity-40 scale-110 group-hover:scale-100 transition-transform duration-1000"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1a] via-transparent to-transparent opacity-60" />
               </div>
@@ -73,10 +73,10 @@ export default async function Home() {
                 Turning raw motivation into repeatable systems. Join the network of high-performance builders.
               </p>
               <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
                   <FaYoutube size={16} />
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                <a href="https://www.facebook.com/MuhammadAsifRayhanOfficial" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
                   <FaFacebook size={16} />
                 </a>
               </div>
@@ -89,10 +89,10 @@ export default async function Home() {
               <div className="glass-dark p-8 w-[320px] shadow-2xl relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl" />
                 <p className="text-blue-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">Latest Achievement</p>
-                <h4 className="text-white text-lg font-bold mb-2">500K+ Relentless Builders</h4>
-                <p className="text-white/40 text-xs mb-6">Across all platforms, we are building the largest performance network in Bangladesh.</p>
-                <a href="#" className="text-white text-xs font-bold flex items-center gap-2 hover:gap-4 transition-all">
-                  Join the Network <ArrowRight size={14} className="text-blue-400" />
+                <h4 className="text-white text-lg font-bold mb-2">300K+ Facebook Followers</h4>
+                <p className="text-white/40 text-xs mb-6">Building the largest performance-driven mindset community in the region.</p>
+                <a href="https://www.facebook.com/MuhammadAsifRayhanOfficial" target="_blank" rel="noopener noreferrer" className="text-white text-xs font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                  Visit Facebook <ArrowRight size={14} className="text-blue-400" />
                 </a>
               </div>
             </Reveal>
@@ -104,12 +104,6 @@ export default async function Home() {
             <span className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">Muhammad Asif</span>
           </div>
 
-          {/* CTA Hint (Top Right) */}
-          <div className="absolute top-12 right-12 hidden md:block z-30">
-            <button className="btn bg-white/5 border border-white/10 text-white text-[10px] uppercase font-bold tracking-widest px-8 py-3 rounded-xl hover:bg-white hover:text-black transition-all">
-              Pre-Order Mentorship
-            </button>
-          </div>
 
         </div>
       </section>
