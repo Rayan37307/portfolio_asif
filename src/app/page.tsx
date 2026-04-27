@@ -142,41 +142,37 @@ export default async function Home() {
       {/* ─────────────── QUOTE SECTION (REDESIGNED) ────────── */}
       <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full py-20">
         <Reveal>
-          <div className="relative w-full rounded-[48px] bg-[#0047FF] p-12 md:p-24 overflow-hidden shadow-[0_32px_64px_rgba(0,71,255,0.25)] group">
+          <div className="relative w-full rounded-[48px] bg-[#0a0f1e] p-12 md:p-24 overflow-hidden border border-white/5 group">
             {/* Topographical Texture Overlay */}
-            <div className="absolute inset-0 opacity-20 pointer-events-none topo-bg scale-150 transition-transform duration-[20s] group-hover:scale-125" />
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none topo-bg scale-150 transition-transform duration-[20s] group-hover:scale-125" />
             
-            {/* Ambient Glows */}
-            <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[60%] bg-blue-400/20 rounded-full blur-[120px] pointer-events-none" />
-            <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[60%] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none" />
+            {/* Ambient Glows - Same as Method Section */}
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
 
             {/* Floating Sparkle Icons */}
-            <div className="absolute top-12 right-12 text-white/40 animate-pulse">
+            <div className="absolute top-12 right-12 text-blue-500/20 animate-pulse">
               <Star size={64} strokeWidth={1} />
             </div>
-            <div className="absolute bottom-12 left-12 text-white/20">
+            <div className="absolute bottom-12 left-12 text-blue-500/10">
               <Star size={40} strokeWidth={1} />
             </div>
 
             <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
               <div className="w-full md:w-1/3">
-                <div className="inline-block bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-[0.2em] mb-8 border border-white/10">
+                <div className="inline-block bg-blue-500/20 backdrop-blur-md px-6 py-2 rounded-full text-blue-400 text-[10px] font-black uppercase tracking-[0.2em] mb-8 border border-blue-500/20">
                   Statement of Intent
                 </div>
-                <h3 className="heading text-white text-3xl mb-2 drop-shadow-lg">Muhammad Asif</h3>
-                <p className="text-white/60 text-sm font-bold uppercase tracking-widest">Professional Creator</p>
+                <h3 className="heading !text-white text-3xl mb-2 drop-shadow-lg">Muhammad Asif</h3>
+                <p className="text-white/40 text-sm font-bold uppercase tracking-widest">Professional Creator</p>
               </div>
 
               <div className="w-full md:w-2/3">
                 <h2 className="heading-display text-white text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] tracking-tight drop-shadow-2xl">
-                  "I don't just create content. I engineer <span className="text-black bg-white/90 px-3 rounded-lg shadow-xl">mindsets</span>, dissect raw truths, and build systems that turn passive observers into relentless executors."
+                  "I don't just create content. I engineer <span className="text-blue-400 bg-white/10 px-3 rounded-lg border border-white/5">mindsets</span>, dissect raw truths, and build systems that turn passive observers into relentless executors."
                 </h2>
               </div>
             </div>
-
-            {/* Aesthetic Line Decors */}
-            <div className="absolute top-1/2 right-[-10%] w-[40%] h-[1px] bg-white/20 rotate-[-45deg] hidden lg:block" />
-            <div className="absolute top-[60%] right-[-5%] w-[30%] h-[1px] bg-white/10 rotate-[-45deg] hidden lg:block" />
           </div>
         </Reveal>
       </section>
@@ -244,31 +240,54 @@ export default async function Home() {
       {/* ─────────────── BACKBENCHERS UNIVERSITY ──── */}
       <section id="masterclass" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
-          <div className="card bg-gradient-to-br from-[#eef2ff] to-[#f9f9ff] border-none p-8 md:p-16 flex flex-col items-center text-center relative overflow-hidden">
-            {/* Subtle glow behind */}
-            <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-blue-400/8 rounded-full blur-[100px] pointer-events-none" />
-            <p className="eyebrow mb-4">The Masterclass</p>
-            <h2 className="heading-display text-[clamp(2.5rem,6vw,4.5rem)] mb-6 relative">
-              Backbenchers <span className="gradient-text">University.</span>
-            </h2>
-            <p className="text-muted text-lg max-w-[600px] mx-auto mb-12">
-              Not for the apathetic. A rigorous, cohort-based curriculum designed to strip away your excuses, rebuild your mental models, and install the operating system of high performance.
-            </p>
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[1000px] text-left mb-12">
-              {[
-                { title: "Mindset Protocol", desc: "Eradicate limiting beliefs and build undeniable confidence." },
-                { title: "Execution Engine", desc: "Daily systems to guarantee deep work and compound output." },
-                { title: "The Inner Circle", desc: "Direct access to a network of like-minded builders." }
-              ].map((feature, i) => (
-                <StaggerItem key={i}>
-                  <div className="bg-white p-6 rounded-[16px] shadow-sm border border-border/50 hover:border-blue-400/30 hover:shadow-[0_4px_24px_rgba(37,99,235,0.08)] transition-all">
-                    <h3 className="heading text-xl mb-2">{feature.title}</h3>
-                    <p className="text-muted text-sm leading-relaxed">{feature.desc}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-            <a href="#" className="btn btn-fill">Apply for the next cohort</a>
+          <div className="relative rounded-[48px] bg-[#050b18] p-8 md:p-20 flex flex-col items-center text-center overflow-hidden border border-white/5">
+            {/* Background Decorations */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,rgba(37,99,235,0.15),transparent_70%)]" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+            <div className="absolute top-[20%] left-[-5%] w-[300px] h-[300px] bg-indigo-600/5 rounded-full blur-[80px] pointer-events-none" />
+
+            {/* Subtle Grid Overlay */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+                 style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
+            <div className="relative z-10">
+              <span className="inline-block bg-blue-500/10 backdrop-blur-md px-4 py-1.5 rounded-full text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-6 border border-blue-500/20">
+                The Masterclass
+              </span>
+              <h2 className="heading-display text-white text-[clamp(2.5rem,7vw,5rem)] mb-6 leading-none tracking-tighter">
+                Backbenchers <br />
+                <span className="text-blue-500">University.</span>
+              </h2>
+              <p className="text-white/70 text-lg max-w-[650px] mx-auto mb-16 font-medium leading-relaxed">
+                Not for the apathetic. A rigorous, cohort-based curriculum designed to strip away your excuses, rebuild your mental models, and install the operating system of high performance.
+              </p>
+
+              <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[1100px] text-left mb-16">
+                {[
+                  { title: "Mindset Protocol", desc: "Eradicate limiting beliefs and build undeniable confidence.", icon: Brain },
+                  { title: "Execution Engine", desc: "Daily systems to guarantee deep work and compound output.", icon: Zap },
+                  { title: "The Inner Circle", desc: "Direct access to a network of like-minded builders.", icon: Target }
+                ].map((feature, i) => (
+                  <StaggerItem key={i}>
+                    <div className="group bg-white/[0.03] backdrop-blur-xl p-8 rounded-[32px] border border-white/[0.05] hover:border-blue-500/40 hover:bg-white/[0.05] transition-all duration-500 h-full relative overflow-hidden">
+                      {/* Hover Glow */}
+                      <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                      
+                      <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all">
+                        <feature.icon className="w-6 h-6 text-blue-400" />
+                      </div>
+                      <h3 className="heading text-xl !text-white mb-3 !font-bold">{feature.title}</h3>
+                      <p className="text-white/60 text-sm leading-relaxed group-hover:text-white/90 transition-colors">{feature.desc}</p>
+                    </div>
+                  </StaggerItem>
+                ))}
+              </StaggerContainer>
+
+              <a href="#" className="btn bg-blue-500 hover:bg-blue-600 text-white px-10 py-5 rounded-full font-bold text-lg shadow-[0_20px_40px_rgba(37,99,235,0.3)] hover:scale-105 transition-all group">
+                Apply for the next cohort
+                <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
+              </a>
+            </div>
           </div>
         </Reveal>
       </section>
