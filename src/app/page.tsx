@@ -53,14 +53,14 @@ export default async function Home() {
             </div>
 
             {/* Floating Left Text */}
-            <div className="absolute bottom-8 left-8 md:bottom-12 md:left-12 max-w-[300px] text-left z-10 hidden md:block">
+            <Reveal delay={0.4} className="absolute bottom-8 left-8 md:bottom-12 md:left-12 max-w-[300px] text-left z-10 hidden md:block">
               <p className="text-white/90 text-sm leading-relaxed font-medium">
                 — Build real momentum and turn fleeting motivation—habits, daily discipline, or shared visions into lasting results.
               </p>
-            </div>
+            </Reveal>
 
             {/* Floating Right Card */}
-            <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-10 hidden lg:flex flex-col gap-4">
+            <Reveal delay={0.6} direction="left" className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-10 hidden lg:flex flex-col gap-4">
               
               {/* Clients Pill */}
               <div className="self-end bg-white/10 backdrop-blur-md border border-white/20 rounded-full py-2 px-4 flex items-center gap-3">
@@ -89,7 +89,7 @@ export default async function Home() {
                   </a>
                 </div>
               </div>
-            </div>
+            </Reveal>
 
           </div>
         </Reveal>

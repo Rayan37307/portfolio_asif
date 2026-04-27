@@ -1,20 +1,7 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
-
-const barlowCondensed = Barlow_Condensed({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["400", "700", "800", "900"],
-  style: ["normal", "italic"],
-});
-
-const inter = Inter({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-});
+import SmoothScroll from "./components/SmoothScroll";
 
 export const metadata: Metadata = {
   title: "Muhammad Asif Raihan | Founder of Backbenchers University",
@@ -27,15 +14,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${barlowCondensed.variable} ${inter.variable} h-full antialiased`}
-    >
+    <html lang="en" className="h-full antialiased">
+      <head>
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&f[]=clash-display@400,500,600,700&display=swap" rel="stylesheet" />
+      </head>
       <body className="font-sans">
-        <div className="app-wrapper">
-          <Header />
-          {children}
-        </div>
+        <SmoothScroll>
+          <div className="app-wrapper">
+            <Header />
+            {children}
+          </div>
+        </SmoothScroll>
       </body>
     </html>
   );
