@@ -3,37 +3,59 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getSortedPostsData } from "@/lib/posts";
 
 export default function BlogList() {
-  const allPostsData = getSortedPostsData();
+  const posts = getSortedPostsData();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start overflow-hidden pt-32 pb-20 px-6">
-      <div className="w-full max-w-4xl mx-auto">
-        <Link href="/" className="inline-flex items-center text-zinc-400 hover:text-white transition-colors mb-12">
-          <ArrowLeft className="w-4 h-4 mr-2" /> Back to Home
-        </Link>
-        
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
-          The <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-purple-400">Signal</span>
-        </h1>
-        <p className="text-xl text-zinc-400 mb-16">Thoughts, strategies, and pure signal on mindset and execution.</p>
+    <main style={{ minHeight:"100vh", paddingTop:"8rem", paddingBottom:"6rem" }}>
+      <div style={{ maxWidth:"780px", margin:"0 auto", padding:"0 1.5rem" }}>
 
-        <div className="flex flex-col gap-8">
-          {allPostsData.map(({ id, date, title, excerpt, category }) => (
-            <Link key={id} href={`/blog/${id}`} className="glass p-8 rounded-3xl border border-white/5 hover:border-accent/30 transition-colors flex flex-col md:flex-row justify-between md:items-center gap-6 group">
-              <div className="flex flex-col text-left max-w-2xl">
-                <div className="flex items-center gap-4 mb-3">
-                  <span className="text-xs font-bold uppercase tracking-widest text-accent bg-accent/10 px-3 py-1 rounded-full">{category}</span>
-                  <span className="text-zinc-500 text-sm">{new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                </div>
-                <h3 className="text-2xl font-bold mb-3 group-hover:text-accent transition-colors">{title}</h3>
-                <p className="text-zinc-400 text-base">{excerpt}</p>
-              </div>
-              <div className="flex items-center text-white font-medium group-hover:text-accent transition-colors md:pl-8">
-                Read <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
-              </div>
-            </Link>
-          ))}
+        <Link href="/" className="btn btn-outline" style={{ fontSize:"0.75rem", padding:"0.5rem 1rem", marginBottom:"3.5rem", display:"inline-flex" }}>
+          <ArrowLeft style={{ width:"0.8rem", height:"0.8rem" }} /> Back
+        </Link>
+
+        <div style={{ marginBottom:"3.5rem" }}>
+          <p className="eyebrow" style={{ marginBottom:"1.25rem" }}>Written signal</p>
+          <h1 className="heading" style={{ fontSize:"clamp(3rem, 9vw, 6rem)", marginBottom:"1rem" }}>
+            The <span style={{ color:"var(--accent)" }}>Signal.</span>
+          </h1>
+          <p style={{ color:"var(--fg-muted)", fontSize:"1rem", lineHeight:1.75, maxWidth:"440px" }}>
+            Thoughts, strategies, and pure signal on mindset and execution. No fluff.
+          </p>
         </div>
+
+        <div className="rule" style={{ marginBottom:"2.5rem" }} />
+
+        <div style={{ display:"flex", flexDirection:"column", gap:"0.75rem" }}>
+          {posts.length > 0 ? posts.map(({ id, date, title, excerpt, category }) => (
+            <Link key={id} href={`/blog/${id}`} className="bcard">
+              <div style={{ flex:1, minWidth:"220px" }}>
+                <div style={{ display:"flex", alignItems:"center", gap:"0.6rem", marginBottom:"0.6rem", flexWrap:"wrap" }}>
+                  <span style={{
+                    fontSize:"0.58rem", fontWeight:700, letterSpacing:"0.18em", textTransform:"uppercase",
+                    color:"var(--accent)", background:"rgba(82,113,255,0.08)", padding:"0.18rem 0.6rem",
+                    borderRadius:"3px", border:"1px solid rgba(82,113,255,0.18)",
+                  }}>{category}</span>
+                  <span style={{ color:"var(--fg-muted)", fontSize:"0.78rem" }}>
+                    {new Date(date).toLocaleDateString("en-US", { year:"numeric", month:"long", day:"numeric" })}
+                  </span>
+                </div>
+                <h2 className="heading" style={{ fontSize:"clamp(1.3rem, 3vw, 1.75rem)", lineHeight:1.05, color:"var(--fg)", marginBottom:"0.4rem" }}>
+                  {title}
+                </h2>
+                <p style={{ color:"var(--fg-muted)", fontSize:"0.88rem", lineHeight:1.6 }}>{excerpt}</p>
+              </div>
+              <span className="bcard-arrow heading" style={{ fontSize:"0.78rem", letterSpacing:"0.12em", display:"flex", alignItems:"center", gap:"0.4rem", flexShrink:0 }}>
+                Read <ArrowRight style={{ width:"0.85rem", height:"0.85rem" }} />
+              </span>
+            </Link>
+          )) : (
+            <div style={{ textAlign:"center", padding:"5rem 0", color:"var(--fg-muted)" }}>
+              <div className="heading" style={{ fontSize:"4rem", opacity:0.15, marginBottom:"1rem" }}>∅</div>
+              <p style={{ fontSize:"0.8rem", letterSpacing:"0.15em", textTransform:"uppercase", fontWeight:700 }}>No posts yet.</p>
+            </div>
+          )}
+        </div>
+
       </div>
     </main>
   );

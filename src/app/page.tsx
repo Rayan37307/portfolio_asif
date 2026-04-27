@@ -1,238 +1,311 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Play } from "lucide-react";
-import { FaYoutube, FaFacebook, FaInstagram, FaXTwitter, FaTwitch, FaWhatsapp } from "react-icons/fa6";
+import { FaYoutube, FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { getLatestVideos } from "../lib/youtube";
 
+const WORDS = ["DISCIPLINE","EXECUTION","MINDSET","STRATEGY","RESULTS","ACTION","GROWTH","FOCUS"];
+
 export default async function Home() {
-  const latestVideos = await getLatestVideos('UCE6hrW3g0K_sj3XLvBxIC0g', 3);
-  const newestVideo = latestVideos.length > 0 ? latestVideos[0] : null;
+  const videos = await getLatestVideos("UCE6hrW3g0K_sj3XLvBxIC0g", 3);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start overflow-hidden">
+    <main>
 
-      {/* Hero Section */}
-      <section className="relative w-full max-w-7xl mx-auto px-6 pt-32 pb-20 flex flex-col items-center text-center">
-        {/* Top badge */}
-        <div className="glass px-5 py-2.5 rounded-full flex items-center gap-3 mb-8 animate-fade-in-up border-white/10">
-          <span className="w-2.5 h-2.5 rounded-full bg-accent animate-pulse" />
-          <span className="text-sm font-semibold tracking-widest uppercase text-muted">Founder · Backbenchers University</span>
-        </div>
+      {/* ─────────────── HERO ─────────────────────── */}
+      <section style={{ minHeight:"100svh", display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", textAlign:"center", padding:"8rem 1.5rem 5rem", position:"relative", overflow:"hidden" }}>
 
-        <h1 className="font-heading text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-6 uppercase leading-none">
-          Muhammad <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-[#60A5FA] to-accent">
-            Asif Raihan
-          </span>
-        </h1>
+        {/* ambient glow */}
+        <div aria-hidden style={{ position:"absolute", inset:0, background:"radial-gradient(ellipse 70% 50% at 50% 0%, rgba(82,113,255,0.08) 0%, transparent 70%)", pointerEvents:"none" }} />
 
-        <p className="max-w-2xl text-muted text-lg md:text-xl mb-12 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          Motivational content creator & community builder. Founder of <span className="text-foreground font-semibold">Backbenchers University</span> — a movement empowering the next generation of rebels and dreamers.
+        <p className="eyebrow anim-fade-up" style={{ marginBottom:"2rem", animationDelay:"0s" }}>
+          Founder · Backbenchers University
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in-up mt-4" style={{ animationDelay: '0.4s' }}>
-          <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="group relative px-8 py-4 glass border-[#FF0000]/20 hover:bg-[#FF0000]/10 hover:border-[#FF0000]/50 text-white rounded-full font-bold uppercase tracking-wider flex items-center gap-4 transition-all hover:scale-105 shadow-[0_0_30px_-10px_rgba(255,0,0,0.2)]">
-            <FaYoutube className="w-7 h-7 text-[#FF0000] group-hover:scale-110 transition-transform" />
-            <div className="flex flex-col items-start text-left leading-tight">
-              <span className="text-[10px] text-muted font-bold tracking-widest group-hover:text-muted transition-colors">Subscribe on YouTube</span>
-              <span className="font-heading text-xl md:text-2xl mt-0.5 tracking-wide text-white">130K+ Subs</span>
-            </div>
+        <h1 className="heading anim-fade-up" style={{ fontSize:"clamp(3.5rem, 12vw, 10rem)", animationDelay:"0.08s", maxWidth:"900px" }}>
+          Muhammad<br />
+          <span style={{ color:"var(--accent)" }}>Asif Raihan</span>
+        </h1>
+
+        <p className="anim-fade-up" style={{ marginTop:"2rem", maxWidth:"36rem", color:"var(--fg-muted)", fontSize:"1.05rem", lineHeight:1.75, animationDelay:"0.18s" }}>
+          Motivational creator &amp; community builder. Founder of{" "}
+          <span style={{ color:"var(--fg)", fontWeight:600 }}>Backbenchers University</span> — empowering the next generation of rebels and dreamers.
+        </p>
+
+        <div className="anim-fade-up" style={{ display:"flex", flexWrap:"wrap", gap:"0.75rem", marginTop:"2.5rem", justifyContent:"center", animationDelay:"0.28s" }}>
+          <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="btn btn-fill">
+            <FaYoutube style={{ width:"1.1rem", height:"1.1rem" }} />
+            130K+ Subs
           </a>
-
-          <a href="#" target="_blank" rel="noopener noreferrer" className="group relative px-8 py-4 glass border-[#1877F2]/20 hover:bg-[#1877F2]/10 hover:border-[#1877F2]/50 text-white rounded-full font-bold uppercase tracking-wider flex items-center gap-4 transition-all hover:scale-105 shadow-[0_0_30px_-10px_rgba(24,119,242,0.2)]">
-            <FaFacebook className="w-7 h-7 text-[#1877F2] group-hover:scale-110 transition-transform" />
-            <div className="flex flex-col items-start text-left leading-tight">
-              <span className="text-[10px] text-muted font-bold tracking-widest group-hover:text-muted transition-colors">Follow on Facebook</span>
-              <span className="font-heading text-xl md:text-2xl mt-0.5 tracking-wide text-white">300K+ Followers</span>
-            </div>
+          <a href="#" target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+            <FaFacebook style={{ width:"1rem", height:"1rem", color:"#4A90D9" }} />
+            300K+ Followers
           </a>
         </div>
 
-      </section>
-
-      {/* About / Who Am I Section */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-32 relative flex flex-col md:flex-row items-center gap-16">
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-1/2 h-[120%] bg-accent/5 blur-[150px] rounded-full -z-10" />
-        
-        <div className="w-full md:w-1/2 flex flex-col items-start text-left space-y-8">
-          <div className="glass px-5 py-2.5 rounded-full flex items-center gap-3 border-white/10 w-fit">
-            <span className="w-2.5 h-2.5 rounded-full bg-accent" />
-            <span className="text-sm font-semibold tracking-widest uppercase text-muted">The Story</span>
-          </div>
-          <h2 className="font-heading text-4xl md:text-6xl font-bold uppercase tracking-wide leading-tight">
-            Who <span className="text-accent">Am I?</span>
-          </h2>
-          <div className="space-y-6 text-lg text-muted leading-relaxed">
-            <p>
-              I started with nothing but a relentless drive to understand what makes people tick and what drives true, lasting success. For years, I navigated the noise of the digital world, distilling complex strategies into actionable systems.
-            </p>
-            <p>
-              Today, I help creators and entrepreneurs break through their own ceilings. My approach is simple: <strong className="text-white font-semibold">no fluff, just signal</strong>. I believe in the power of compound interest applied to human effort—small, strategic actions multiplied by unyielding consistency.
-            </p>
-            <p>
-              Whether through my videos, writings, or direct consulting, my mission is to arm you with the mental models and tactical frameworks you need to ignite your potential and build something that outlasts you.
-            </p>
-          </div>
-        </div>
-
-        <div className="w-full md:w-1/2 relative flex justify-center">
-          <div className="relative w-full aspect-[3/4] max-w-md rounded-[2rem] overflow-hidden border border-white/10 glass shadow-2xl transition-transform duration-700 hover:scale-[1.02]">
-            <Image
-              src="/creator_portrait.jpg"
-              alt="Who Am I"
-              fill
-              className="object-cover object-center opacity-95 transition-transform duration-1000 hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent pointer-events-none" />
-          </div>
+        {/* scroll indicator */}
+        <div style={{ position:"absolute", bottom:"2.5rem", left:"50%", display:"flex", flexDirection:"column", alignItems:"center", gap:"0.4rem", animation:"float 4s ease-in-out infinite" }}>
+          <div style={{ width:"1px", height:"3rem", background:"linear-gradient(to bottom, var(--accent), transparent)", opacity:0.6 }} />
         </div>
       </section>
 
-      {/* Core Philosophy Section */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-32 text-center relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-3xl bg-accent/10 blur-[120px] rounded-full -z-10" />
-
-        <h2 className="font-heading text-4xl md:text-6xl font-bold leading-tight max-w-4xl mx-auto mb-20 uppercase tracking-wide">
-          Blending clear <span className="text-accent">strategy</span>, thoughtful <span className="text-accent">discipline</span>, and raw <span className="text-accent">action</span>.
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-          <div className="glass p-10 rounded-[2rem] text-left border border-white/5 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 group shadow-xl">
-            <span className="font-heading text-7xl font-black text-white/5 group-hover:text-accent/20 transition-colors mb-6 block">01</span>
-            <h3 className="font-heading text-3xl font-bold mb-4 uppercase tracking-wide">Awaken</h3>
-            <p className="text-muted leading-relaxed text-lg">Understanding your goals, fears, and challenges through deep introspection and reality checks.</p>
-          </div>
-          <div className="glass p-10 rounded-[2rem] text-left border border-white/5 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 group shadow-xl md:translate-y-12">
-            <span className="font-heading text-7xl font-black text-white/5 group-hover:text-accent/20 transition-colors mb-6 block">02</span>
-            <h3 className="font-heading text-3xl font-bold mb-4 uppercase tracking-wide">Build</h3>
-            <p className="text-muted leading-relaxed text-lg">Transforming raw motivation into robust, repeatable systems and unbreakable habits.</p>
-          </div>
-          <div className="glass p-10 rounded-[2rem] text-left border border-white/5 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 group shadow-xl">
-            <span className="font-heading text-7xl font-black text-white/5 group-hover:text-accent/20 transition-colors mb-6 block">03</span>
-            <h3 className="font-heading text-3xl font-bold mb-4 uppercase tracking-wide">Conquer</h3>
-            <p className="text-muted leading-relaxed text-lg">Executing with clarity and precision to achieve your ultimate potential in life and business.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Content Section */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-20">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-          <div className="text-left">
-            <span className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-3 block">Fresh off the channel</span>
-            <h2 className="font-heading text-5xl md:text-7xl font-bold mb-4 uppercase tracking-wide leading-none">Latest Content</h2>
-            <p className="text-muted max-w-lg text-lg">Raw, unfiltered breakdowns of mindset, strategy, and the habits that separate winners from everyone else.</p>
-          </div>
-          <button className="text-accent font-bold uppercase tracking-wider hover:text-[#60A5FA] mt-6 md:mt-0 flex items-center gap-2 transition-colors text-sm border border-accent/30 hover:border-[#60A5FA]/50 px-5 py-2.5 rounded-full">View All <ArrowRight className="w-4 h-4" /></button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {latestVideos.length > 0 ? latestVideos.map((video) => (
-            <a key={video.id} href={video.link} target="_blank" rel="noopener noreferrer" className="glass rounded-[2rem] overflow-hidden group cursor-pointer border border-white/5 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 text-left flex flex-col shadow-xl">
-              <div className="w-full aspect-video bg-[#2B2D42] relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 bg-black/50 z-10 scale-110 group-hover:scale-100">
-                  <div className="w-20 h-20 rounded-full bg-accent text-white flex items-center justify-center backdrop-blur-md shadow-lg shadow-accent/50"><Play className="w-10 h-10 ml-2" /></div>
-                </div>
-                <Image src={video.thumbnail} alt={video.title} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 w-full h-full bg-gradient-to-tr from-accent/40 to-black/80 mix-blend-overlay group-hover:scale-105 transition-transform duration-700 pointer-events-none"></div>
-              </div>
-              <div className="p-6">
-                <span className="text-xs font-bold uppercase tracking-widest text-accent mb-2 block">Video</span>
-                <h3 className="font-heading text-xl md:text-2xl font-bold mb-2 group-hover:text-accent transition-colors uppercase leading-tight line-clamp-2">{video.title}</h3>
-                <p className="text-muted text-sm md:text-base line-clamp-2">Watch the latest deep dive into strategy, mindset, and execution.</p>
-              </div>
-            </a>
-          )) : (
-            <p className="text-muted/70 col-span-1 md:col-span-2 lg:col-span-3">No videos found.</p>
-          )}
-        </div>
-      </section>
-
-      {/* Blog Teaser Section */}
-      <section className="w-full border-y border-white/5 bg-black/40 py-24 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-            <div className="text-left">
-              <h2 className="font-heading text-4xl md:text-6xl font-bold mb-4 uppercase tracking-wide">Latest Insights</h2>
-              <p className="text-muted max-w-lg text-lg">Written thoughts, essays, and deep dives into the mechanics of high performance.</p>
-            </div>
-            <Link href="/blog" className="px-8 py-4 rounded-full border border-white/10 hover:bg-white/5 hover:border-white/20 transition-all font-bold uppercase tracking-widest mt-6 md:mt-0">Read the Blog</Link>
-          </div>
-
-          <div className="flex flex-col gap-6">
-            {[1, 2, 3].map((item) => (
-              <a key={item} href="#" className="glass p-8 md:p-10 rounded-[2rem] border border-white/5 hover:border-accent/40 transition-all duration-300 flex flex-col md:flex-row justify-between md:items-center gap-6 group hover:-translate-y-1 shadow-lg">
-                <div className="flex flex-col text-left max-w-3xl">
-                  <span className="font-heading text-accent uppercase tracking-widest text-sm mb-3">October {12 + item}, 2026 • 5 min read</span>
-                  <h3 className="font-heading text-2xl md:text-3xl font-bold mb-3 group-hover:text-accent transition-colors uppercase">Why Your 'Perfect Plan' is Killing Your Progress</h3>
-                  <p className="text-muted text-lg">Stop over-analyzing and start executing. The friction you feel is a byproduct of inaction, not a lack of strategy.</p>
-                </div>
-                <div className="flex items-center text-white font-bold uppercase tracking-wider group-hover:text-accent transition-colors whitespace-nowrap">
-                  Read Article <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-2 transition-transform" />
-                </div>
-              </a>
+      {/* ─────────────── MARQUEE ──────────────────── */}
+      <div style={{ borderTop:"1px solid var(--border)", borderBottom:"1px solid var(--border)", padding:"1rem 0", background:"var(--bg-card)" }}>
+        <div className="marquee-wrap">
+          <div className="marquee-track">
+            {[...WORDS, ...WORDS].map((w, i) => (
+              <span key={i} className="heading" style={{ fontSize:"0.85rem", letterSpacing:"0.2em", color: i % 5 === 0 ? "var(--accent)" : "var(--fg-muted)", whiteSpace:"nowrap" }}>
+                {w}
+              </span>
             ))}
           </div>
         </div>
+      </div>
+
+      {/* ─────────────── FEATURED ON ──────────────── */}
+      <section style={{ maxWidth:"1200px", margin:"0 auto", padding:"6rem 1.5rem", textAlign:"center" }}>
+        <p className="eyebrow" style={{ marginBottom:"2rem", justifyContent:"center" }}>Featured On</p>
+        <div style={{ display:"flex", flexWrap:"wrap", gap:"4rem", justifyContent:"center", alignItems:"center", opacity:0.6, filter:"grayscale(100%)" }}>
+          {/* Placeholder text for logos since we don't have SVG assets */}
+          {["FORBES", "TECHCRUNCH", "ENTREPRENEUR", "GQ", "BUSINESS INSIDER"].map((logo) => (
+            <span key={logo} className="heading" style={{ fontSize:"1.5rem", letterSpacing:"0.1em", color:"var(--fg-muted)" }}>
+              {logo}
+            </span>
+          ))}
+        </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-32 text-center relative">
-        <h2 className="font-heading text-4xl md:text-6xl font-bold mb-20 uppercase tracking-wide">Community <span className="text-accent">Impact</span></h2>
+      {/* ─────────────── RULE ─────────────────────── */}
+      <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 1.5rem" }}><div className="rule" /></div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            { name: "Sarah J.", role: "Entrepreneur", text: "The mindset shift I experienced after implementing these strategies completely changed my business trajectory. Unbelievable value." },
-            { name: "Marcus T.", role: "Creator", text: "It's rare to find content that balances high-level strategy with actionable, gritty tactics. This is the real deal." },
-            { name: "Elena R.", role: "Designer", text: "I was stuck in a rut for months. The frameworks provided here gave me the exact roadmap I needed to get back on track and scale." }
-          ].map((testimonial, i) => (
-            <div key={i} className="glass p-10 rounded-[2rem] text-left border border-white/5 shadow-xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-bl-full -z-10" />
-              <div className="flex gap-1 text-accent mb-6 text-xl">
-                {"★★★★★".split('').map((star, j) => <span key={j}>{star}</span>)}
-              </div>
-              <p className="text-muted text-lg mb-10 italic leading-relaxed">"{testimonial.text}"</p>
-              <div className="flex items-center gap-4 mt-auto">
-                <div className="w-14 h-14 rounded-full bg-[#2B2D42] border-2 border-white/10" />
-                <div>
-                  <h4 className="font-heading font-bold text-xl uppercase tracking-wide">{testimonial.name}</h4>
-                  <p className="text-accent text-sm font-semibold uppercase tracking-wider">{testimonial.role}</p>
+      {/* ─────────────── ABOUT ────────────────────── */}
+      <section id="about" style={{ maxWidth:"1200px", margin:"0 auto", padding:"8rem 1.5rem" }}>
+        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"5rem", alignItems:"center" }}>
+
+          {/* image */}
+          <div style={{ position:"relative", aspectRatio:"4/5", borderRadius:"6px", overflow:"hidden", border:"1px solid var(--border)" }}>
+            <Image src="/creator_portrait.jpg" alt="Muhammad Asif Raihan" fill style={{ objectFit:"cover", objectPosition:"center" }} />
+            {/* orange top-left corner */}
+            <div aria-hidden style={{ position:"absolute", top:0, left:0, width:"2px", height:"4rem", background:"var(--accent)" }} />
+            <div aria-hidden style={{ position:"absolute", top:0, left:0, width:"4rem", height:"2px", background:"var(--accent)" }} />
+          </div>
+
+          {/* text */}
+          <div>
+            <p className="eyebrow" style={{ marginBottom:"1.5rem" }}>The Story</p>
+            <h2 className="heading" style={{ fontSize:"clamp(2.5rem, 5vw, 4rem)", marginBottom:"2rem" }}>
+              Who Am I?
+            </h2>
+            <div style={{ color:"var(--fg-muted)", fontSize:"1rem", lineHeight:1.8, display:"flex", flexDirection:"column", gap:"1.25rem" }}>
+              <p>Started with nothing but a relentless drive to understand what makes people tick. For years I navigated the digital world, distilling complex strategies into actionable systems.</p>
+              <p>Today I help creators and entrepreneurs break through their own ceilings. My approach: <span style={{ color:"var(--fg)", fontWeight:600 }}>no fluff, just signal</span>. Small strategic actions multiplied by unyielding consistency.</p>
+              <p>Whether through videos, writing, or consulting — I arm you with mental models to ignite your potential.</p>
+            </div>
+
+            {/* stats */}
+            <div style={{ display:"flex", gap:"2.5rem", marginTop:"2.5rem", paddingTop:"2rem", borderTop:"1px solid var(--border)" }}>
+              {[["130K+","YouTube"],["300K+","Facebook"],["5Y+","Creating"]].map(([n, l]) => (
+                <div key={l}>
+                  <div className="heading" style={{ fontSize:"2rem", color:"var(--fg)" }}>{n}</div>
+                  <div style={{ fontSize:"0.65rem", letterSpacing:"0.18em", textTransform:"uppercase", color:"var(--fg-muted)", fontWeight:700, marginTop:"0.2rem" }}>{l}</div>
                 </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────────── RULE ─────────────────────── */}
+      <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 1.5rem" }}><div className="rule" /></div>
+
+      {/* ─────────────── BACKBENCHERS UNIVERSITY ──── */}
+      <section style={{ maxWidth:"1200px", margin:"0 auto", padding:"8rem 1.5rem" }}>
+        <div className="card" style={{ padding:"4rem", display:"flex", flexDirection:"column", alignItems:"center", textAlign:"center", background:"radial-gradient(circle at center top, rgba(82,113,255,0.08) 0%, var(--bg-card) 60%)", borderTop:"2px solid var(--accent)" }}>
+          <p className="eyebrow" style={{ marginBottom:"1.5rem", justifyContent:"center" }}>The Masterclass</p>
+          <h2 className="heading" style={{ fontSize:"clamp(2.5rem, 6vw, 4.5rem)", marginBottom:"1.5rem" }}>
+            Backbenchers <span style={{ color:"var(--accent)" }}>University.</span>
+          </h2>
+          <p style={{ color:"var(--fg-muted)", fontSize:"1.05rem", lineHeight:1.75, maxWidth:"600px", margin:"0 auto 3rem" }}>
+            Not for the apathetic. A rigorous, cohort-based curriculum designed to strip away your excuses, rebuild your mental models, and install the operating system of high performance.
+          </p>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fit, minmax(200px, 1fr))", gap:"2rem", width:"100%", maxWidth:"800px", marginBottom:"3.5rem", textAlign:"left" }}>
+            {[
+              { title:"Mindset Protocol", desc:"Eradicate limiting beliefs and build undeniable confidence." },
+              { title:"Execution Engine", desc:"Daily systems to guarantee deep work and compound output." },
+              { title:"The Inner Circle", desc:"Direct access to a network of like-minded builders." }
+            ].map((feature, i) => (
+              <div key={i} style={{ padding:"1.5rem", background:"var(--bg)", border:"1px solid var(--border)", borderRadius:"4px" }}>
+                <h3 className="heading" style={{ fontSize:"1.2rem", marginBottom:"0.5rem" }}>{feature.title}</h3>
+                <p style={{ color:"var(--fg-muted)", fontSize:"0.85rem", lineHeight:1.5 }}>{feature.desc}</p>
               </div>
+            ))}
+          </div>
+          <a href="#" className="btn btn-fill">Apply for the next cohort</a>
+        </div>
+      </section>
+
+      {/* ─────────────── RULE ─────────────────────── */}
+      <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 1.5rem" }}><div className="rule" /></div>
+
+      {/* ─────────────── PHILOSOPHY ───────────────── */}
+      <section style={{ maxWidth:"1200px", margin:"0 auto", padding:"8rem 1.5rem" }}>
+        <p className="eyebrow" style={{ marginBottom:"1.5rem" }}>The Method</p>
+        <h2 className="heading" style={{ fontSize:"clamp(2rem, 5vw, 3.5rem)", marginBottom:"4rem", maxWidth:"600px" }}>
+          Strategy. Discipline.<br /><span style={{ color:"var(--accent)" }}>Action.</span>
+        </h2>
+
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:"1.5rem" }}>
+          {[
+            { n:"01", t:"Awaken", b:"Understanding your goals, fears, and challenges through deep introspection and brutal reality checks." },
+            { n:"02", t:"Build",  b:"Transforming raw motivation into robust, repeatable systems and unbreakable daily habits." },
+            { n:"03", t:"Conquer",b:"Executing with clarity and precision to achieve your ultimate potential in life and business." },
+          ].map(({ n, t, b }) => (
+            <div key={n} className="card" style={{ padding:"2.5rem" }}>
+              <div className="heading" style={{ fontSize:"3.5rem", color:"var(--border)", marginBottom:"1.5rem" }}>{n}</div>
+              <h3 className="heading" style={{ fontSize:"1.8rem", marginBottom:"0.75rem" }}>{t}</h3>
+              <p style={{ color:"var(--fg-muted)", lineHeight:1.75, fontSize:"0.95rem" }}>{b}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* WhatsApp Group */}
-      <section className="w-full border-t border-white/5 bg-gradient-to-b from-transparent to-[#25D366]/10 py-32 relative overflow-hidden">
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-1/2 bg-[#25D366]/20 blur-[150px] rounded-t-full -z-10" />
-        <div className="max-w-3xl mx-auto px-6 text-center flex flex-col items-center">
-          <h2 className="font-heading text-5xl md:text-7xl font-bold mb-6 uppercase tracking-wide">Join the Movement</h2>
-          <p className="text-muted text-xl mb-12 max-w-2xl">Connect directly with me and a community of high-performers. Get exclusive voice notes, raw strategies, and real-time updates straight to your phone.</p>
+      {/* ─────────────── RULE ─────────────────────── */}
+      <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 1.5rem" }}><div className="rule" /></div>
 
-          <a 
-            href="#" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="group relative px-10 py-5 bg-[#25D366] text-black rounded-full font-heading font-bold uppercase tracking-widest hover:bg-[#1ebd5c] hover:scale-105 transition-all flex items-center gap-4 shadow-[0_0_40px_-10px_rgba(37,211,102,0.5)]"
-          >
-            <FaWhatsapp className="w-6 h-6" />
+      {/* ─────────────── CONTENT ──────────────────── */}
+      <section id="content" style={{ maxWidth:"1200px", margin:"0 auto", padding:"8rem 1.5rem" }}>
+        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"3rem", flexWrap:"wrap", gap:"1rem" }}>
+          <div>
+            <p className="eyebrow" style={{ marginBottom:"1rem" }}>Fresh off the channel</p>
+            <h2 className="heading" style={{ fontSize:"clamp(2rem, 5vw, 3.5rem)" }}>Latest Content</h2>
+          </div>
+          <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="btn btn-outline" style={{ fontSize:"0.8rem", padding:"0.55rem 1.2rem" }}>
+            All Videos <ArrowRight style={{ width:"0.85rem", height:"0.85rem" }} />
+          </a>
+        </div>
+
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))", gap:"1.25rem" }}>
+          {videos.length > 0 ? videos.map(v => (
+            <a key={v.id} href={v.link} target="_blank" rel="noopener noreferrer" className="vcard">
+              <div style={{ position:"relative", aspectRatio:"16/9", overflow:"hidden", background:"#111" }}>
+                <Image src={v.thumbnail} alt={v.title} fill className="vthumb" style={{ objectFit:"cover" }} />
+                <div aria-hidden style={{ position:"absolute", inset:0, background:"linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%)", zIndex:1 }} />
+                <div className="vplay">
+                  <div style={{ width:"3rem", height:"3rem", borderRadius:"50%", background:"var(--accent)", display:"flex", alignItems:"center", justifyContent:"center" }}>
+                    <Play style={{ width:"1rem", height:"1rem", color:"#fff", marginLeft:"2px" }} />
+                  </div>
+                </div>
+              </div>
+              <div style={{ padding:"1.25rem" }}>
+                <span style={{ fontSize:"0.6rem", letterSpacing:"0.18em", textTransform:"uppercase", color:"var(--accent)", fontWeight:700, display:"block", marginBottom:"0.5rem" }}>Video</span>
+                <h3 className="vtitle heading" style={{ fontSize:"1.35rem", lineHeight:1.05, marginBottom:"0.5rem" }}>{v.title}</h3>
+                <p style={{ color:"var(--fg-muted)", fontSize:"0.85rem", lineHeight:1.6 }}>Watch the latest deep dive into strategy, mindset, and execution.</p>
+              </div>
+            </a>
+          )) : <p style={{ color:"var(--fg-muted)", gridColumn:"1/-1" }}>No videos found.</p>}
+        </div>
+      </section>
+
+      {/* ─────────────── RULE ─────────────────────── */}
+      <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 1.5rem" }}><div className="rule" /></div>
+
+      {/* ─────────────── INSIGHTS ─────────────────── */}
+      <section style={{ maxWidth:"1200px", margin:"0 auto", padding:"8rem 1.5rem" }}>
+        <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-end", marginBottom:"3rem", flexWrap:"wrap", gap:"1rem" }}>
+          <div>
+            <p className="eyebrow" style={{ marginBottom:"1rem" }}>From the mind</p>
+            <h2 className="heading" style={{ fontSize:"clamp(2rem, 5vw, 3.5rem)" }}>Latest Insights</h2>
+          </div>
+          <Link href="/blog" className="btn btn-outline" style={{ fontSize:"0.8rem", padding:"0.55rem 1.2rem" }}>
+            Read All <ArrowRight style={{ width:"0.85rem", height:"0.85rem" }} />
+          </Link>
+        </div>
+
+        <div style={{ display:"flex", flexDirection:"column", gap:"0.75rem" }}>
+          {[
+            { date:"Apr 12, 2026", read:"5 min", title:"Why Your 'Perfect Plan' is Killing Your Progress",  body:"Stop over-analyzing and start executing. Friction is inaction, not lack of strategy." },
+            { date:"Mar 28, 2026", read:"7 min", title:"The Compound Effect of Daily Discipline",           body:"Small consistent actions compound into extraordinary results. Here's the math." },
+            { date:"Mar 14, 2026", read:"6 min", title:"How I Built 130K Subscribers From Zero",           body:"No shortcuts. A repeatable system built on clarity, consistency, and content." },
+          ].map((post, i) => (
+            <a key={i} href="#" className="irow">
+              <div style={{ flex:1, minWidth:"220px" }}>
+                <span style={{ fontSize:"0.6rem", letterSpacing:"0.18em", textTransform:"uppercase", color:"var(--accent)", fontWeight:700, display:"block", marginBottom:"0.5rem" }}>
+                  {post.date} · {post.read} read
+                </span>
+                <h3 className="heading" style={{ fontSize:"1.4rem", lineHeight:1.05, color:"var(--fg)", marginBottom:"0.4rem" }}>{post.title}</h3>
+                <p style={{ color:"var(--fg-muted)", fontSize:"0.88rem", lineHeight:1.6 }}>{post.body}</p>
+              </div>
+              <span className="irow-arrow heading" style={{ fontSize:"0.8rem", letterSpacing:"0.12em", display:"flex", alignItems:"center", gap:"0.4rem", flexShrink:0 }}>
+                Read <ArrowRight style={{ width:"0.85rem", height:"0.85rem" }} />
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* ─────────────── TESTIMONIALS ─────────────── */}
+      <div style={{ background:"var(--bg-card)", borderTop:"1px solid var(--border)", borderBottom:"1px solid var(--border)" }}>
+        <section style={{ maxWidth:"1200px", margin:"0 auto", padding:"8rem 1.5rem" }}>
+          <p className="eyebrow" style={{ marginBottom:"1.5rem" }}>Community Impact</p>
+          <h2 className="heading" style={{ fontSize:"clamp(2rem, 5vw, 3.5rem)", marginBottom:"3.5rem" }}>
+            Real <span style={{ color:"var(--accent)" }}>Results.</span>
+          </h2>
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))", gap:"1.25rem" }}>
+            {[
+              { name:"Sarah J.",  role:"Entrepreneur", text:"The mindset shift completely changed my business trajectory. Unbelievable value." },
+              { name:"Marcus T.", role:"Creator",       text:"Rare to find content that balances high-level strategy with actionable tactics. Real deal." },
+              { name:"Elena R.",  role:"Designer",      text:"Stuck for months. The frameworks gave me the exact roadmap I needed to scale." },
+            ].map((t, i) => (
+              <div key={i} className="card" style={{ padding:"2rem" }}>
+                <div style={{ color:"var(--accent)", fontSize:"0.9rem", marginBottom:"1rem", letterSpacing:"0.08em" }}>★★★★★</div>
+                <p style={{ color:"var(--fg-muted)", lineHeight:1.8, fontSize:"0.95rem", marginBottom:"1.5rem" }}>&ldquo;{t.text}&rdquo;</p>
+                <div style={{ display:"flex", alignItems:"center", gap:"0.75rem", paddingTop:"1rem", borderTop:"1px solid var(--border)" }}>
+                  <div style={{ width:"2rem", height:"2rem", borderRadius:"50%", background:"var(--border)", flexShrink:0, border:"1px solid var(--border)" }} />
+                  <div>
+                    <div className="heading" style={{ fontSize:"1rem" }}>{t.name}</div>
+                    <div style={{ fontSize:"0.6rem", letterSpacing:"0.15em", textTransform:"uppercase", color:"var(--accent)", fontWeight:700 }}>{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      {/* ─────────────── CTA ──────────────────────── */}
+      <section style={{ position:"relative", padding:"10rem 1.5rem", textAlign:"center", overflow:"hidden" }}>
+        <div aria-hidden style={{ position:"absolute", inset:0, background:"radial-gradient(circle at center, rgba(37,211,102,0.08) 0%, transparent 60%)", pointerEvents:"none" }} />
+        <div style={{ maxWidth:"700px", margin:"0 auto", position:"relative", zIndex:1 }}>
+          <p className="eyebrow" style={{ marginBottom:"1.5rem", justifyContent:"center" }}>Join the movement</p>
+          <h2 className="heading" style={{ fontSize:"clamp(2.5rem, 8vw, 5.5rem)", marginBottom:"1.5rem" }}>
+            Join the <span style={{ color:"#25D366" }}>Inner</span> Circle.
+          </h2>
+          <p style={{ color:"var(--fg-muted)", fontSize:"1rem", lineHeight:1.8, maxWidth:"480px", margin:"0 auto 2.5rem" }}>
+            Exclusive voice notes, raw strategies, and real-time updates — straight to your phone.
+          </p>
+          <a href="#" target="_blank" rel="noopener noreferrer" className="btn btn-wa">
+            <FaWhatsapp style={{ width:"1.2rem", height:"1.2rem" }} />
             Join WhatsApp Group
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight style={{ width:"0.9rem", height:"0.9rem" }} />
           </a>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="w-full py-12 border-t border-white/10 bg-black text-center text-muted/70 text-sm font-medium uppercase tracking-widest">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p>© 2026 Backbenchers University. All rights reserved.</p>
-          <div className="flex items-center gap-8">
-            <a href="#" className="hover:text-accent transition-colors">Twitter</a>
-            <a href="#" className="hover:text-accent transition-colors">YouTube</a>
-            <a href="#" className="hover:text-accent transition-colors">Instagram</a>
+      {/* ─────────────── FOOTER ───────────────────── */}
+      <footer style={{ borderTop:"1px solid var(--border)", background:"var(--bg-card)", padding:"2.5rem 1.5rem" }}>
+        <div style={{ maxWidth:"1200px", margin:"0 auto", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:"1.5rem" }}>
+          <div>
+            <div className="heading" style={{ fontSize:"1.4rem" }}>
+              Asif<span style={{ color:"var(--accent)" }}>.</span>
+            </div>
+            <p style={{ color:"var(--fg-muted)", fontSize:"0.7rem", letterSpacing:"0.12em", textTransform:"uppercase", marginTop:"0.2rem" }}>
+              © 2026 Backbenchers University
+            </p>
+          </div>
+          <div style={{ display:"flex", gap:"1.75rem" }}>
+            {[["YouTube","https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g"],["Facebook","#"],["Instagram","#"]].map(([l,h]) => (
+              <a key={l} href={h} className="flink">{l}</a>
+            ))}
           </div>
         </div>
       </footer>
