@@ -30,7 +30,7 @@ export default async function Home() {
             />
 
             {/* 3D Abstract Object */}
-            <Hero3D />
+            {/* <Hero3D /> */}
 
             {/* Corner Brackets */}
             <div className="bracket-tl hidden md:block"></div>
@@ -65,7 +65,7 @@ export default async function Home() {
                 <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="btn btn-outline bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white text-xs px-4 py-2">
                   <FaYoutube className="w-4 h-4" /> YouTube
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" className="btn btn-outline bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white text-xs px-4 py-2">
+                <a href="https://www.facebook.com/MuhammadAsifRayhanOfficial" target="_blank" rel="noopener noreferrer" className="btn btn-outline bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white text-xs px-4 py-2">
                   <FaFacebook className="w-4 h-4" /> Facebook
                 </a>
               </div>
@@ -112,14 +112,14 @@ export default async function Home() {
         <div className="flex-1 marquee-wrap opacity-60">
           <div className="marquee-track">
             <div className="marquee-content grayscale">
-              {["FORBES", "TECHCRUNCH", "ENTREPRENEUR", "GQ", "BUSINESS INSIDER"].map((logo) => (
+              {["CONTENT", "CREATION", "EDUCATION", "TECHNOLOGY", "ENTERTAINMENT"].map((logo) => (
                 <span key={logo} className="heading text-xl md:text-3xl text-black">
                   {logo}
                 </span>
               ))}
             </div>
             <div className="marquee-content grayscale" aria-hidden="true">
-              {["FORBES", "TECHCRUNCH", "ENTREPRENEUR", "GQ", "BUSINESS INSIDER"].map((logo) => (
+              {["CONTENT", "CREATION", "EDUCATION", "TECHNOLOGY", "ENTERTAINMENT"].map((logo) => (
                 <span key={`dup-${logo}`} className="heading text-xl md:text-3xl text-black">
                   {logo}
                 </span>
@@ -492,7 +492,7 @@ export default async function Home() {
               Join our <br /> community.
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#" target="_blank" rel="noopener noreferrer" className="btn btn-fill bg-[#25D366] text-white hover:bg-[#1ebe5a] text-lg px-8 py-4 flex items-center shadow-[0_0_24px_rgba(37,211,102,0.3)] border-none">
+              <a href="https://chat.whatsapp.com/FVioaoB7Ew7EI2w5ZSaVW4" target="_blank" rel="noopener noreferrer" className="btn btn-fill bg-[#25D366] text-white hover:bg-[#1ebe5a] text-lg px-8 py-4 flex items-center shadow-[0_0_24px_rgba(37,211,102,0.3)] border-none">
                 <FaWhatsapp className="w-6 h-6 mr-2" />
                 Join WhatsApp Group
               </a>
@@ -504,7 +504,7 @@ export default async function Home() {
               asif®
             </div>
             <div className="flex gap-6">
-              {[["YouTube", "https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g"], ["Facebook", "#"], ["Instagram", "#"]].map(([l, h]) => (
+              {[["YouTube", "https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g"], ["Facebook", "https://www.facebook.com/MuhammadAsifRayhanOfficial"]].map(([l, h]) => (
                 <a key={l} href={h} className="text-white/60 hover:text-white text-sm font-medium transition-colors">{l}</a>
               ))}
             </div>
