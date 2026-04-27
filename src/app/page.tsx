@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Play, Star } from "lucide-react";
 import { FaYoutube, FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { getLatestVideos } from "../lib/youtube";
+import { getSortedPostsData } from "../lib/posts";
 import { Reveal, StaggerContainer, StaggerItem } from "./components/animations";
 
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
@@ -10,6 +11,7 @@ const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
 
 export default async function Home() {
   const videos = await getLatestVideos("UCE6hrW3g0K_sj3XLvBxIC0g", 3);
+  const posts = getSortedPostsData().slice(0, 3);
 
   return (
     <main className="flex flex-col gap-16 pb-16">
@@ -146,7 +148,7 @@ export default async function Home() {
         <Reveal delay={0.1} className="w-full md:w-3/4">
           <h2 className="heading-display text-[clamp(2rem,5vw,4.5rem)] leading-[1.1] tracking-tight">
             <span className="text-muted text-[1.2em] leading-none absolute -ml-[0.6em] mt-[-0.1em]">"</span>
-            I don't just create videos capture raw emotions, subtle moments, and untold stories that make life beautiful.<span className="text-muted">"</span>
+            I don't just create content. I engineer mindsets, dissect raw truths, and build systems that turn passive observers into relentless executors.<span className="text-muted">"</span>
           </h2>
         </Reveal>
       </section>
@@ -167,8 +169,8 @@ export default async function Home() {
               Who Am I?
             </h2>
             <div className="flex flex-col gap-4 text-muted text-lg font-medium leading-relaxed mb-8">
-              <p>Started with nothing but a relentless drive to understand what makes people tick. For years I navigated the digital world, distilling complex strategies into actionable systems.</p>
-              <p>Today I help creators and entrepreneurs break through their own ceilings. My approach: <span className="text-black">no fluff, just signal</span>. Small strategic actions multiplied by unyielding consistency.</p>
+              <p>I started with zero leverage—just a relentless drive to understand what makes top performers tick. Over the years, I've dissected the digital landscape, turning complex psychology into actionable execution systems.</p>
+              <p>Today, I help millions of creators and entrepreneurs shatter their own mental ceilings. My philosophy is simple: <span className="text-black font-bold">no fluff, pure signal</span>. Massive action multiplied by unyielding consistency.</p>
             </div>
           </Reveal>
           <Reveal delay={0.2}>
@@ -202,7 +204,10 @@ export default async function Home() {
 
             {/* Connecting SVG Lines */}
             <svg className="absolute inset-0 w-full h-full z-0 pointer-events-none">
-              <path d="M 50% 50% L 20% 25% M 50% 50% L 80% 25% M 50% 50% L 20% 75% M 50% 50% L 80% 75%" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="4 4" fill="none" />
+              <line x1="50%" y1="50%" x2="20%" y2="25%" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="4 4" />
+              <line x1="50%" y1="50%" x2="80%" y2="25%" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="4 4" />
+              <line x1="50%" y1="50%" x2="20%" y2="75%" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="4 4" />
+              <line x1="50%" y1="50%" x2="80%" y2="75%" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="4 4" />
             </svg>
 
             {/* Nodes */}
@@ -213,22 +218,22 @@ export default async function Home() {
               </div>
 
               {/* Node TL */}
-              <div className="absolute top-[20%] left-[10%] bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
+              <div className="absolute top-[25%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
                 Mindset Shifts
               </div>
 
               {/* Node TR */}
-              <div className="absolute top-[20%] right-[10%] bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
+              <div className="absolute top-[25%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
                 Daily Execution
               </div>
 
               {/* Node BL */}
-              <div className="absolute bottom-[20%] left-[10%] bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
+              <div className="absolute top-[75%] left-[20%] -translate-x-1/2 -translate-y-1/2 bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
                 Content Strategy
               </div>
 
               {/* Node BR */}
-              <div className="absolute bottom-[20%] right-[10%] bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
+              <div className="absolute top-[75%] left-[80%] -translate-x-1/2 -translate-y-1/2 bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
                 Brand Building
               </div>
             </div>
@@ -239,7 +244,7 @@ export default async function Home() {
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
       {/* ─────────────── BACKBENCHERS UNIVERSITY ──── */}
-      <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
+      <section id="masterclass" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
           <div className="card bg-[#f9f9f9] border-none p-8 md:p-16 flex flex-col items-center text-center">
             <p className="eyebrow mb-4">The Masterclass</p>
@@ -271,7 +276,7 @@ export default async function Home() {
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
       {/* ─────────────── PHILOSOPHY ───────────────── */}
-      <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
+      <section id="method" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
           <p className="eyebrow mb-4">The Method</p>
           <h2 className="heading-display text-[clamp(2rem,5vw,3.5rem)] mb-12 max-w-[600px]">
@@ -372,7 +377,7 @@ export default async function Home() {
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
       {/* ─────────────── INSIGHTS / BLOG ─────────────────── */}
-      <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
+      <section id="journal" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
             <div>
@@ -385,13 +390,9 @@ export default async function Home() {
         </Reveal>
 
         <StaggerContainer className="flex flex-col gap-4">
-          {[
-            { date:"Apr 12, 2026", title:"Why Your 'Perfect Plan' is Killing Your Progress" },
-            { date:"Mar 28, 2026", title:"The Compound Effect of Daily Discipline" },
-            { date:"Mar 14, 2026", title:"How I Built 130K Subscribers From Zero" },
-          ].map((post, i) => (
-            <StaggerItem key={i}>
-              <a href="#" className="irow">
+          {posts.length > 0 ? posts.map((post: any, i: number) => (
+            <StaggerItem key={post.id || i}>
+              <Link href={`/blog/${post.id}`} className="irow">
                 <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 flex-1">
                   <span className="text-xs font-semibold text-muted uppercase tracking-widest md:w-[120px] shrink-0">
                     {post.date}
@@ -401,9 +402,11 @@ export default async function Home() {
                 <span className="irow-arrow hidden md:block">
                   <ArrowRight size={24} strokeWidth={1.5} />
                 </span>
-              </a>
+              </Link>
             </StaggerItem>
-          ))}
+          )) : (
+            <p className="text-muted">No posts available.</p>
+          )}
         </StaggerContainer>
       </section>
 

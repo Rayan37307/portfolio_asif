@@ -13,10 +13,10 @@ export default function Header() {
 
       {/* Nav Links (Desktop) */}
       <nav className="hidden md:flex items-center gap-8">
-        <Link href="/" className="text-sm font-medium hover:text-muted transition-colors">Home</Link>
-        <Link href="#about" className="text-sm font-medium hover:text-muted transition-colors">About Me</Link>
-        <Link href="#content" className="text-sm font-medium hover:text-muted transition-colors">Work</Link>
-        <Link href="#" className="text-sm font-medium hover:text-muted transition-colors">Contact</Link>
+        <Link href="#method" className="text-sm font-medium hover:text-muted transition-colors">Philosophy</Link>
+        <Link href="#masterclass" className="text-sm font-medium hover:text-muted transition-colors">Masterclass</Link>
+        <Link href="#content" className="text-sm font-medium hover:text-muted transition-colors">Videos</Link>
+        <Link href="#journal" className="text-sm font-medium hover:text-muted transition-colors">Journal</Link>
       </nav>
 
       {/* Burger Menu */}
