@@ -2,18 +2,18 @@
 
 /* ── Tokens ───────────────────────────────────────── */
 :root {
-  --bg-outer: #0a0f1a;
-  --bg-app:   #f4f4f4;
-  --bg-card:  #ffffff;
-  --fg:       #111111;
-  --fg-muted: #555555;
-  --accent:   #2563EB;
-  --accent-light: #3b82f6;
-  --accent-dark: #1d4ed8;
-  --accent-glow: rgba(37, 99, 235, 0.25);
-  --accent-soft: rgba(37, 99, 235, 0.08);
-  --border:   rgba(0,0,0,0.1);
-  --border-h: rgba(37, 99, 235, 0.35);
+  --bg-outer: #000000;
+  --bg-app:   #000000;
+  --bg-card:  #0a0f1a;
+  --fg:       #ffffff;
+  --fg-muted: #94a3b8;
+  --accent:   #3b82f6;
+  --accent-light: #60a5fa;
+  --accent-dark: #2563eb;
+  --accent-glow: rgba(59, 130, 246, 0.25);
+  --accent-soft: rgba(59, 130, 246, 0.08);
+  --border:   rgba(255,255,255,0.1);
+  --border-h: rgba(59, 130, 246, 0.35);
   
   --app-radius: 40px;
   --card-radius: 24px;
@@ -55,12 +55,16 @@ body {
 /* ── App Wrapper ──────────────────────────────────── */
 .app-wrapper {
   background: var(--bg-app);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
   /* border-radius: var(--app-radius); */
   width: 100%;
   max-width: 2000px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 24px 64px rgba(0,0,0,0.3), 0 0 120px rgba(37, 99, 235, 0.08);
+  box-shadow: 0 0 120px rgba(59, 130, 246, 0.05);
   display: flex;
   flex-direction: column; 
 }
