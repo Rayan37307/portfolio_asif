@@ -54,9 +54,17 @@ export default async function Home() {
 
             {/* Floating Left Text */}
             <Reveal delay={0.4} className="absolute bottom-8 left-8 md:bottom-12 md:left-12 max-w-[300px] text-left z-10 hidden md:block">
-              <p className="text-white/90 text-sm leading-relaxed font-medium">
+              <p className="text-white/90 text-sm leading-relaxed font-medium mb-5">
                 — Build real momentum and turn fleeting motivation—habits, daily discipline, or shared visions into lasting results.
               </p>
+              <div className="flex gap-3">
+                <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="btn btn-outline bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white text-xs px-4 py-2">
+                  <FaYoutube className="w-4 h-4" /> Sub YouTube
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" className="btn btn-outline bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white text-xs px-4 py-2">
+                  <FaFacebook className="w-4 h-4" /> Facebook
+                </a>
+              </div>
             </Reveal>
 
             {/* Floating Right Card */}
@@ -174,6 +182,58 @@ export default async function Home() {
             </div>
           </Reveal>
         </div>
+      </section>
+
+      <div className="px-4 md:px-8"><div className="rule" /></div>
+
+      {/* ─────────────── CONTENT IDEAS GRAPH ─────────────── */}
+      <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
+        <Reveal>
+          <p className="eyebrow mb-4">Ecosystem</p>
+          <h2 className="heading-display text-4xl md:text-5xl mb-12">
+            The Idea Matrix.
+          </h2>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="relative w-full aspect-[2/1] min-h-[400px] bg-[#f9f9f9] rounded-[32px] p-8 md:p-16 border border-border flex items-center justify-center overflow-hidden">
+            {/* Grid Background */}
+            <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(#d1d1d1 1px, transparent 1px)", backgroundSize: "32px 32px" }}></div>
+
+            {/* Connecting SVG Lines */}
+            <svg className="absolute inset-0 w-full h-full z-0 pointer-events-none">
+              <path d="M 50% 50% L 20% 25% M 50% 50% L 80% 25% M 50% 50% L 20% 75% M 50% 50% L 80% 75%" stroke="rgba(0,0,0,0.15)" strokeWidth="1.5" strokeDasharray="4 4" fill="none" />
+            </svg>
+
+            {/* Nodes */}
+            <div className="relative z-10 w-full h-full max-w-[800px] mx-auto">
+              {/* Center Node */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black text-white px-8 py-3.5 rounded-full font-semibold shadow-2xl z-20 text-lg">
+                asif®
+              </div>
+
+              {/* Node TL */}
+              <div className="absolute top-[20%] left-[10%] bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
+                Mindset Shifts
+              </div>
+
+              {/* Node TR */}
+              <div className="absolute top-[20%] right-[10%] bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
+                Daily Execution
+              </div>
+
+              {/* Node BL */}
+              <div className="absolute bottom-[20%] left-[10%] bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
+                Content Strategy
+              </div>
+
+              {/* Node BR */}
+              <div className="absolute bottom-[20%] right-[10%] bg-white border border-border px-6 py-3 rounded-full text-sm font-medium shadow-sm hover:-translate-y-1 transition-transform">
+                Brand Building
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
