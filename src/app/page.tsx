@@ -21,11 +21,11 @@ export default async function Home() {
             
             {/* Background Image */}
             <Image 
-              src="/hero_bg.png" 
+              src="/creator_portrait.jpg" 
               alt="Aesthetic background" 
               fill 
               priority
-              className="object-cover opacity-80 mix-blend-luminosity" 
+              className="object-cover opacity-80 mix-blend-luminosity blur-xl scale-110" 
             />
             
             {/* Corner Brackets */}
@@ -388,11 +388,12 @@ export default async function Home() {
           
           <Reveal>
             <h2 className="heading-display text-white text-[clamp(3rem,8vw,6rem)] leading-none mb-8">
-              Let's create <br/> something real.
+              Join our <br/> community.
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
-              <a href="#" className="btn btn-fill bg-white text-black hover:bg-gray-200 text-lg px-8 py-4">
-                Get in touch
+              <a href="#" target="_blank" rel="noopener noreferrer" className="btn btn-fill bg-[#25D366] text-white hover:bg-[#1ebe5a] text-lg px-8 py-4 flex items-center shadow-[0_0_24px_rgba(37,211,102,0.3)] border-none">
+                <FaWhatsapp className="w-6 h-6 mr-2" />
+                Join WhatsApp Group
               </a>
             </div>
           </Reveal>
