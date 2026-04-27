@@ -52,7 +52,7 @@ export default async function Home() {
             <Reveal delay={0.2} direction="up">
               <div className="relative w-[300px] h-[400px] md:w-[450px] md:h-[550px] rounded-[32px] overflow-hidden shadow-[0_48px_100px_rgba(0,0,0,0.8)] border border-white/10 group">
                 <Image
-                  src="/creator_portrait.jpg"
+                  src="/creator.jpg"
                   alt="Muhammad Asif"
                   fill
                   className="object-cover opacity-40 scale-110 group-hover:scale-100 transition-transform duration-1000"
@@ -275,10 +275,6 @@ export default async function Home() {
                 ))}
               </StaggerContainer>
 
-              <a href="#" className="btn bg-blue-500 hover:bg-blue-600 text-white px-10 py-5 rounded-full font-bold text-lg shadow-[0_20px_40px_rgba(37,99,235,0.3)] hover:scale-105 transition-all group">
-                Apply for the next cohort
-                <ArrowRight size={20} className="ml-2 group-hover:translate-x-2 transition-transform" />
-              </a>
             </div>
           </div>
         </Reveal>
@@ -621,11 +617,12 @@ export default async function Home() {
 
       {/* ─────────────── CTA / COMMUNITY (REDESIGNED - IMAGE STYLE) ── */}
       <footer className="mt-16 px-4 md:px-8 mb-8">
-        <div className="bg-[#4f46e5] rounded-[32px] p-12 md:p-24 flex flex-col items-center text-center relative overflow-hidden shadow-[0_24px_48px_rgba(79,70,229,0.2)]">
+        <div className="bg-[#0a0f1e] rounded-[32px] p-12 md:p-24 flex flex-col items-center text-center relative overflow-hidden border border-white/5 shadow-2xl">
           
-          {/* Subtle Geometric Patterns (Optional, matching image) */}
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[60%] bg-white/5 rounded-full blur-[80px] pointer-events-none" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[60%] bg-white/5 rounded-full blur-[80px] pointer-events-none" />
+          {/* Ambient Glows */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.05),transparent_70%)]" />
 
           {/* Top Icon / Logo */}
           <div className="w-20 h-20 bg-[#0a0f1a] rounded-[24px] overflow-hidden flex items-center justify-center mb-10 shadow-2xl relative z-10 border border-white/10">
@@ -645,7 +642,7 @@ export default async function Home() {
             
             <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-12">
               <h3 className="text-white text-3xl md:text-5xl font-bold">Together.</h3>
-              <a href="https://chat.whatsapp.com/FVioaoB7Ew7EI2w5ZSaVW4" target="_blank" rel="noopener noreferrer" className="bg-white text-black px-8 py-4 rounded-full font-bold text-lg flex items-center gap-3 hover:scale-105 transition-transform shadow-lg group">
+              <a href="https://chat.whatsapp.com/FVioaoB7Ew7EI2w5ZSaVW4" target="_blank" rel="noopener noreferrer" className="bg-blue-500 text-white px-8 py-4 rounded-full font-bold text-lg flex items-center gap-3 hover:scale-105 transition-transform shadow-[0_20px_40px_rgba(59,130,246,0.3)] group">
                 Join WhatsApp Hub
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
