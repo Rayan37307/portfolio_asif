@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Play, Star, Dumbbell, Laptop, Sparkles, Brain, Code, Zap } from "lucide-react";
+import { ArrowRight, Play, Star, Dumbbell, Laptop, Sparkles, Brain, Code, Zap, Eye, Target, Trophy, Boxes } from "lucide-react";
 import { FaYoutube, FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { getLatestVideos } from "../lib/youtube";
 import { getSortedPostsData } from "../lib/posts";
@@ -226,110 +226,189 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── PHILOSOPHY ───────────────── */}
-      <section id="method" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
-        <Reveal>
-          <p className="eyebrow mb-4">The Method</p>
-          <h2 className="heading-display text-[clamp(2rem,5vw,3.5rem)] mb-12 max-w-[600px]">
-            Strategy. Discipline.<br />Action.
-          </h2>
-        </Reveal>
+      {/* ─────────────── PHILOSOPHY (REDESIGNED - LIGHT) ── */}
+      <section id="method" className="px-4 md:px-8 max-w-[1500px] mx-auto w-full">
+        <div className="bg-white rounded-[40px] p-8 md:p-20 relative overflow-hidden border border-border/50">
+          {/* Subtle Ambient Glows */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-600/3 rounded-full blur-[100px] pointer-events-none" />
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { n: "01", t: "Awaken", b: "Understanding your goals, fears, and challenges through deep introspection and brutal reality checks." },
-            { n: "02", t: "Build", b: "Transforming raw motivation into robust, repeatable systems and unbreakable daily habits." },
-            { n: "03", t: "Conquer", b: "Executing with clarity and precision to achieve your ultimate potential in life and business." },
-          ].map(({ n, t, b }) => (
-            <StaggerItem key={n}>
-              <div className="card p-8 bg-[#f9f9f9] border-none">
-                <div className="heading-display text-5xl text-blue-500/30 mb-6">{n}</div>
-                <h3 className="heading text-2xl mb-3">{t}</h3>
-                <p className="text-muted leading-relaxed text-sm">{b}</p>
+          <Reveal>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+              <div className="max-w-[600px]">
+                <p className="eyebrow mb-4">The Method</p>
+                <h2 className="heading-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1]">
+                  Strategy. Discipline. <br />
+                  <span className="gradient-text">Massive Action.</span>
+                </h2>
               </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+              <p className="text-muted text-lg max-w-[300px] font-medium leading-relaxed">
+                A precision-engineered framework for personal and professional peak performance.
+              </p>
+            </div>
+          </Reveal>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+            {[
+              { 
+                n: "01", 
+                t: "Awaken", 
+                b: "Understanding your goals, fears, and challenges through deep introspection and brutal reality checks.",
+                icon: Eye,
+                color: "text-blue-400"
+              },
+              { 
+                n: "02", 
+                t: "Build", 
+                b: "Transforming raw motivation into robust, repeatable systems and unbreakable daily habits.",
+                icon: Boxes,
+                color: "text-blue-500"
+              },
+              { 
+                n: "03", 
+                t: "Conquer", 
+                b: "Executing with clarity and precision to achieve your ultimate potential in life and business.",
+                icon: Trophy,
+                color: "text-blue-600"
+              },
+            ].map(({ n, t, b, icon: Icon, color }) => (
+              <StaggerItem key={n}>
+                <div className="glass-card p-10 h-full relative group overflow-hidden bg-[#fafafa] border-border/40">
+                  {/* Large Background Number */}
+                  <div className="absolute -right-4 -bottom-8 heading-display text-[12rem] text-outline group-hover:opacity-80 transition-opacity">
+                    {n}
+                  </div>
+
+                  <div className={`w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-8 border border-border shadow-sm group-hover:border-blue-500/50 transition-colors`}>
+                    <Icon className={`w-7 h-7 ${color}`} />
+                  </div>
+
+                  <h3 className="heading text-3xl text-black mb-4 relative z-10 group-hover:text-blue-600 transition-colors">
+                    {t}
+                  </h3>
+                  <p className="text-muted leading-relaxed text-base relative z-10">
+                    {b}
+                  </p>
+                  
+                  {/* Hover Accent Line */}
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 group-hover:w-full transition-all duration-500" />
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
       </section>
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── PERSONAL INTERESTS ──────────── */}
-      <section id="interests" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
-        <Reveal>
-          <p className="eyebrow mb-4">Beyond Work</p>
-          <h2 className="heading-display text-4xl md:text-5xl mb-12">
-            What Drives Me.
-          </h2>
-        </Reveal>
+      {/* ─────────────── PERSONAL INTERESTS (REDESIGNED) ── */}
+      <section id="interests" className="px-4 md:px-8 max-w-[1500px] mx-auto w-full">
+        <div className="bg-white rounded-[40px] p-8 md:p-20 relative overflow-hidden border border-border/50">
+          {/* Ambient Glows */}
+          <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          {[
-            {
-              icon: Dumbbell,
-              title: "Fitness & Health",
-              desc: "Discipline starts with the body. Early morning workouts aren't optional—they're the foundation.",
-              tags: ["Early Riser", "Strength Training", "Mental Clarity"],
-            },
-            {
-              icon: Laptop,
-              title: "Tech & Tools",
-              desc: "Obsessed with optimizing workflows. The right system can 10x your output overnight.",
-              tags: ["Productivity", "Automation", "Workflow Design"],
-            },
-            {
-              icon: Sparkles,
-              title: "AI Specialist",
-              desc: "Living at the edge of what's possible. Exploring AI tools before they go mainstream.",
-              tags: ["Machine Learning", "Prompt Engineering", "Future Tech"],
-            },
-          ].map(({ icon: Icon, title, desc, tags }) => (
-            <StaggerItem key={title}>
-              <div className="card p-8 h-full flex flex-col">
-                <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6">
-                  <Icon className="w-6 h-6 text-blue-500" />
+          <Reveal>
+            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+              <div className="max-w-[600px]">
+                <p className="eyebrow mb-4">Beyond Work</p>
+                <h2 className="heading-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1]">
+                  What Drives <br />
+                  <span className="gradient-text">My Ambition.</span>
+                </h2>
+              </div>
+              <p className="text-muted text-lg max-w-[300px] font-medium leading-relaxed">
+                The core pillars that fuel my consistency and creativity.
+              </p>
+            </div>
+          </Reveal>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 relative z-10">
+            {[
+              {
+                icon: Dumbbell,
+                title: "Fitness & Health",
+                desc: "Discipline starts with the body. Early morning workouts aren't optional—they're the foundation.",
+                tags: ["Early Riser", "Strength Training", "Mental Clarity"],
+                n: "01"
+              },
+              {
+                icon: Laptop,
+                title: "Tech & Tools",
+                desc: "Obsessed with optimizing workflows. The right system can 10x your output overnight.",
+                tags: ["Productivity", "Automation", "Workflow Design"],
+                n: "02"
+              },
+              {
+                icon: Sparkles,
+                title: "AI Specialist",
+                desc: "Living at the edge of what's possible. Exploring AI tools before they go mainstream.",
+                tags: ["Machine Learning", "Prompt Engineering", "Future Tech"],
+                n: "03"
+              },
+            ].map(({ icon: Icon, title, desc, tags, n }) => (
+              <StaggerItem key={title}>
+                <div className="glass-card p-10 h-full relative group overflow-hidden bg-[#fafafa] border-border/40">
+                  {/* Large Background Icon Outline */}
+                  <div className="absolute -right-8 -bottom-8 opacity-20 group-hover:opacity-30 transition-opacity">
+                    <Icon className="w-[12rem] h-[12rem] text-blue-500/20 stroke-[1px]" />
+                  </div>
+
+                  <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-8 border border-border shadow-sm group-hover:border-blue-500/50 transition-colors">
+                    <Icon className="w-7 h-7 text-blue-500" />
+                  </div>
+
+                  <h3 className="heading text-2xl text-black mb-4 relative z-10 group-hover:text-blue-600 transition-colors">{title}</h3>
+                  <p className="text-muted text-sm leading-relaxed mb-8 relative z-10">{desc}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mt-auto relative z-10">
+                    {tags.map((tag) => (
+                      <span key={tag} className="text-[10px] font-bold px-3 py-1.5 rounded-full bg-white border border-border text-muted uppercase tracking-wider">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Hover Accent Line */}
+                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 group-hover:w-full transition-all duration-500" />
                 </div>
-                <h3 className="heading text-xl mb-3">{title}</h3>
-                <p className="text-muted text-sm leading-relaxed flex-1 mb-6">{desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {tags.map((tag) => (
-                    <span key={tag} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f4f4f4] text-muted">
-                      {tag}
-                    </span>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+
+          <Reveal delay={0.2}>
+            <div className="glass-card bg-[#fcfcfc] p-8 md:p-12 border-border/60 relative z-10 overflow-hidden">
+              <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-r from-transparent to-blue-50/30 pointer-events-none" />
+              <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center relative z-10">
+                <div className="md:w-1/3">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                    <h3 className="heading text-2xl">Currently Exploring</h3>
+                  </div>
+                  <p className="text-muted text-sm">The frontier I'm diving deep into right now.</p>
+                </div>
+                <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-8">
+                  {[
+                    { icon: Brain, label: "AI Agents", sub: "Autonomous workflows" },
+                    { icon: Code, label: "No-Code Tools", sub: "Building without code" },
+                    { icon: Zap, label: "Content Velocity", sub: "Scale without burnout" },
+                  ].map(({ icon: Icon, label, sub }) => (
+                    <div key={label} className="group/item cursor-default">
+                      <div className="flex items-start gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-white border border-border flex items-center justify-center shrink-0 shadow-sm group-hover/item:border-blue-400 group-hover/item:shadow-md transition-all">
+                          <Icon className="w-6 h-6 text-blue-500" />
+                        </div>
+                        <div>
+                          <h4 className="heading text-sm mb-1 group-hover/item:text-blue-600 transition-colors">{label}</h4>
+                          <p className="text-muted text-[11px] leading-tight font-medium uppercase tracking-tighter">{sub}</p>
+                        </div>
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
-
-        <Reveal delay={0.2}>
-          <div className="bg-gradient-to-br from-[#f9f9f9] to-white rounded-[24px] p-8 md:p-12 border border-border/50">
-            <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-start">
-              <div className="md:w-1/3">
-                <h3 className="heading text-2xl mb-2">Currently Exploring</h3>
-                <p className="text-muted text-sm">The frontier I'm diving deep into right now.</p>
-              </div>
-              <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-6">
-                {[
-                  { icon: Brain, label: "AI Agents", sub: "Autonomous workflows" },
-                  { icon: Code, label: "No-Code Tools", sub: "Building without code" },
-                  { icon: Zap, label: "Content Velocity", sub: "Scale without burnout" },
-                ].map(({ icon: Icon, label, sub }) => (
-                  <div key={label} className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
-                      <Icon className="w-5 h-5 text-blue-500" />
-                    </div>
-                    <div>
-                      <h4 className="heading text-sm mb-0.5">{label}</h4>
-                      <p className="text-muted text-xs">{sub}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+        </div>
       </section>
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
@@ -337,7 +416,7 @@ export default async function Home() {
       {/* ─────────────── CONTENT ──────────────────── */}
       <section id="content" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
-          <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
             <div>
               <h2 className="heading-display text-4xl md:text-5xl">Latest Contents</h2>
             </div>
@@ -410,7 +489,7 @@ export default async function Home() {
       {/* ─────────────── INSIGHTS / BLOG ─────────────────── */}
       <section id="journal" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
-          <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
             <div>
               <h2 className="heading-display text-4xl md:text-5xl">Journal</h2>
             </div>
@@ -497,38 +576,73 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── FOOTER ───────────────────── */}
-      <footer className="mt-8 px-4 md:px-8">
-        <div className="bg-gradient-to-br from-[#0a0f1a] via-[#111827] to-[#0a0f1a] rounded-[32px] p-8 md:p-16 flex flex-col items-center text-center relative overflow-hidden">
+      {/* ─────────────── FOOTER (REDESIGNED - LIGHT) ───────── */}
+      <footer className="mt-16 px-4 md:px-8">
+        <div className="bg-white rounded-[40px] p-8 md:p-24 flex flex-col items-center text-center relative overflow-hidden border border-border/50">
+          
+          {/* Large Background Outlined Text */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-5">
+            <span className="heading-display text-[20vw] text-outline select-none leading-none">
+              HUB
+            </span>
+          </div>
 
-          {/* Blue ambient glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-blue-500/15 rounded-full blur-[150px] pointer-events-none" />
-          <div className="absolute bottom-0 right-[20%] w-[300px] h-[300px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+          {/* Subtle Ambient Glows */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-500/5 rounded-full blur-[160px] pointer-events-none" />
+          <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-blue-600/3 rounded-full blur-[100px] pointer-events-none" />
 
-          <Reveal>
-            <h2 className="heading-display text-white text-[clamp(3rem,8vw,6rem)] leading-none mb-8 relative">
-              Join our <br /> <span className="drop-shadow-[0_0_40px_rgba(37,99,235,0.4)]">community.</span>
+          <Reveal className="relative z-10">
+            <p className="eyebrow mb-6">The Network</p>
+            <h2 className="heading-display text-black text-[clamp(3.5rem,10vw,7rem)] leading-[0.9] mb-12">
+              Join the <br /> 
+              <span className="gradient-text drop-shadow-[0_0_40px_rgba(37,99,235,0.1)]">Community.</span>
             </h2>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a href="https://chat.whatsapp.com/FVioaoB7Ew7EI2w5ZSaVW4" target="_blank" rel="noopener noreferrer" className="btn btn-fill bg-[#25D366] text-white hover:bg-[#1ebe5a] text-lg px-8 py-4 flex items-center shadow-[0_0_32px_rgba(37,211,102,0.3)] border-none">
-                <FaWhatsapp className="w-6 h-6 mr-2" />
-                Join WhatsApp Group
+            
+            <p className="text-muted text-lg md:text-xl max-w-[600px] mx-auto mb-16 font-medium leading-relaxed">
+              Stop consuming, start contributing. Join over <span className="text-black font-bold">500,000+</span> individuals building systems for freedom and performance.
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-6">
+              <a href="https://chat.whatsapp.com/FVioaoB7Ew7EI2w5ZSaVW4" target="_blank" rel="noopener noreferrer" className="btn btn-fill bg-[#25D366] text-white hover:bg-[#1ebe5a] text-lg px-10 py-5 flex items-center shadow-[0_20px_40px_rgba(37,211,102,0.1)] border-none group">
+                <FaWhatsapp className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform" />
+                WhatsApp Hub
+              </a>
+              <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="btn btn-fill bg-blue-600 text-white hover:bg-blue-700 text-lg px-10 py-5 flex items-center shadow-[0_20px_40px_rgba(37,99,235,0.15)] border-none group">
+                <FaYoutube className="w-6 h-6 mr-3 text-white group-hover:scale-110 transition-transform" />
+                Subscribe
               </a>
             </div>
           </Reveal>
 
-          <div className="w-full mt-24 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="heading-display text-white text-2xl">
-              asif®
+          {/* Social Grid footer */}
+          <div className="w-full mt-32 pt-12 border-t border-border flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
+            <div className="flex flex-col items-center md:items-start gap-2">
+              <div className="heading-display text-black text-3xl">
+                asif®
+              </div>
+              <p className="text-muted text-xs font-bold uppercase tracking-widest">Engineering Mindsets</p>
             </div>
-            <div className="flex gap-6">
-              {[["YouTube", "https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g"], ["Facebook", "https://www.facebook.com/MuhammadAsifRayhanOfficial"]].map(([l, h]) => (
-                <a key={l} href={h} className="text-blue-300/60 hover:text-blue-200 text-sm font-medium transition-colors">{l}</a>
+
+            <div className="flex gap-10">
+              {[
+                ["YouTube", "https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g"], 
+                ["Facebook", "https://www.facebook.com/MuhammadAsifRayhanOfficial"],
+                ["LinkedIn", "#"],
+                ["Twitter", "#"]
+              ].map(([l, h]) => (
+                <a key={l} href={h} className="text-muted hover:text-blue-600 text-sm font-bold tracking-tight transition-all hover:translate-y-[-2px] block">{l}</a>
               ))}
             </div>
-            <p className="text-white/40 text-xs font-medium">
-              © 2026 All rights reserved.
-            </p>
+
+            <div className="flex flex-col items-center md:items-end gap-2">
+              <p className="text-muted text-[10px] font-bold uppercase tracking-widest">
+                © 2026 MUHAMMAD ASIF RAIHAN
+              </p>
+              <div className="flex gap-4">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-muted text-[10px] font-bold uppercase tracking-wider">All Systems Operational</span>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
