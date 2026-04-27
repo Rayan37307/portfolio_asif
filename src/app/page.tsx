@@ -658,8 +658,11 @@ export default async function Home() {
               asif®
             </div>
             <div className="flex gap-8">
-              {["YouTube", "Facebook", "LinkedIn"].map((l) => (
-                <a key={l} href="#" className="text-white/60 hover:text-white text-sm font-bold transition-colors">{l}</a>
+              {[
+                ["YouTube", "https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g"],
+                ["Facebook", "https://www.facebook.com/MuhammadAsifRayhanOfficial"]
+              ].map(([l, h]) => (
+                <a key={l} href={h} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white text-sm font-bold transition-colors">{l}</a>
               ))}
             </div>
             <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest">
