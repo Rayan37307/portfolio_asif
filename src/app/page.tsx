@@ -1,13 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Play, Star, Zap, Target, Rocket } from "lucide-react";
+import { ArrowRight, Play, Star } from "lucide-react";
 import { FaYoutube, FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { getLatestVideos } from "../lib/youtube";
 import { getSortedPostsData } from "../lib/posts";
 import { Reveal, StaggerContainer, StaggerItem, ParallaxHeroImage, AnimatedSVGLines, CountUp } from "./components/animations";
 import Hero3D from "./components/Hero3D";
-import EmailCapture from "./components/EmailCapture";
-import ScrollRevealQuote from "./components/ScrollRevealQuote";
 
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
 const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
@@ -105,8 +103,6 @@ export default async function Home() {
               </div>
             </Reveal>
 
-            {/* Dark to Light Transition */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
           </div>
         </Reveal>
       </section>
@@ -141,13 +137,23 @@ export default async function Home() {
           <span className="text-[10px] text-muted uppercase tracking-wider font-semibold">Trusted by 100+ businesses</span>
         </div>
       </section>
-      
-      <div className="px-4 md:px-8 max-w-[1400px] mx-auto w-full -mt-8">
-        <EmailCapture />
-      </div>
 
       {/* ─────────────── QUOTE SECTION ────────────────────── */}
-      <ScrollRevealQuote />
+      <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full py-12 md:py-20 flex flex-col md:flex-row gap-8 md:gap-16 items-start">
+        <Reveal className="w-full md:w-1/4 pt-2">
+          <div className="flex flex-col">
+            <h3 className="heading text-lg">Muhammad Asif</h3>
+            <p className="text-muted text-sm font-medium">Professional creator</p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1} className="w-full md:w-3/4">
+          <h2 className="heading-display text-[clamp(2rem,5vw,4.5rem)] leading-[1.1] tracking-tight">
+            <span className="text-blue-500/60 text-[1.2em] leading-none absolute -ml-[0.6em] mt-[-0.1em]">"“</span>
+            I don't just create content. I engineer mindsets, dissect raw truths, and build systems that turn passive observers into <span className="gradient-text">relentless executors</span>.<span className="text-blue-500/60">”</span>
+          </h2>
+        </Reveal>
+      </section>
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
@@ -240,7 +246,41 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── PHILOSOPHY (BENTO GRID) ───────── */}
+      {/* ─────────────── BACKBENCHERS UNIVERSITY ──── */}
+      <section id="masterclass" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
+        <Reveal>
+          <div className="card bg-gradient-to-br from-[#eef2ff] to-[#f9f9ff] border-none p-8 md:p-16 flex flex-col items-center text-center relative overflow-hidden">
+            {/* Subtle glow behind */}
+            <div className="absolute top-[-100px] left-1/2 -translate-x-1/2 w-[500px] h-[300px] bg-blue-400/8 rounded-full blur-[100px] pointer-events-none" />
+            <p className="eyebrow mb-4">The Masterclass</p>
+            <h2 className="heading-display text-[clamp(2.5rem,6vw,4.5rem)] mb-6 relative">
+              Backbenchers <span className="gradient-text">University.</span>
+            </h2>
+            <p className="text-muted text-lg max-w-[600px] mx-auto mb-12">
+              Not for the apathetic. A rigorous, cohort-based curriculum designed to strip away your excuses, rebuild your mental models, and install the operating system of high performance.
+            </p>
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[1000px] text-left mb-12">
+              {[
+                { title: "Mindset Protocol", desc: "Eradicate limiting beliefs and build undeniable confidence." },
+                { title: "Execution Engine", desc: "Daily systems to guarantee deep work and compound output." },
+                { title: "The Inner Circle", desc: "Direct access to a network of like-minded builders." }
+              ].map((feature, i) => (
+                <StaggerItem key={i}>
+                  <div className="bg-white p-6 rounded-[16px] shadow-sm border border-border/50 hover:border-blue-400/30 hover:shadow-[0_4px_24px_rgba(37,99,235,0.08)] transition-all">
+                    <h3 className="heading text-xl mb-2">{feature.title}</h3>
+                    <p className="text-muted text-sm leading-relaxed">{feature.desc}</p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </StaggerContainer>
+            <a href="#" className="btn btn-fill">Apply for the next cohort</a>
+          </div>
+        </Reveal>
+      </section>
+
+      <div className="px-4 md:px-8"><div className="rule" /></div>
+
+      {/* ─────────────── PHILOSOPHY ───────────────── */}
       <section id="method" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
           <p className="eyebrow mb-4">The Method</p>
@@ -249,61 +289,24 @@ export default async function Home() {
           </h2>
         </Reveal>
 
-        <div className="bento-grid">
-          <Reveal className="bento-item-1">
-            <div className="bento-card bento-card-blue group">
-              <div className="bento-number">01</div>
-              <div>
-                <div className="bento-icon-box">
-                  <Target className="w-6 h-6 text-blue-400" />
-                </div>
-                <h3 className="heading text-3xl md:text-4xl mb-4">Awaken</h3>
-                <p className="text-white/60 leading-relaxed text-lg max-w-[400px]">
-                  Understanding your goals, fears, and challenges through deep introspection and brutal reality checks. Identifying the "why" before the "how".
-                </p>
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[
+            { n: "01", t: "Awaken", b: "Understanding your goals, fears, and challenges through deep introspection and brutal reality checks." },
+            { n: "02", t: "Build", b: "Transforming raw motivation into robust, repeatable systems and unbreakable daily habits." },
+            { n: "03", t: "Conquer", b: "Executing with clarity and precision to achieve your ultimate potential in life and business." },
+          ].map(({ n, t, b }) => (
+            <StaggerItem key={n}>
+              <div className="card p-8 bg-[#f9f9f9] border-none">
+                <div className="heading-display text-5xl text-blue-500/30 mb-6">{n}</div>
+                <h3 className="heading text-2xl mb-3">{t}</h3>
+                <p className="text-muted leading-relaxed text-sm">{b}</p>
               </div>
-              <div className="pt-8 flex gap-4">
-                <div className="px-4 py-2 bg-white/5 rounded-full text-[10px] uppercase tracking-widest font-bold border border-white/10">Mindset</div>
-                <div className="px-4 py-2 bg-white/5 rounded-full text-[10px] uppercase tracking-widest font-bold border border-white/10">Reality Check</div>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal className="bento-item-2">
-            <div className="bento-card group">
-              <div className="bento-number">02</div>
-              <div className="flex flex-col h-full justify-between">
-                <div>
-                  <div className="bento-icon-box">
-                    <Zap className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="heading text-2xl mb-2">Build</h3>
-                  <p className="text-muted text-sm leading-relaxed max-w-[280px]">
-                    Transforming raw motivation into robust, repeatable systems and unbreakable daily habits.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal className="bento-item-3" delay={0.1}>
-            <div className="bento-card group">
-              <div className="bento-number">03</div>
-              <div className="flex flex-col h-full justify-between">
-                <div>
-                  <div className="bento-icon-box">
-                    <Rocket className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="heading text-2xl mb-2">Conquer</h3>
-                  <p className="text-muted text-sm leading-relaxed max-w-[280px]">
-                    Executing with clarity and precision to achieve your ultimate potential in life and business.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </section>
+
+      <div className="px-4 md:px-8"><div className="rule" /></div>
 
       {/* ─────────────── CONTENT ──────────────────── */}
       <section id="content" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
@@ -428,11 +431,11 @@ export default async function Home() {
             {/* First Set */}
             <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }}>
               {[
-                { name: "Sarah J.", role: "Entrepreneur", text: "Asif's insights on digital leverage completely reshaped how I view growth. Truly eye-opening." },
-                { name: "Marcus T.", role: "Creator", text: "Finally, someone who speaks the truth about what it actually takes to build something meaningful today." },
-                { name: "Elena R.", role: "Founder", text: "The mindset shifts I've experienced through this content are more valuable than any degree." },
-                { name: "David W.", role: "Builder", text: "Actionable, raw, and high-signal. I've stopped overthinking and started executing." },
-                { name: "Chloe M.", role: "Designer", text: "The only creator I follow who consistently delivers deep value without the fluff." },
+                { name: "Sarah J.", role: "Entrepreneur", text: "The mindset shift completely changed my business trajectory. Unbelievable value." },
+                { name: "Marcus T.", role: "Creator", text: "Rare to find content that balances high-level strategy with actionable tactics. Real deal." },
+                { name: "Elena R.", role: "Designer", text: "Stuck for months. The frameworks gave me the exact roadmap I needed to scale." },
+                { name: "David W.", role: "Founder", text: "Asif's execution engine is the only reason my startup survived year one." },
+                { name: "Chloe M.", role: "Content Creator", text: "I doubled my output in 30 days without burning out. Pure signal." },
               ].map((t, i) => (
                 <div key={i} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>
@@ -457,11 +460,11 @@ export default async function Home() {
             {/* Duplicated Set for Infinite Loop */}
             <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }} aria-hidden="true">
               {[
-                { name: "Sarah J.", role: "Entrepreneur", text: "Asif's insights on digital leverage completely reshaped how I view growth. Truly eye-opening." },
-                { name: "Marcus T.", role: "Creator", text: "Finally, someone who speaks the truth about what it actually takes to build something meaningful today." },
-                { name: "Elena R.", role: "Founder", text: "The mindset shifts I've experienced through this content are more valuable than any degree." },
-                { name: "David W.", role: "Builder", text: "Actionable, raw, and high-signal. I've stopped overthinking and started executing." },
-                { name: "Chloe M.", role: "Designer", text: "The only creator I follow who consistently delivers deep value without the fluff." },
+                { name: "Sarah J.", role: "Entrepreneur", text: "The mindset shift completely changed my business trajectory. Unbelievable value." },
+                { name: "Marcus T.", role: "Creator", text: "Rare to find content that balances high-level strategy with actionable tactics. Real deal." },
+                { name: "Elena R.", role: "Designer", text: "Stuck for months. The frameworks gave me the exact roadmap I needed to scale." },
+                { name: "David W.", role: "Founder", text: "Asif's execution engine is the only reason my startup survived year one." },
+                { name: "Chloe M.", role: "Content Creator", text: "I doubled my output in 30 days without burning out. Pure signal." },
               ].map((t, i) => (
                 <div key={`dup-${i}`} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>
