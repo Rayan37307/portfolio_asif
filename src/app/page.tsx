@@ -61,7 +61,7 @@ export default async function Home() {
               </p>
               <div className="flex gap-3">
                 <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="btn btn-outline bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white text-xs px-4 py-2">
-                  <FaYoutube className="w-4 h-4" /> Sub YouTube
+                  <FaYoutube className="w-4 h-4" /> YouTube
                 </a>
                 <a href="#" target="_blank" rel="noopener noreferrer" className="btn btn-outline bg-transparent text-white border-white/30 hover:bg-white/10 hover:border-white text-xs px-4 py-2">
                   <FaFacebook className="w-4 h-4" /> Facebook
