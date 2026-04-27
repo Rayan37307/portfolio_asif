@@ -11,6 +11,15 @@ import Hero3D from "./components/Hero3D";
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
 const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
 
+const TESTIMONIALS = [
+  { name: "@shariaral0015", role: "Follower", text: "ভাই আপনার কারণে আমার কনফিডেন্স লেভেল বেড়েছে। ধন্যবাদ এবং আল্লাহ আপনার মঙ্গল করুন বস।" },
+  { name: "@NOT-_-BOSS-_-0", role: "Viewer", text: "আলহামদুলিল্লাহ আপনার জন্য আমি আমার জীবনের উদ্দেশ্য বুঝতে পারছি, ধন্যবাদ বস।" },
+  { name: "@Masud-sk88", role: "Student", text: "আপনাকে সত্যি অনেক ভালো লাগে ভাই। আপনার ব্যবহার, বুঝানোর ধরণ আর ইসলাম নিয়ে কথা বলার জন্য আপনাকে অনেক ভালোবাসি।" },
+  { name: "@samiul-topic", role: "Video Editor", text: "ভাই আপনার ভিডিও এডিটিং অনেক ভালো হয়, একদম প্রফেশনাল লেভেলের। অনেক কিছু শিখতে পারছি।" },
+  { name: "@ImtiyazAbrar-b9h", role: "Supporter", text: "সেরা রে বস। আপনি তো আমাদের সত্যি একটা আইডল। আপনার কাজগুলো আমাদের অনেক অনুপ্রাণিত করে।" },
+  { name: "@nazrulmahmudul67", role: "Student", text: "সৎভাবে মন থেকে মানুষকে সহায়তা করতে চাইলে আপনি সফল হতে বাধ্য। আপনার ভিডিওগুলো সত্যি অনেক কাজের।" },
+];
+
 export default async function Home() {
   const videos = await getLatestVideos("UCE6hrW3g0K_sj3XLvBxIC0g", 3);
   const posts = getSortedPostsData().slice(0, 3);
@@ -73,36 +82,6 @@ export default async function Home() {
             </Reveal>
 
             {/* Floating Right Card */}
-            <Reveal delay={0.6} direction="left" className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-10 hidden lg:flex flex-col gap-4">
-
-              {/* Clients Pill */}
-              <div className="self-end bg-blue-500/10 backdrop-blur-md border border-blue-400/20 rounded-full py-2 px-4 flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3].map(i => (
-                    <div key={i} className="w-6 h-6 rounded-full bg-gray-300 border-2 border-transparent overflow-hidden">
-                      <Image src="/creator_portrait.jpg" alt="Client" width={24} height={24} className="object-cover w-full h-full grayscale" />
-                    </div>
-                  ))}
-                </div>
-                <span className="text-white text-xs font-medium">Happy creators worldwide</span>
-              </div>
-
-              {/* Main Floating Card */}
-              <div className="bg-blue-500/10 backdrop-blur-md border border-blue-400/20 rounded-2xl p-4 w-[240px] text-left shadow-2xl">
-                <h3 className="text-white font-medium text-sm leading-tight mb-3">
-                  Professional creative<br />entrepreneur
-                </h3>
-                <div className="w-full h-[120px] rounded-lg overflow-hidden relative mb-4">
-                  <Image src="/creator_portrait.jpg" alt="Creator" fill className="object-cover grayscale" />
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-white/70 text-xs">© 2026</span>
-                  <a href="#" className="bg-blue-500 text-white text-xs font-bold py-1.5 px-3 rounded-full hover:scale-105 transition-transform shadow-[0_0_16px_rgba(37,99,235,0.3)]">
-                    Let's chat
-                  </a>
-                </div>
-              </div>
-            </Reveal>
 
           </div>
         </Reveal>
@@ -464,7 +443,7 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── TESTIMONIALS ─────────────── */}
+{/* ─────────────── REAL RESULTS ─────────────── */}
       <section className="py-12 md:py-20 w-full overflow-hidden">
         <div className="px-4 md:px-8 max-w-[1400px] mx-auto w-full mb-12">
           <Reveal>
@@ -475,15 +454,8 @@ export default async function Home() {
 
         <div className="marquee-wrap">
           <div className="marquee-track" style={{ animationDuration: '40s' }}>
-            {/* First Set */}
             <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }}>
-              {[
-                { name: "Sarah J.", role: "Entrepreneur", text: "The mindset shift completely changed my business trajectory. Unbelievable value." },
-                { name: "Marcus T.", role: "Creator", text: "Rare to find content that balances high-level strategy with actionable tactics. Real deal." },
-                { name: "Elena R.", role: "Designer", text: "Stuck for months. The frameworks gave me the exact roadmap I needed to scale." },
-                { name: "David W.", role: "Founder", text: "Asif's execution engine is the only reason my startup survived year one." },
-                { name: "Chloe M.", role: "Content Creator", text: "I doubled my output in 30 days without burning out. Pure signal." },
-              ].map((t, i) => (
+              {TESTIMONIALS.map((t, i) => (
                 <div key={i} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>
                     <div className="flex gap-1 mb-4">
@@ -492,9 +464,6 @@ export default async function Home() {
                     <p className="text-muted leading-relaxed text-sm">"{t.text}"</p>
                   </div>
                   <div className="flex items-center gap-3 pt-4 border-t border-border">
-                    <div className="avatar-ring shrink-0">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-blue-50" />
-                    </div>
                     <div>
                       <div className="heading text-sm">{t.name}</div>
                       <div className="text-[10px] uppercase tracking-widest text-muted font-bold mt-1">{t.role}</div>
@@ -504,15 +473,8 @@ export default async function Home() {
               ))}
             </div>
 
-            {/* Duplicated Set for Infinite Loop */}
             <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }} aria-hidden="true">
-              {[
-                { name: "Sarah J.", role: "Entrepreneur", text: "The mindset shift completely changed my business trajectory. Unbelievable value." },
-                { name: "Marcus T.", role: "Creator", text: "Rare to find content that balances high-level strategy with actionable tactics. Real deal." },
-                { name: "Elena R.", role: "Designer", text: "Stuck for months. The frameworks gave me the exact roadmap I needed to scale." },
-                { name: "David W.", role: "Founder", text: "Asif's execution engine is the only reason my startup survived year one." },
-                { name: "Chloe M.", role: "Content Creator", text: "I doubled my output in 30 days without burning out. Pure signal." },
-              ].map((t, i) => (
+              {TESTIMONIALS.map((t, i) => (
                 <div key={`dup-${i}`} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>
                     <div className="flex gap-1 mb-4">
@@ -521,9 +483,6 @@ export default async function Home() {
                     <p className="text-muted leading-relaxed text-sm">"{t.text}"</p>
                   </div>
                   <div className="flex items-center gap-3 pt-4 border-t border-border">
-                    <div className="avatar-ring shrink-0">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-100 to-blue-50" />
-                    </div>
                     <div>
                       <div className="heading text-sm">{t.name}</div>
                       <div className="text-[10px] uppercase tracking-widest text-muted font-bold mt-1">{t.role}</div>
@@ -535,6 +494,8 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      <div className="px-4 md:px-8"><div className="rule" /></div>
 
       {/* ─────────────── FOOTER ───────────────────── */}
       <footer className="mt-8 px-4 md:px-8">
