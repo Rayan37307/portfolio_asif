@@ -139,22 +139,50 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─────────────── QUOTE SECTION ────────────────────── */}
-      <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full py-12 md:py-20 flex flex-col md:flex-row gap-8 md:gap-16 items-start">
-        <Reveal className="w-full md:w-1/4 pt-2">
-          <div className="flex flex-col">
-            <h3 className="heading text-lg">Muhammad Asif</h3>
-            <p className="text-muted text-sm font-medium">Professional creator</p>
+      {/* ─────────────── QUOTE SECTION (REDESIGNED) ────────── */}
+      <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full py-20">
+        <Reveal>
+          <div className="relative w-full rounded-[48px] bg-[#0047FF] p-12 md:p-24 overflow-hidden shadow-[0_32px_64px_rgba(0,71,255,0.25)] group">
+            {/* Topographical Texture Overlay */}
+            <div className="absolute inset-0 opacity-20 pointer-events-none topo-bg scale-150 transition-transform duration-[20s] group-hover:scale-125" />
+            
+            {/* Ambient Glows */}
+            <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[60%] bg-blue-400/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[60%] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none" />
+
+            {/* Floating Sparkle Icons */}
+            <div className="absolute top-12 right-12 text-white/40 animate-pulse">
+              <Star size={64} strokeWidth={1} />
+            </div>
+            <div className="absolute bottom-12 left-12 text-white/20">
+              <Star size={40} strokeWidth={1} />
+            </div>
+
+            <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
+              <div className="w-full md:w-1/3">
+                <div className="inline-block bg-white/20 backdrop-blur-md px-6 py-2 rounded-full text-white text-[10px] font-black uppercase tracking-[0.2em] mb-8 border border-white/10">
+                  Statement of Intent
+                </div>
+                <h3 className="heading text-white text-3xl mb-2 drop-shadow-lg">Muhammad Asif</h3>
+                <p className="text-white/60 text-sm font-bold uppercase tracking-widest">Professional Creator</p>
+              </div>
+
+              <div className="w-full md:w-2/3">
+                <h2 className="heading-display text-white text-[clamp(2rem,4vw,3.5rem)] leading-[1.05] tracking-tight drop-shadow-2xl">
+                  "I don't just create content. I engineer <span className="text-black bg-white/90 px-3 rounded-lg shadow-xl">mindsets</span>, dissect raw truths, and build systems that turn passive observers into relentless executors."
+                </h2>
+              </div>
+            </div>
+
+            {/* Aesthetic Line Decors */}
+            <div className="absolute top-1/2 right-[-10%] w-[40%] h-[1px] bg-white/20 rotate-[-45deg] hidden lg:block" />
+            <div className="absolute top-[60%] right-[-5%] w-[30%] h-[1px] bg-white/10 rotate-[-45deg] hidden lg:block" />
           </div>
         </Reveal>
-
-        <Reveal delay={0.1} className="w-full md:w-3/4">
-          <h2 className="heading-display text-[clamp(2rem,5vw,4.5rem)] leading-[1.1] tracking-tight">
-            <span className="text-blue-500/60 text-[1.2em] leading-none absolute -ml-[0.6em] mt-[-0.1em]">"“</span>
-            I don't just create content. I engineer mindsets, dissect raw truths, and build systems that turn passive observers into <span className="gradient-text">relentless executors</span>.<span className="text-blue-500/60">”</span>
-          </h2>
-        </Reveal>
       </section>
+
+
+
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
@@ -247,72 +275,57 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── PHILOSOPHY (REDESIGNED - LIGHT) ── */}
+      {/* ─────────────── PHILOSOPHY (REDESIGNED - DARK) ── */}
       <section id="method" className="px-4 md:px-8 max-w-[1500px] mx-auto w-full">
-        <div className="bg-white rounded-[40px] p-8 md:p-20 relative overflow-hidden border border-border/50">
-          {/* Subtle Ambient Glows */}
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-600/3 rounded-full blur-[100px] pointer-events-none" />
+        <div className="bg-[#0a0f1e] rounded-[48px] p-8 md:p-24 relative overflow-hidden border border-white/5">
+          {/* Ambient Glows */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
 
           <Reveal>
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
-              <div className="max-w-[600px]">
-                <p className="eyebrow mb-4">The Method</p>
-                <h2 className="heading-display text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1]">
-                  Strategy. Discipline. <br />
-                  <span className="gradient-text">Massive Action.</span>
-                </h2>
-              </div>
-              <p className="text-muted text-lg max-w-[300px] font-medium leading-relaxed">
-                A precision-engineered framework for personal and professional peak performance.
-              </p>
+            <div className="mb-20">
+              <span className="text-blue-400 text-xs font-black uppercase tracking-[0.3em] mb-6 block">STEP</span>
+              <h2 className="heading-display text-white text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] tracking-tighter max-w-[900px]">
+                Maximize your growth with a <br />
+                <span className="text-blue-400">Method</span> that generates results.
+              </h2>
             </div>
           </Reveal>
 
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
             {[
               { 
-                n: "01", 
+                n: "1", 
                 t: "Awaken", 
-                b: "Understanding your goals, fears, and challenges through deep introspection and brutal reality checks.",
-                icon: Eye,
-                color: "text-blue-400"
+                b: "Understanding your goals, fears, and challenges through deep introspection and brutal reality checks."
               },
               { 
-                n: "02", 
+                n: "2", 
                 t: "Build", 
-                b: "Transforming raw motivation into robust, repeatable systems and unbreakable daily habits.",
-                icon: Boxes,
-                color: "text-blue-500"
+                b: "Transforming raw motivation into robust, repeatable systems and unbreakable daily habits."
               },
               { 
-                n: "03", 
+                n: "3", 
                 t: "Conquer", 
-                b: "Executing with clarity and precision to achieve your ultimate potential in life and business.",
-                icon: Trophy,
-                color: "text-blue-600"
+                b: "Executing with clarity and precision to achieve your ultimate potential in life and business."
               },
-            ].map(({ n, t, b, icon: Icon, color }) => (
+            ].map(({ n, t, b }) => (
               <StaggerItem key={n}>
-                <div className="glass-card p-10 h-full relative group overflow-hidden bg-[#fafafa] border-border/40">
-                  {/* Large Background Number */}
-                  <div className="absolute -right-4 -bottom-8 heading-display text-[12rem] text-outline group-hover:opacity-80 transition-opacity">
-                    {n}
-                  </div>
-
-                  <div className={`w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-8 border border-border shadow-sm group-hover:border-blue-500/50 transition-colors`}>
-                    <Icon className={`w-7 h-7 ${color}`} />
-                  </div>
-
-                  <h3 className="heading text-3xl text-black mb-4 relative z-10 group-hover:text-blue-600 transition-colors">
-                    {t}
-                  </h3>
-                  <p className="text-muted leading-relaxed text-base relative z-10">
-                    {b}
-                  </p>
+                <div className="group relative bg-white/[0.04] p-10 md:p-12 rounded-[32px] h-full border border-white/[0.08] hover:bg-white/[0.07] hover:border-blue-400/40 transition-all duration-500">
+                  {/* Glowing background effect on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[32px]" />
                   
-                  {/* Hover Accent Line */}
-                  <div className="absolute bottom-0 left-0 w-0 h-1 bg-blue-500 group-hover:w-full transition-all duration-500" />
+                  <div className="relative z-10">
+                    <div className="heading-display text-[7rem] md:text-[8rem] text-white/10 mb-4 leading-none group-hover:text-blue-400/20 transition-colors">
+                      {n}
+                    </div>
+                    <h3 className="heading text-2xl !text-white mb-4 group-hover:!text-blue-300 transition-colors">
+                      {t}
+                    </h3>
+                    <p className="text-white/60 leading-relaxed text-base group-hover:text-white/90 transition-colors">
+                      {b}
+                    </p>
+                  </div>
                 </div>
               </StaggerItem>
             ))}
