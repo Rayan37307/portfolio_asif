@@ -210,9 +210,13 @@ body {
 }
 .marquee-track {
   display: flex;
-  gap: 2.5rem;
   width: max-content;
-  animation: marquee 24s linear infinite;
+  animation: marquee 40s linear infinite;
+}
+.marquee-content {
+  display: flex;
+  gap: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 /* ── Keyframes ────────────────────────────────────── */

@@ -5,6 +5,7 @@ import { FaYoutube, FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { getLatestVideos } from "../lib/youtube";
 
 const WORDS = ["DISCIPLINE","EXECUTION","MINDSET","STRATEGY","RESULTS","ACTION","GROWTH","FOCUS"];
+const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
 
 export default async function Home() {
   const videos = await getLatestVideos("UCE6hrW3g0K_sj3XLvBxIC0g", 3);
@@ -53,11 +54,20 @@ export default async function Home() {
       <div style={{ borderTop:"1px solid var(--border)", borderBottom:"1px solid var(--border)", padding:"1rem 0", background:"var(--bg-card)" }}>
         <div className="marquee-wrap">
           <div className="marquee-track">
-            {[...WORDS, ...WORDS].map((w, i) => (
-              <span key={i} className="heading" style={{ fontSize:"0.85rem", letterSpacing:"0.2em", color: i % 5 === 0 ? "var(--accent)" : "var(--fg-muted)", whiteSpace:"nowrap" }}>
-                {w}
-              </span>
-            ))}
+            <div className="marquee-content">
+              {MARQUEE_ITEMS.map((w, i) => (
+                <span key={i} className="heading" style={{ fontSize:"0.85rem", letterSpacing:"0.2em", color: i % 5 === 0 ? "var(--accent)" : "var(--fg-muted)", whiteSpace:"nowrap" }}>
+                  {w}
+                </span>
+              ))}
+            </div>
+            <div className="marquee-content" aria-hidden="true">
+              {MARQUEE_ITEMS.map((w, i) => (
+                <span key={`dup-${i}`} className="heading" style={{ fontSize:"0.85rem", letterSpacing:"0.2em", color: i % 5 === 0 ? "var(--accent)" : "var(--fg-muted)", whiteSpace:"nowrap" }}>
+                  {w}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
