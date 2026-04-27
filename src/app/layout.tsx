@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
-import FloatingNav from "./components/FloatingNav";
+import Header from "./components/Header";
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-heading",
@@ -31,9 +31,11 @@ export default function RootLayout({
       lang="en"
       className={`${barlowCondensed.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans">
-        <FloatingNav />
-        {children}
+      <body className="font-sans">
+        <div className="app-wrapper">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   );
