@@ -6,8 +6,22 @@ import { motion } from "framer-motion";
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Check if device is touch or screen is too small
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isMobile = window.innerWidth < 1024;
+    
+    if (isTouchDevice || isMobile) {
+      setIsVisible(false);
+      document.body.classList.remove('custom-cursor-active');
+      return;
+    }
+
+    setIsVisible(true);
+    document.body.classList.add('custom-cursor-active');
+
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -34,8 +48,11 @@ export default function CustomCursor() {
     return () => {
       window.removeEventListener("mousemove", updateMousePosition);
       window.removeEventListener("mouseover", handleMouseOver);
+      document.body.classList.remove('custom-cursor-active');
     };
   }, []);
+
+  if (!isVisible) return null;
 
   return (
     <>

@@ -6,6 +6,10 @@ import { getLatestVideos } from "../lib/youtube";
 import { getSortedPostsData } from "../lib/posts";
 import { Reveal, StaggerContainer, StaggerItem, ParallaxHeroImage, AnimatedSVGLines, CountUp } from "./components/animations";
 import Hero3D from "./components/Hero3D";
+import EmailCapture from "./components/EmailCapture";
+import ScrollRevealQuote from "./components/ScrollRevealQuote";
+import CountdownTimer from "./components/CountdownTimer";
+import { Check, Calendar } from "lucide-react";
 
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
 const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
@@ -103,6 +107,8 @@ export default async function Home() {
               </div>
             </Reveal>
 
+            {/* Dark to Light Transition */}
+            <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
           </div>
         </Reveal>
       </section>
@@ -137,23 +143,13 @@ export default async function Home() {
           <span className="text-[10px] text-muted uppercase tracking-wider font-semibold">Trusted by 100+ businesses</span>
         </div>
       </section>
+      
+      <div className="px-4 md:px-8 max-w-[1400px] mx-auto w-full -mt-8">
+        <EmailCapture />
+      </div>
 
       {/* ─────────────── QUOTE SECTION ────────────────────── */}
-      <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full py-12 md:py-20 flex flex-col md:flex-row gap-8 md:gap-16 items-start">
-        <Reveal className="w-full md:w-1/4 pt-2">
-          <div className="flex flex-col">
-            <h3 className="heading text-lg">Muhammad Asif</h3>
-            <p className="text-muted text-sm font-medium">Professional creator</p>
-          </div>
-        </Reveal>
-
-        <Reveal delay={0.1} className="w-full md:w-3/4">
-          <h2 className="heading-display text-[clamp(2rem,5vw,4.5rem)] leading-[1.1] tracking-tight">
-            <span className="text-blue-500/60 text-[1.2em] leading-none absolute -ml-[0.6em] mt-[-0.1em]">"“</span>
-            I don't just create content. I engineer mindsets, dissect raw truths, and build systems that turn passive observers into <span className="gradient-text">relentless executors</span>.<span className="text-blue-500/60">”</span>
-          </h2>
-        </Reveal>
-      </section>
+      <ScrollRevealQuote />
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
@@ -280,7 +276,7 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── PHILOSOPHY ───────────────── */}
+      {/* ─────────────── PHILOSOPHY (BENTO GRID) ───────── */}
       <section id="method" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
           <p className="eyebrow mb-4">The Method</p>
@@ -289,21 +285,127 @@ export default async function Home() {
           </h2>
         </Reveal>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { n: "01", t: "Awaken", b: "Understanding your goals, fears, and challenges through deep introspection and brutal reality checks." },
-            { n: "02", t: "Build", b: "Transforming raw motivation into robust, repeatable systems and unbreakable daily habits." },
-            { n: "03", t: "Conquer", b: "Executing with clarity and precision to achieve your ultimate potential in life and business." },
-          ].map(({ n, t, b }) => (
-            <StaggerItem key={n}>
-              <div className="card p-8 bg-[#f9f9f9] border-none">
-                <div className="heading-display text-5xl text-blue-500/30 mb-6">{n}</div>
-                <h3 className="heading text-2xl mb-3">{t}</h3>
-                <p className="text-muted leading-relaxed text-sm">{b}</p>
+        <div className="bento-grid">
+          <Reveal className="h-full">
+            <div className="bento-card bento-card-featured h-full min-h-[400px] relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-8">
+                <div className="heading-display text-8xl text-blue-500/10 group-hover:text-blue-500/20 transition-colors">01</div>
               </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+              <div className="relative z-10">
+                <div className="w-12 h-12 rounded-xl bg-blue-500 flex items-center justify-center mb-6 shadow-lg shadow-blue-500/40">
+                  <span className="text-white font-bold">A</span>
+                </div>
+                <h3 className="heading text-3xl mb-4 text-white">Awaken</h3>
+                <p className="text-white/60 leading-relaxed text-lg max-w-[400px]">
+                  Understanding your goals, fears, and challenges through deep introspection and brutal reality checks. Identifying the "why" before the "how".
+                </p>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="flex flex-col gap-5">
+            <Reveal className="h-full">
+              <div className="bento-card h-full min-h-[190px] bg-white border border-border group">
+                 <div className="flex justify-between items-start mb-4">
+                   <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                     <span className="text-blue-600 font-bold">B</span>
+                   </div>
+                   <div className="heading-display text-4xl text-blue-500/10 group-hover:text-blue-500/20 transition-colors">02</div>
+                 </div>
+                 <h3 className="heading text-xl mb-2">Build</h3>
+                 <p className="text-muted text-sm leading-relaxed">
+                   Transforming raw motivation into robust, repeatable systems and unbreakable daily habits.
+                 </p>
+              </div>
+            </Reveal>
+
+            <Reveal className="h-full" delay={0.1}>
+              <div className="bento-card h-full min-h-[190px] bg-white border border-border group">
+                <div className="flex justify-between items-start mb-4">
+                   <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center">
+                     <span className="text-blue-600 font-bold">C</span>
+                   </div>
+                   <div className="heading-display text-4xl text-blue-500/10 group-hover:text-blue-500/20 transition-colors">03</div>
+                 </div>
+                 <h3 className="heading text-xl mb-2">Conquer</h3>
+                 <p className="text-muted text-sm leading-relaxed">
+                   Executing with clarity and precision to achieve your ultimate potential in life and business.
+                 </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <div className="px-4 md:px-8"><div className="rule" /></div>
+
+      {/* ─────────────── PRICING / INVESTMENT ────────── */}
+      <section id="pricing" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full scroll-mt-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <Reveal>
+            <p className="eyebrow mb-4">Investment</p>
+            <h2 className="heading-display text-[clamp(2.5rem,6vw,4.5rem)] mb-6">
+              Join the <span className="gradient-text">Inner Circle.</span>
+            </h2>
+            <p className="text-muted text-lg mb-8 max-w-[500px]">
+              Secure your spot in the next cohort of Backbenchers University. The only program designed to turn creators into founders.
+            </p>
+            
+            <div className="flex flex-col gap-6 mb-8">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
+                  <Calendar className="text-blue-600 w-6 h-6" />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-widest text-muted font-bold">Next Cohort Starts</div>
+                  <div className="text-lg font-bold">June 15, 2026</div>
+                </div>
+              </div>
+              
+              <div className="pt-4 border-t border-border max-w-max">
+                <div className="text-xs uppercase tracking-widest text-muted font-bold mb-3">Enrolling Closing In</div>
+                <CountdownTimer targetDate="2026-06-15T00:00:00" />
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.2} direction="left">
+            <div className="pricing-card">
+              <div className="pricing-badge">Limited to 50 creators</div>
+              <h3 className="heading text-2xl mb-2">Backbenchers Pro</h3>
+              <div className="flex items-baseline gap-1 mb-6">
+                <span className="text-4xl font-bold">$997</span>
+                <span className="text-muted text-sm">/ cohort access</span>
+              </div>
+              
+              <div className="space-y-4 mb-10">
+                {[
+                  "8 Weeks of Live Coaching Calls",
+                  "The Full Execution Operating System",
+                  "Direct Feedback on Your Content",
+                  "Access to Private Discord Community",
+                  "Lifetime Access to Material",
+                  "The 'Banger' Blueprint"
+                ].map((item, i) => (
+                  <div key={i} className="pricing-feature">
+                    <div className="pricing-feature-icon">
+                      <Check className="w-3 h-3 text-blue-600" />
+                    </div>
+                    {item}
+                  </div>
+                ))}
+              </div>
+              
+              <a href="#" className="btn btn-fill w-full py-5 text-lg shadow-xl shadow-blue-500/20 group">
+                Apply for Enrollment <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              
+              <p className="text-center text-[10px] text-muted uppercase tracking-widest mt-6">
+                100% Satisfaction Guarantee · Join 500+ Alumni
+              </p>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
@@ -431,11 +533,11 @@ export default async function Home() {
             {/* First Set */}
             <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }}>
               {[
-                { name: "Sarah J.", role: "Entrepreneur", text: "The mindset shift completely changed my business trajectory. Unbelievable value." },
-                { name: "Marcus T.", role: "Creator", text: "Rare to find content that balances high-level strategy with actionable tactics. Real deal." },
-                { name: "Elena R.", role: "Designer", text: "Stuck for months. The frameworks gave me the exact roadmap I needed to scale." },
-                { name: "David W.", role: "Founder", text: "Asif's execution engine is the only reason my startup survived year one." },
-                { name: "Chloe M.", role: "Content Creator", text: "I doubled my output in 30 days without burning out. Pure signal." },
+                { name: "Sarah J.", role: "Founder", text: "Revenue grew 340% in just 6 months after implementing the BU execution systems. A complete game changer." },
+                { name: "Marcus T.", role: "Content Creator", text: "Went from 2K to 47K followers in 90 days. The content frameworks are pure signal in a world of noise." },
+                { name: "Elena R.", role: "Scale-up Founder", text: "Built a 6-figure brand from absolute zero in under a year using the 'Inner Circle' strategies." },
+                { name: "David W.", role: "Agency Owner", text: "Landed 3 high-ticket brand deals worth $15K within 60 days of joining the BU cohort." },
+                { name: "Chloe M.", role: "Digital Artist", text: "Doubled my creative output while cutting my working hours in half. The mindset shifts are real." },
               ].map((t, i) => (
                 <div key={i} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>
@@ -460,11 +562,11 @@ export default async function Home() {
             {/* Duplicated Set for Infinite Loop */}
             <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }} aria-hidden="true">
               {[
-                { name: "Sarah J.", role: "Entrepreneur", text: "The mindset shift completely changed my business trajectory. Unbelievable value." },
-                { name: "Marcus T.", role: "Creator", text: "Rare to find content that balances high-level strategy with actionable tactics. Real deal." },
-                { name: "Elena R.", role: "Designer", text: "Stuck for months. The frameworks gave me the exact roadmap I needed to scale." },
-                { name: "David W.", role: "Founder", text: "Asif's execution engine is the only reason my startup survived year one." },
-                { name: "Chloe M.", role: "Content Creator", text: "I doubled my output in 30 days without burning out. Pure signal." },
+                { name: "Sarah J.", role: "Founder", text: "Revenue grew 340% in just 6 months after implementing the BU execution systems. A complete game changer." },
+                { name: "Marcus T.", role: "Content Creator", text: "Went from 2K to 47K followers in 90 days. The content frameworks are pure signal in a world of noise." },
+                { name: "Elena R.", role: "Scale-up Founder", text: "Built a 6-figure brand from absolute zero in under a year using the 'Inner Circle' strategies." },
+                { name: "David W.", role: "Agency Owner", text: "Landed 3 high-ticket brand deals worth $15K within 60 days of joining the BU cohort." },
+                { name: "Chloe M.", role: "Digital Artist", text: "Doubled my creative output while cutting my working hours in half. The mindset shifts are real." },
               ].map((t, i) => (
                 <div key={`dup-${i}`} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>
