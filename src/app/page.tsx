@@ -178,7 +178,7 @@ export default async function Home() {
           <Reveal delay={0.2}>
             <div className="flex gap-8 pt-8 border-t border-border">
               <div>
-                <CountUp target={130} suffix="K+" className="heading-display text-3xl md:text-4xl block" />
+                <CountUp target={150} suffix="K+" className="heading-display text-3xl md:text-4xl block" />
                 <div className="text-xs uppercase tracking-widest text-muted font-bold mt-1">YouTube</div>
               </div>
               <div>
@@ -186,7 +186,7 @@ export default async function Home() {
                 <div className="text-xs uppercase tracking-widest text-muted font-bold mt-1">Facebook</div>
               </div>
               <div>
-                <CountUp target={5} suffix="Y+" className="heading-display text-3xl md:text-4xl block" />
+                <CountUp target={1} suffix="Y+" className="heading-display text-3xl md:text-4xl block" />
                 <div className="text-xs uppercase tracking-widest text-muted font-bold mt-1">Creating</div>
               </div>
             </div>
