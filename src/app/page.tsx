@@ -5,6 +5,7 @@ import { FaYoutube, FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { getLatestVideos } from "../lib/youtube";
 import { getSortedPostsData } from "../lib/posts";
 import { Reveal, StaggerContainer, StaggerItem, ParallaxHeroImage, AnimatedSVGLines, CountUp } from "./components/animations";
+import Hero3D from "./components/Hero3D";
 
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
 const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
@@ -20,14 +21,17 @@ export default async function Home() {
       <section className="px-4 md:px-8">
         <Reveal delay={0}>
           <div className="relative w-full h-[75vh] min-h-[600px] rounded-[32px] overflow-hidden bg-[#111] flex flex-col justify-center items-center text-center">
-            
+
             {/* Background Image */}
-            <ParallaxHeroImage 
-              src="/creator_portrait.jpg" 
-              alt="Aesthetic background" 
-              className="object-cover opacity-80 mix-blend-luminosity blur-xl scale-110" 
+            <ParallaxHeroImage
+              src="/hero_bg.png"
+              alt="Aesthetic background"
+              className="object-cover opacity-60 blur- scale-105"
             />
-            
+
+            {/* 3D Abstract Object */}
+            <Hero3D />
+
             {/* Corner Brackets */}
             <div className="bracket-tl hidden md:block"></div>
             <div className="bracket-tr hidden md:block"></div>
@@ -69,13 +73,13 @@ export default async function Home() {
 
             {/* Floating Right Card */}
             <Reveal delay={0.6} direction="left" className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-10 hidden lg:flex flex-col gap-4">
-              
+
               {/* Clients Pill */}
               <div className="self-end bg-white/10 backdrop-blur-md border border-white/20 rounded-full py-2 px-4 flex items-center gap-3">
                 <div className="flex -space-x-2">
-                  {[1,2,3].map(i => (
+                  {[1, 2, 3].map(i => (
                     <div key={i} className="w-6 h-6 rounded-full bg-gray-300 border-2 border-transparent overflow-hidden">
-                       <Image src="/creator_portrait.jpg" alt="Client" width={24} height={24} className="object-cover w-full h-full grayscale" />
+                      <Image src="/creator_portrait.jpg" alt="Client" width={24} height={24} className="object-cover w-full h-full grayscale" />
                     </div>
                   ))}
                 </div>
@@ -85,7 +89,7 @@ export default async function Home() {
               {/* Main Floating Card */}
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 w-[240px] text-left shadow-2xl">
                 <h3 className="text-white font-medium text-sm leading-tight mb-3">
-                  Professional creative<br/>entrepreneur
+                  Professional creative<br />entrepreneur
                 </h3>
                 <div className="w-full h-[120px] rounded-lg overflow-hidden relative mb-4">
                   <Image src="/creator_portrait.jpg" alt="Creator" fill className="object-cover grayscale" />
@@ -123,11 +127,11 @@ export default async function Home() {
             </div>
           </div>
         </div>
-        
+
         {/* Rating Right Side */}
         <div className="hidden md:flex flex-col items-end flex-shrink-0">
           <div className="flex gap-1 mb-1">
-            {[1,2,3,4,5].map(i => <Star key={i} size={14} className="fill-black text-black" />)}
+            {[1, 2, 3, 4, 5].map(i => <Star key={i} size={14} className="fill-black text-black" />)}
             <span className="text-xs font-bold ml-1">4.9/5</span>
           </div>
           <span className="text-[10px] text-muted uppercase tracking-wider font-semibold">Trusted by 100+ businesses</span>
@@ -142,7 +146,7 @@ export default async function Home() {
             <p className="text-muted text-sm font-medium">Professional creator</p>
           </div>
         </Reveal>
-        
+
         <Reveal delay={0.1} className="w-full md:w-3/4">
           <h2 className="heading-display text-[clamp(2rem,5vw,4.5rem)] leading-[1.1] tracking-tight">
             <span className="text-muted text-[1.2em] leading-none absolute -ml-[0.6em] mt-[-0.1em]">"</span>
@@ -255,9 +259,9 @@ export default async function Home() {
             </p>
             <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[1000px] text-left mb-12">
               {[
-                { title:"Mindset Protocol", desc:"Eradicate limiting beliefs and build undeniable confidence." },
-                { title:"Execution Engine", desc:"Daily systems to guarantee deep work and compound output." },
-                { title:"The Inner Circle", desc:"Direct access to a network of like-minded builders." }
+                { title: "Mindset Protocol", desc: "Eradicate limiting beliefs and build undeniable confidence." },
+                { title: "Execution Engine", desc: "Daily systems to guarantee deep work and compound output." },
+                { title: "The Inner Circle", desc: "Direct access to a network of like-minded builders." }
               ].map((feature, i) => (
                 <StaggerItem key={i}>
                   <div className="bg-white p-6 rounded-[16px] shadow-sm border border-border/50">
@@ -285,9 +289,9 @@ export default async function Home() {
 
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
-            { n:"01", t:"Awaken", b:"Understanding your goals, fears, and challenges through deep introspection and brutal reality checks." },
-            { n:"02", t:"Build",  b:"Transforming raw motivation into robust, repeatable systems and unbreakable daily habits." },
-            { n:"03", t:"Conquer",b:"Executing with clarity and precision to achieve your ultimate potential in life and business." },
+            { n: "01", t: "Awaken", b: "Understanding your goals, fears, and challenges through deep introspection and brutal reality checks." },
+            { n: "02", t: "Build", b: "Transforming raw motivation into robust, repeatable systems and unbreakable daily habits." },
+            { n: "03", t: "Conquer", b: "Executing with clarity and precision to achieve your ultimate potential in life and business." },
           ].map(({ n, t, b }) => (
             <StaggerItem key={n}>
               <div className="card p-8 bg-[#f9f9f9] border-none">
@@ -307,7 +311,7 @@ export default async function Home() {
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
             <div>
-              <h2 className="heading-display text-4xl md:text-5xl">Latest Work</h2>
+              <h2 className="heading-display text-4xl md:text-5xl">Latest Contents</h2>
             </div>
             <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="btn btn-outline text-sm">
               All Videos
@@ -412,45 +416,80 @@ export default async function Home() {
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
       {/* ─────────────── TESTIMONIALS ─────────────── */}
-      <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
-        <Reveal>
-          <p className="eyebrow mb-4">Community Impact</p>
-          <h2 className="heading-display text-[clamp(2rem,5vw,3.5rem)] mb-12">Real Results.</h2>
-        </Reveal>
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            { name:"Sarah J.",  role:"Entrepreneur", text:"The mindset shift completely changed my business trajectory. Unbelievable value." },
-            { name:"Marcus T.", role:"Creator",       text:"Rare to find content that balances high-level strategy with actionable tactics. Real deal." },
-            { name:"Elena R.",  role:"Designer",      text:"Stuck for months. The frameworks gave me the exact roadmap I needed to scale." },
-          ].map((t, i) => (
-            <StaggerItem key={i}>
-              <div className="card p-8 bg-[#f9f9f9] border-none h-full flex flex-col justify-between">
-                <div>
-                  <div className="flex gap-1 mb-4">
-                    {[1,2,3,4,5].map(i => <Star key={i} size={14} className="fill-black text-black" />)}
-                  </div>
-                  <p className="text-muted leading-relaxed text-sm mb-8">"{t.text}"</p>
-                </div>
-                <div className="flex items-center gap-3 pt-4 border-t border-border">
-                  <div className="w-10 h-10 rounded-full bg-gray-200" />
+      <section className="py-12 md:py-20 w-full overflow-hidden">
+        <div className="px-4 md:px-8 max-w-[1400px] mx-auto w-full mb-12">
+          <Reveal>
+            <p className="eyebrow mb-4">Community Impact</p>
+            <h2 className="heading-display text-[clamp(2rem,5vw,3.5rem)]">Real Results.</h2>
+          </Reveal>
+        </div>
+
+        <div className="marquee-wrap">
+          <div className="marquee-track" style={{ animationDuration: '40s' }}>
+            {/* First Set */}
+            <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }}>
+              {[
+                { name: "Sarah J.", role: "Entrepreneur", text: "The mindset shift completely changed my business trajectory. Unbelievable value." },
+                { name: "Marcus T.", role: "Creator", text: "Rare to find content that balances high-level strategy with actionable tactics. Real deal." },
+                { name: "Elena R.", role: "Designer", text: "Stuck for months. The frameworks gave me the exact roadmap I needed to scale." },
+                { name: "David W.", role: "Founder", text: "Asif's execution engine is the only reason my startup survived year one." },
+                { name: "Chloe M.", role: "Content Creator", text: "I doubled my output in 30 days without burning out. Pure signal." },
+              ].map((t, i) => (
+                <div key={i} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
                   <div>
-                    <div className="heading text-sm">{t.name}</div>
-                    <div className="text-[10px] uppercase tracking-widest text-muted font-bold mt-1">{t.role}</div>
+                    <div className="flex gap-1 mb-4">
+                      {[1, 2, 3, 4, 5].map(star => <Star key={star} size={14} className="fill-black text-black" />)}
+                    </div>
+                    <p className="text-muted leading-relaxed text-sm">"{t.text}"</p>
+                  </div>
+                  <div className="flex items-center gap-3 pt-4 border-t border-border">
+                    <div className="w-10 h-10 rounded-full bg-gray-200 shrink-0" />
+                    <div>
+                      <div className="heading text-sm">{t.name}</div>
+                      <div className="text-[10px] uppercase tracking-widest text-muted font-bold mt-1">{t.role}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerContainer>
+              ))}
+            </div>
+
+            {/* Duplicated Set for Infinite Loop */}
+            <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }} aria-hidden="true">
+              {[
+                { name: "Sarah J.", role: "Entrepreneur", text: "The mindset shift completely changed my business trajectory. Unbelievable value." },
+                { name: "Marcus T.", role: "Creator", text: "Rare to find content that balances high-level strategy with actionable tactics. Real deal." },
+                { name: "Elena R.", role: "Designer", text: "Stuck for months. The frameworks gave me the exact roadmap I needed to scale." },
+                { name: "David W.", role: "Founder", text: "Asif's execution engine is the only reason my startup survived year one." },
+                { name: "Chloe M.", role: "Content Creator", text: "I doubled my output in 30 days without burning out. Pure signal." },
+              ].map((t, i) => (
+                <div key={`dup-${i}`} className="card p-8 bg-[#f9f9f9] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
+                  <div>
+                    <div className="flex gap-1 mb-4">
+                      {[1, 2, 3, 4, 5].map(star => <Star key={star} size={14} className="fill-black text-black" />)}
+                    </div>
+                    <p className="text-muted leading-relaxed text-sm">"{t.text}"</p>
+                  </div>
+                  <div className="flex items-center gap-3 pt-4 border-t border-border">
+                    <div className="w-10 h-10 rounded-full bg-gray-200 shrink-0" />
+                    <div>
+                      <div className="heading text-sm">{t.name}</div>
+                      <div className="text-[10px] uppercase tracking-widest text-muted font-bold mt-1">{t.role}</div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* ─────────────── FOOTER ───────────────────── */}
       <footer className="mt-8 px-4 md:px-8">
         <div className="bg-[#111] rounded-[32px] p-8 md:p-16 flex flex-col items-center text-center relative overflow-hidden">
-          
+
           <Reveal>
             <h2 className="heading-display text-white text-[clamp(3rem,8vw,6rem)] leading-none mb-8">
-              Join our <br/> community.
+              Join our <br /> community.
             </h2>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="#" target="_blank" rel="noopener noreferrer" className="btn btn-fill bg-[#25D366] text-white hover:bg-[#1ebe5a] text-lg px-8 py-4 flex items-center shadow-[0_0_24px_rgba(37,211,102,0.3)] border-none">
@@ -465,7 +504,7 @@ export default async function Home() {
               asif®
             </div>
             <div className="flex gap-6">
-              {[["YouTube","https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g"],["Facebook","#"],["Instagram","#"]].map(([l,h]) => (
+              {[["YouTube", "https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g"], ["Facebook", "#"], ["Instagram", "#"]].map(([l, h]) => (
                 <a key={l} href={h} className="text-white/60 hover:text-white text-sm font-medium transition-colors">{l}</a>
               ))}
             </div>
