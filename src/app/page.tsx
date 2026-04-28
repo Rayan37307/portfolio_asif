@@ -12,6 +12,7 @@ import AmbitionSection from "./components/AmbitionSection";
 import MethodSection from "./components/MethodSection";
 import BrandMarquee from "./components/BrandMarquee";
 import JournalSection from "./components/JournalSection";
+import ResultsSection from "./components/ResultsSection";
 
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
 const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
@@ -423,57 +424,8 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-{/* ─────────────── REAL RESULTS ─────────────── */}
-      <section className="py-12 md:py-20 w-full overflow-hidden">
-        <div className="px-4 md:px-8 max-w-[1400px] mx-auto w-full mb-12">
-          <Reveal>
-            <p className="eyebrow mb-4 !text-blue-400">Community Impact</p>
-            <h2 className="heading-display text-[clamp(2rem,5vw,3.5rem)] !text-white">Real Results.</h2>
-          </Reveal>
-        </div>
-
-        <div className="marquee-wrap">
-          <div className="marquee-track" style={{ animationDuration: '40s' }}>
-            <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }}>
-              {TESTIMONIALS.map((t, i) => (
-                <div key={i} className="card p-8 bg-white/[0.03] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
-                  <div>
-                    <div className="flex gap-1 mb-4">
-                      {[1, 2, 3, 4, 5].map(star => <Star key={star} size={14} className="fill-blue-500 text-blue-500" />)}
-                    </div>
-                    <p className="text-muted leading-relaxed text-sm">"{t.text}"</p>
-                  </div>
-                  <div className="flex items-center gap-3 pt-4 border-t border-border">
-                    <div>
-                      <div className="heading text-sm">{t.name}</div>
-                      <div className="text-[10px] uppercase tracking-widest text-muted font-bold mt-1">{t.role}</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="marquee-content" style={{ gap: '2rem', paddingRight: '2rem' }} aria-hidden="true">
-              {TESTIMONIALS.map((t, i) => (
-                <div key={`dup-${i}`} className="card p-8 bg-white/[0.03] border-none w-[320px] md:w-[400px] shrink-0 h-[260px] flex flex-col justify-between cursor-default">
-                  <div>
-                    <div className="flex gap-1 mb-4">
-                      {[1, 2, 3, 4, 5].map(star => <Star key={star} size={14} className="fill-blue-500 text-blue-500" />)}
-                    </div>
-                    <p className="text-muted leading-relaxed text-sm">"{t.text}"</p>
-                  </div>
-                  <div className="flex items-center gap-3 pt-4 border-t border-border">
-                    <div>
-                      <div className="heading text-sm">{t.name}</div>
-                      <div className="text-[10px] uppercase tracking-widest text-muted font-bold mt-1">{t.role}</div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ─────────────── REAL RESULTS (UPGRADED) ─────────── */}
+      <ResultsSection testimonials={TESTIMONIALS} />
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
