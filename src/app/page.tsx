@@ -323,12 +323,16 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── CONTENT ──────────────────── */}
+      {/* ─────────────── LATEST CONTENT ──────────────────── */}
       <section id="content" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-8">
             <div>
-              <h2 className="heading-display text-4xl md:text-5xl">Latest Contents</h2>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="w-8 h-[1px] bg-blue-500" />
+                <span className="text-blue-400 text-xs font-black uppercase tracking-[0.4em]">Broadcast</span>
+              </div>
+              <h2 className="heading-display text-4xl md:text-5xl text-white">Latest Contents.</h2>
             </div>
             <a href="https://youtube.com/channel/UCE6hrW3g0K_sj3XLvBxIC0g" target="_blank" rel="noopener noreferrer" className="btn btn-outline text-sm">
               All Videos
@@ -339,18 +343,20 @@ export default async function Home() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {videos.length > 0 ? videos.map((v, idx) => (
             <StaggerItem key={v.id}>
-              <a href={v.link} target="_blank" rel="noopener noreferrer" className="vcard border-none bg-white/[0.03]">
-                <div className="relative aspect-video overflow-hidden rounded-t-[24px]">
-                  <Image src={v.thumbnail} alt={v.title} fill className="vthumb object-cover" />
-                  <div className="vplay">
-                    <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                      <Play className="w-4 h-4 text-white ml-1" />
+              <a href={v.link} target="_blank" rel="noopener noreferrer" className="group block">
+                <div className="bg-white/[0.03] border border-white/5 rounded-[32px] overflow-hidden hover:bg-white/[0.06] hover:border-blue-500/30 transition-all duration-500 h-full">
+                  <div className="relative aspect-video overflow-hidden">
+                    <Image src={v.thumbnail} alt={v.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center shadow-xl">
+                        <Play size={16} className="fill-white ml-0.5" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <span className="text-xs tracking-widest uppercase font-bold text-muted mb-2 block">Video {idx + 1}</span>
-                  <h3 className="vtitle heading text-xl leading-tight mb-2">{v.title}</h3>
+                  <div className="p-8">
+                    <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest mb-4 block">Video {idx + 1}</span>
+                    <h3 className="heading text-xl !text-white mb-0 line-clamp-2 group-hover:!text-blue-400 transition-colors">{v.title}</h3>
+                  </div>
                 </div>
               </a>
             </StaggerItem>
@@ -363,30 +369,37 @@ export default async function Home() {
       {/* ─────────────── BANGER CONTENTS ──────────── */}
       <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
-          <div className="mb-8">
-            <p className="eyebrow mb-2">Must Watch</p>
-            <h2 className="heading-display text-4xl md:text-5xl mb-4">Banger Contents.</h2>
-            <p className="text-muted text-sm max-w-[500px]">Hand-picked videos that hit different. These are the ones that changed everything.</p>
+          <div className="mb-12">
+            <p className="eyebrow mb-4">Must Watch</p>
+            <h2 className="heading-display text-4xl md:text-6xl mb-6">Banger Contents.</h2>
+            <p className="text-white/50 text-lg max-w-[600px] font-medium leading-relaxed">
+              Hand-picked videos that hit different. These are the ones that changed everything.
+            </p>
           </div>
         </Reveal>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             { id: "O7cYmFH6GwE", thumb: "/banger-1.avif", title: "Education Trap: যেভাবে 99.63% মানুষ ভুল পথে দৌড়াচ্ছে 🤫", views: "Viral" },
           ].map((video, i) => (
             <StaggerItem key={i}>
-              <a href={`https://youtu.be/${video.id}`} target="_blank" rel="noopener noreferrer" className="vcard border-none bg-white/[0.03]">
-                <div className="relative aspect-video overflow-hidden rounded-t-[24px]">
-                  <Image src={video.thumb} alt={video.title} fill className="vthumb object-cover" />
-                  <div className="vplay">
-                    <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center shadow-lg shadow-blue-500/30">
-                      <Play className="w-4 h-4 text-white ml-1" />
+              <a href={`https://youtu.be/${video.id}`} target="_blank" rel="noopener noreferrer" className="group block">
+                <div className="bg-white/[0.03] border border-white/5 rounded-[40px] overflow-hidden hover:bg-white/[0.06] hover:border-blue-500/30 transition-all duration-500">
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image src={video.thumb} alt={video.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 rounded-full bg-blue-600/90 backdrop-blur-md flex items-center justify-center shadow-2xl scale-90 group-hover:scale-100 transition-transform">
+                        <Play size={20} className="fill-white ml-1" />
+                      </div>
+                    </div>
+                    <div className="absolute top-6 left-6">
+                      <span className="px-3 py-1 bg-blue-500 text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg">🔥 {video.views}</span>
                     </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <span className="text-xs tracking-widest uppercase font-bold text-muted mb-2 block">🔥 {video.views}</span>
-                  <h3 className="vtitle heading text-xl leading-tight mb-2">{video.title}</h3>
+                  <div className="p-10">
+                    <h3 className="heading text-2xl !text-white mb-0 leading-tight group-hover:!text-blue-400 transition-colors">{video.title}</h3>
+                  </div>
                 </div>
               </a>
             </StaggerItem>
