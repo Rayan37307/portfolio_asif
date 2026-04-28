@@ -63,14 +63,14 @@ export default async function Home() {
             </Reveal>
           </div>
 
-          {/* Side Content: Left (Details) */}
-          <div className="absolute bottom-12 left-12 max-w-[280px] hidden lg:block z-30">
-            <Reveal delay={0.4} direction="left">
-              <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">The Vision</p>
-              <h4 className="text-white text-xl font-medium mb-4 leading-tight">
+          {/* Bottom/Side Content: Details */}
+          <div className="absolute bottom-8 md:bottom-12 left-0 md:left-12 w-full md:w-auto md:max-w-[280px] z-30 flex flex-col items-center md:items-start text-center md:text-left px-4">
+            <Reveal delay={0.4} direction="up">
+              <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em] mb-2 md:mb-4">The Vision</p>
+              <h4 className="text-white text-lg md:text-xl font-medium mb-3 md:mb-4 leading-tight">
                 Built for those who refuse to be average.
               </h4>
-              <p className="text-white/40 text-xs leading-relaxed mb-8">
+              <p className="text-white/40 text-xs leading-relaxed mb-6 md:mb-8 max-w-[300px] md:max-w-none">
                 Turning raw motivation into repeatable systems. Join the network of high-performance builders.
               </p>
               <div className="flex gap-4">
