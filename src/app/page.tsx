@@ -9,6 +9,9 @@ import IdeaMatrix from "./components/IdeaMatrix";
 import Hero3D from "./components/Hero3D";
 import BUVisual from "./components/BUVisual";
 import AmbitionSection from "./components/AmbitionSection";
+import MethodSection from "./components/MethodSection";
+import BrandMarquee from "./components/BrandMarquee";
+import JournalSection from "./components/JournalSection";
 
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
 const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
@@ -121,28 +124,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ─────────────── LOGO MARQUEE ──────────────────── */}
-      <section className="px-4 md:px-8 border-y border-white/5 py-8 bg-black flex items-center justify-between gap-8">
-        <div className="flex-1 marquee-wrap opacity-70">
-          <div className="marquee-track">
-            <div className="marquee-content grayscale">
-              {["CONTENT", "CREATION", "EDUCATION", "TECHNOLOGY", "ENTERTAINMENT"].map((logo) => (
-                <span key={logo} className="heading text-xl md:text-3xl text-black">
-                  {logo}
-                </span>
-              ))}
-            </div>
-            <div className="marquee-content grayscale" aria-hidden="true">
-              {["CONTENT", "CREATION", "EDUCATION", "TECHNOLOGY", "ENTERTAINMENT"].map((logo) => (
-                <span key={`dup-${logo}`} className="heading text-xl md:text-3xl text-white">
-                  {logo}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-      </section>
+      {/* ─────────────── LOGO MARQUEE (UPGRADED) ───────── */}
+      <BrandMarquee />
 
       {/* ─────────────── QUOTE SECTION (REDESIGNED) ────────── */}
       <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full py-20">
@@ -330,63 +313,8 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── PHILOSOPHY (REDESIGNED - DARK) ── */}
-      <section id="method" className="px-4 md:px-8 max-w-[1500px] mx-auto w-full">
-        <div className="bg-[#0a0f1e] rounded-[48px] p-8 md:p-24 relative overflow-hidden border border-white/5">
-          {/* Ambient Glows */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
-
-          <Reveal>
-            <div className="mb-20">
-              <span className="text-blue-400 text-xs font-black uppercase tracking-[0.3em] mb-6 block">STEP</span>
-              <h2 className="heading-display text-white text-[clamp(2.5rem,5vw,4rem)] leading-[1.05] tracking-tighter max-w-[900px]">
-                Maximize your growth with a <br />
-                <span className="text-blue-400">Method</span> that generates results.
-              </h2>
-            </div>
-          </Reveal>
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-            {[
-              { 
-                n: "1", 
-                t: "Awaken", 
-                b: "Understanding your goals, fears, and challenges through deep introspection and brutal reality checks."
-              },
-              { 
-                n: "2", 
-                t: "Build", 
-                b: "Transforming raw motivation into robust, repeatable systems and unbreakable daily habits."
-              },
-              { 
-                n: "3", 
-                t: "Conquer", 
-                b: "Executing with clarity and precision to achieve your ultimate potential in life and business."
-              },
-            ].map(({ n, t, b }) => (
-              <StaggerItem key={n}>
-                <div className="group relative bg-white/[0.04] p-10 md:p-12 rounded-[32px] h-full border border-white/[0.08] hover:bg-white/[0.07] hover:border-blue-400/40 transition-all duration-500">
-                  {/* Glowing background effect on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-[32px]" />
-                  
-                  <div className="relative z-10">
-                    <div className="heading-display text-[7rem] md:text-[8rem] text-white/10 mb-4 leading-none group-hover:text-blue-400/20 transition-colors">
-                      {n}
-                    </div>
-                    <h3 className="heading text-2xl !text-white mb-4 group-hover:!text-blue-300 transition-colors">
-                      {t}
-                    </h3>
-                    <p className="text-white/60 leading-relaxed text-base group-hover:text-white/90 transition-colors">
-                      {b}
-                    </p>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
+      {/* ─────────────── PHILOSOPHY SECTION (UPGRADED) ── */}
+      <MethodSection />
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
@@ -468,39 +396,8 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── INSIGHTS / BLOG ─────────────────── */}
-      <section id="journal" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
-        <Reveal>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
-            <div>
-              <h2 className="heading-display text-4xl md:text-5xl">Journal</h2>
-            </div>
-            <Link href="/blog" className="btn btn-outline text-sm">
-              Read All
-            </Link>
-          </div>
-        </Reveal>
-
-        <StaggerContainer className="flex flex-col gap-4">
-          {posts.length > 0 ? posts.map((post: any, i: number) => (
-            <StaggerItem key={post.id || i}>
-              <Link href={`/blog/${post.id}`} className="irow">
-                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-8 flex-1">
-                  <span className="text-xs font-semibold text-muted uppercase tracking-widest md:w-[120px] shrink-0">
-                    {post.date}
-                  </span>
-                  <h3 className="heading text-xl md:text-2xl">{post.title}</h3>
-                </div>
-                <span className="irow-arrow hidden md:block">
-                  <ArrowRight size={24} strokeWidth={1.5} />
-                </span>
-              </Link>
-            </StaggerItem>
-          )) : (
-            <p className="text-muted">No posts available.</p>
-          )}
-        </StaggerContainer>
-      </section>
+      {/* ─────────────── JOURNAL SECTION (UPGRADED) ────────── */}
+      <JournalSection posts={posts} />
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 

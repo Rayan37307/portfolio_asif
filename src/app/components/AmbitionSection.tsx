@@ -46,7 +46,7 @@ export default function AmbitionSection() {
       {/* Massive Background Text */}
       <motion.div 
         style={{ x: xText }}
-        className="absolute top-1/2 left-0 -translate-y-1/2 text-[25vw] font-black text-white/[0.02] whitespace-nowrap pointer-events-none select-none z-0 uppercase tracking-tighter"
+        className="absolute top-1/2 left-0 -translate-y-1/2 text-[25vw] font-black text-white/[0.07] whitespace-nowrap pointer-events-none select-none z-0 uppercase tracking-tighter leading-none mix-blend-soft-light"
       >
         AMBITION AMBITION AMBITION
       </motion.div>
