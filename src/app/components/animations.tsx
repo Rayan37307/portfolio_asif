@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, useScroll, useTransform, useMotionValue, useAnimationFrame } from "framer-motion";
-import { useRef, type ReactNode } from "react";
+import { useRef, useState, useEffect, useCallback, type ReactNode } from "react";
 import Image from "next/image";
 
 /* ─── Scroll-triggered reveal ─────────────────────── */
@@ -242,5 +242,132 @@ export function AnimatedSVGLines() {
         strokeDasharray="4 4"
       />
     </svg>
+  );
+}
+
+/* ─── Split Text Reveal (Hero) ────────────────────── */
+export function SplitTextReveal({
+  text,
+  className,
+  delay = 0,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true });
+
+  const chars = text.split("");
+
+  return (
+    <motion.div ref={ref} className={className} aria-label={text}>
+      {chars.map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 50, rotateX: -90 }}
+          animate={inView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
+          transition={{
+            duration: 0.5,
+            delay: delay + i * 0.04,
+            ease: [0.215, 0.61, 0.355, 1],
+          }}
+          style={{ display: "inline-block", transformOrigin: "bottom" }}
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.div>
+  );
+}
+
+/* ─── Text Scramble Effect ────────────────────────── */
+export function TextScramble({
+  text,
+  className,
+  delay = 0,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const [displayText, setDisplayText] = useState(text);
+  const chars = "!@#$%^&*()_+-=[]{}|;:,.<>?/~`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  const scramble = useCallback(() => {
+    let iteration = 0;
+    const maxIterations = text.length;
+    const interval = setInterval(() => {
+      setDisplayText(
+        text
+          .split("")
+          .map((char, idx) => {
+            if (idx < iteration) return text[idx];
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join("")
+      );
+      iteration += 1 / 2;
+      if (iteration >= maxIterations) {
+        clearInterval(interval);
+        setDisplayText(text);
+      }
+    }, 30);
+    return () => clearInterval(interval);
+  }, [text]);
+
+  useEffect(() => {
+    if (inView) {
+      const timeout = setTimeout(scramble, delay * 1000);
+      return () => clearTimeout(timeout);
+    }
+  }, [inView, delay, scramble]);
+
+  return (
+    <span ref={ref} className={className}>
+      {displayText}
+    </span>
+  );
+}
+
+/* ─── Magnetic Button Wrapper ─────────────────────── */
+export function MagneticButton({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const handleMouse = (e: React.MouseEvent) => {
+    const rect = ref.current?.getBoundingClientRect();
+    if (!rect) return;
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    x.set((e.clientX - centerX) * 0.15);
+    y.set((e.clientY - centerY) * 0.15);
+  };
+
+  const handleLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouse}
+      onMouseLeave={handleLeave}
+      style={{ x, y }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
   );
 }
