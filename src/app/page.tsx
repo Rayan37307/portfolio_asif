@@ -41,9 +41,10 @@ export default async function Home() {
           {/* Script Overlay */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
             <Reveal delay={0.6}>
-              <span className="font-script text-[clamp(2rem,6vw,6rem)] text-blue-400 drop-shadow-[0_0_40px_rgba(37,99,235,0.5)] rotate-[-4deg] translate-y-[35%] translate-x-[2%] opacity-90 leading-tight">
-                Engineering Mindsets
-              </span>
+              <div className="font-script text-[clamp(2.5rem,8vw,6rem)] text-blue-400 drop-shadow-[0_0_40px_rgba(37,99,235,0.5)] rotate-[-4deg] md:translate-y-[35%] translate-y-[80%] translate-x-[2%] opacity-90 leading-[0.8] md:leading-tight text-center flex flex-col md:block">
+                <span>Engineering</span>
+                <span> Mindsets</span>
+              </div>
             </Reveal>
           </div>
 
@@ -213,18 +214,19 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── CONTENT IDEAS GRAPH ─────────────── */}
+      {/* ─────────────── CONTENT ECOSYSTEM (BENTO GRID) ─── */}
       <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
         <Reveal>
           <p className="eyebrow mb-4">Ecosystem</p>
-          <h2 className="heading-display text-4xl md:text-5xl mb-12">
-            The Idea Matrix.
+          <h2 className="heading-display text-4xl md:text-5xl mb-4">
+            Content Pillars.
           </h2>
+          <p className="text-muted text-lg max-w-[550px] mb-12 font-medium leading-relaxed">
+            The core disciplines that power every piece of content, strategy, and system I build.
+          </p>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <IdeaMatrix />
-        </Reveal>
+        <IdeaMatrix />
       </section>
 
       <div className="px-4 md:px-8"><div className="rule" /></div>

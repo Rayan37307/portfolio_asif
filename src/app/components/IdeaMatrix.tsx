@@ -1,123 +1,183 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Brain, Zap, Target, Eye, Rocket, Users, Lightbulb, TrendingUp } from "lucide-react";
 
-interface BubbleData {
-  label: string;
-  size: number;
-  delay: number;
-  duration: number;
-  x: number;
-  y: number;
-  color: string;
-}
-
-const BUBBLES: BubbleData[] = [
-  { label: "Mindset Shifts", size: 140, delay: 0, duration: 8, x: 15, y: 20, color: "blue" },
-  { label: "Daily Execution", size: 120, delay: 0.5, duration: 10, x: 75, y: 15, color: "blue" },
-  { label: "Content Strategy", size: 130, delay: 1, duration: 9, x: 10, y: 65, color: "indigo" },
-  { label: "Brand Building", size: 110, delay: 0.3, duration: 7, x: 80, y: 70, color: "indigo" },
-  { label: "AI & Automation", size: 100, delay: 0.8, duration: 11, x: 50, y: 10, color: "blue" },
-  { label: "Community", size: 90, delay: 0.2, duration: 8, x: 5, y: 45, color: "indigo" },
-  { label: "Revenue Growth", size: 95, delay: 0.6, duration: 9, x: 85, y: 45, color: "blue" },
+const PILLARS = [
+  {
+    icon: Brain,
+    title: "Mindset Engineering",
+    desc: "Rewiring mental models for peak performance. Breaking limiting beliefs with systems thinking.",
+    accent: "from-blue-500/20 to-blue-600/5",
+    border: "hover:border-blue-500/40",
+    iconBg: "bg-blue-500/15 border-blue-500/25",
+    iconColor: "text-blue-400",
+    span: "md:col-span-2 md:row-span-2", // Large featured card
+    featured: true,
+  },
+  {
+    icon: Zap,
+    title: "Daily Execution",
+    desc: "Compound actions that build unstoppable momentum.",
+    accent: "from-indigo-500/15 to-indigo-600/5",
+    border: "hover:border-indigo-500/40",
+    iconBg: "bg-indigo-500/15 border-indigo-500/25",
+    iconColor: "text-indigo-400",
+    span: "",
+    featured: false,
+  },
+  {
+    icon: Target,
+    title: "Content Strategy",
+    desc: "Creating viral, high-impact content that converts.",
+    accent: "from-violet-500/15 to-violet-600/5",
+    border: "hover:border-violet-500/40",
+    iconBg: "bg-violet-500/15 border-violet-500/25",
+    iconColor: "text-violet-400",
+    span: "",
+    featured: false,
+  },
+  {
+    icon: TrendingUp,
+    title: "Revenue Growth",
+    desc: "Monetization frameworks that scale.",
+    accent: "from-emerald-500/15 to-emerald-600/5",
+    border: "hover:border-emerald-500/40",
+    iconBg: "bg-emerald-500/15 border-emerald-500/25",
+    iconColor: "text-emerald-400",
+    span: "",
+    featured: false,
+  },
+  {
+    icon: Lightbulb,
+    title: "AI & Automation",
+    desc: "Leveraging cutting-edge tools to 10x output.",
+    accent: "from-amber-500/15 to-amber-600/5",
+    border: "hover:border-amber-500/40",
+    iconBg: "bg-amber-500/15 border-amber-500/25",
+    iconColor: "text-amber-400",
+    span: "",
+    featured: false,
+  },
+  {
+    icon: Users,
+    title: "Community Building",
+    desc: "Growing engaged, loyal audiences that drive real impact and change lives.",
+    accent: "from-cyan-500/15 to-cyan-600/5",
+    border: "hover:border-cyan-500/40",
+    iconBg: "bg-cyan-500/15 border-cyan-500/25",
+    iconColor: "text-cyan-400",
+    span: "md:col-span-2",
+    featured: false,
+  },
 ];
 
-function Bubble({ data, scale }: { data: BubbleData; scale: number }) {
-  const colorClasses: Record<string, string> = {
-    blue: "bg-blue-500/10 border-blue-500/30 text-blue-300 hover:bg-blue-500/20 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.2)]",
-    indigo: "bg-indigo-500/10 border-indigo-500/30 text-indigo-300 hover:bg-indigo-500/20 hover:border-indigo-500/50 hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]",
-  };
-
+function PillarCard({
+  pillar,
+  index,
+}: {
+  pillar: (typeof PILLARS)[number];
+  index: number;
+}) {
   return (
     <motion.div
-      className={`absolute flex items-center justify-center rounded-full border backdrop-blur-xl shadow-lg cursor-pointer transition-all duration-500 ${colorClasses[data.color]}`}
-      style={{
-        width: data.size * scale,
-        height: data.size * scale,
-        left: `${data.x}%`,
-        top: `${data.y}%`,
-        fontSize: 12 * scale,
+      variants={{
+        hidden: { opacity: 0, y: 30, scale: 0.95 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: { duration: 0.5, ease: "easeOut" },
+        },
       }}
-      animate={{
-        x: [0, 15, -10, 5, 0],
-        y: [0, -12, 8, -5, 0],
-        rotate: [0, 3, -2, 1, 0],
-      }}
-      transition={{
-        duration: data.duration,
-        delay: data.delay,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-      whileHover={{ scale: 1.1, zIndex: 50 }}
+      className={`group relative bg-white/[0.03] backdrop-blur-xl rounded-[28px] border border-white/[0.06] ${pillar.border} transition-all duration-500 overflow-hidden ${pillar.span} ${pillar.featured ? "p-10 md:p-14" : "p-8"}`}
     >
-      <span className="text-center px-4 font-bold tracking-tight uppercase leading-tight">{data.label}</span>
+      {/* Gradient hover glow */}
+      <div
+        className={`absolute inset-0 bg-gradient-to-br ${pillar.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[28px]`}
+      />
+
+      {/* Subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.04] transition-opacity pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, #fff 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
+        }}
+      />
+
+      <div className="relative z-10 flex flex-col h-full">
+        {/* Icon */}
+        <div
+          className={`w-14 h-14 rounded-2xl ${pillar.iconBg} border flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}
+        >
+          <pillar.icon className={`w-7 h-7 ${pillar.iconColor}`} />
+        </div>
+
+        {/* Content */}
+        <h3
+          className={`heading !text-white mb-3 group-hover:!text-blue-200 transition-colors ${pillar.featured ? "text-2xl md:text-3xl" : "text-lg"}`}
+        >
+          {pillar.title}
+        </h3>
+        <p
+          className={`text-white/50 leading-relaxed group-hover:text-white/80 transition-colors ${pillar.featured ? "text-base md:text-lg max-w-[400px]" : "text-sm"}`}
+        >
+          {pillar.desc}
+        </p>
+
+        {/* Featured card extras */}
+        {pillar.featured && (
+          <div className="mt-auto pt-8 flex items-center gap-3">
+            <div className="flex -space-x-2">
+              {[1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="w-8 h-8 rounded-full bg-white/10 border-2 border-[#0a0f1e] flex items-center justify-center"
+                >
+                  <span className="text-[9px] text-white/60 font-bold">
+                    {["🧠", "⚡", "🎯"][i - 1]}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <span className="text-white/30 text-xs font-bold uppercase tracking-wider">
+              Core Philosophy
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Corner decoration */}
+      <div
+        className={`absolute -right-12 -bottom-12 w-40 h-40 ${pillar.iconColor} opacity-[0.03] group-hover:opacity-[0.06] transition-opacity`}
+      >
+        <pillar.icon className="w-full h-full" strokeWidth={0.5} />
+      </div>
     </motion.div>
   );
 }
 
-function FloatingParticles() {
-  const [particles, setParticles] = useState<React.CSSProperties[]>([]);
-
-  useEffect(() => {
-    const newParticles = Array.from({ length: 20 }, (_, i) => ({
-      left: `${Math.random() * 100}%`,
-      bottom: `-20px`,
-      animationDuration: `${10 + Math.random() * 15}s`,
-      animationDelay: `${Math.random() * 10}s`,
-      width: `${1 + Math.random() * 3}px`,
-      height: `${1 + Math.random() * 3}px`,
-      opacity: 0.1 + Math.random() * 0.4,
-      background: Math.random() > 0.5 ? '#3b82f6' : '#6366f1',
-      boxShadow: '0 0 10px currentColor',
-    }));
-    setParticles(newParticles);
-  }, []);
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((style, i) => (
-        <div key={i} className="matrix-particle" style={style} />
-      ))}
-    </div>
-  );
-}
-
 export default function IdeaMatrix() {
-  const [scale, setScale] = useState(1);
-
-  useEffect(() => {
-    const updateScale = () => {
-      const width = window.innerWidth;
-      if (width < 640) setScale(0.5);
-      else if (width < 768) setScale(0.65);
-      else if (width < 1024) setScale(0.8);
-      else setScale(1);
-    };
-
-    updateScale();
-    window.addEventListener("resize", updateScale);
-    return () => window.removeEventListener("resize", updateScale);
-  }, []);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <div className="relative w-full aspect-[2/1] min-h-[550px] bg-[#050910] rounded-[48px] overflow-hidden border border-white/5 shadow-2xl">
-      {/* Background Grid */}
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
-           style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-      
-      {/* Ambient Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-blue-500/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
-
-      <FloatingParticles />
-
-      <div className="relative z-10 w-full h-full">
-        {BUBBLES.map((bubble) => (
-          <Bubble key={bubble.label} data={bubble} scale={scale} />
-        ))}
-      </div>
-    </div>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={inView ? "visible" : "hidden"}
+      variants={{
+        visible: { transition: { staggerChildren: 0.08 } },
+        hidden: {},
+      }}
+      className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-5"
+    >
+      {PILLARS.map((pillar, i) => (
+        <PillarCard key={pillar.title} pillar={pillar} index={i} />
+      ))}
+    </motion.div>
   );
 }
