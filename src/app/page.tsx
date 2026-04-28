@@ -130,7 +130,7 @@ export default async function Home() {
       {/* ─────────────── QUOTE SECTION (REDESIGNED) ────────── */}
       <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full py-20">
         <Reveal>
-          <div className="relative w-full rounded-[48px] bg-[#0a0f1e] p-12 md:p-24 overflow-hidden border border-white/5 group">
+          <div className="relative w-full rounded-[48px] bg-black p-12 md:p-24 overflow-hidden border border-white/5 group">
             {/* Topographical Texture Overlay */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none topo-bg scale-150 transition-transform duration-[20s] group-hover:scale-125" />
             
