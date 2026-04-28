@@ -35,7 +35,7 @@ export default async function Home() {
 
       {/* ─────────────── HERO (REDESIGNED - SYNTH STYLE) ────── */}
       <section className="px-4 md:px-8 pt-4">
-        <div className="relative w-full h-[85vh] min-h-[700px] rounded-[40px] overflow-hidden bg-black flex flex-col items-center justify-center">
+        <div className="relative w-full h-[85vh] min-h-[500px] md:min-h-[700px] rounded-[40px] overflow-hidden bg-black flex flex-col items-center justify-center">
           
           {/* Large Background Typography */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden">
@@ -47,7 +47,7 @@ export default async function Home() {
           {/* Script Overlay */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
             <Reveal delay={0.6}>
-              <div className="font-script text-[clamp(2.5rem,8vw,6rem)] text-blue-400 drop-shadow-[0_0_40px_rgba(37,99,235,0.5)] rotate-[-4deg] md:translate-y-[35%] translate-y-[80%] translate-x-[2%] opacity-90 leading-[0.8] md:leading-tight text-center flex flex-col md:block">
+              <div className="font-script text-[clamp(2.5rem,8vw,6rem)] text-blue-400 drop-shadow-[0_0_40px_rgba(37,99,235,0.5)] rotate-[-4deg] md:translate-y-[35%] translate-y-[50%] translate-x-[2%] opacity-90 leading-[0.8] md:leading-tight text-center flex flex-col md:block">
                 <span>Engineering</span>
                 <span> Mindsets</span>
               </div>
@@ -131,7 +131,7 @@ export default async function Home() {
       {/* ─────────────── QUOTE SECTION (REDESIGNED) ────────── */}
       <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full py-20">
         <Reveal>
-          <div className="relative w-full rounded-[48px] bg-black p-12 md:p-24 overflow-hidden border border-white/5 group">
+          <div className="relative w-full rounded-[48px] bg-black p-8 md:p-24 overflow-hidden border border-white/5 group">
             {/* Topographical Texture Overlay */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none topo-bg scale-150 transition-transform duration-[20s] group-hover:scale-125" />
             

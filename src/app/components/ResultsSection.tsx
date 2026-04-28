@@ -82,7 +82,7 @@ function TestimonialCard({ t }: { t: any }) {
   const Platform = (PLATFORMS as any)[t.role] || { icon: CheckCircle2, color: "text-blue-400" };
 
   return (
-    <div className="bg-white/[0.02] backdrop-blur-xl border border-white/5 p-10 rounded-[40px] w-[350px] md:w-[450px] shrink-0 h-[280px] flex flex-col justify-between hover:bg-white/[0.05] hover:border-blue-500/30 transition-all duration-500 group/card relative overflow-hidden">
+    <div className="bg-white/[0.02] backdrop-blur-xl border border-white/5 p-8 md:p-10 rounded-[32px] md:rounded-[40px] w-[280px] md:w-[450px] shrink-0 h-[260px] md:h-[280px] flex flex-col justify-between hover:bg-white/[0.05] hover:border-blue-500/30 transition-all duration-500 group/card relative overflow-hidden">
       {/* Background Accent */}
       <div className="absolute -right-8 -top-8 w-24 h-24 bg-blue-500/5 rounded-full blur-2xl group-hover/card:bg-blue-500/10 transition-colors" />
       
