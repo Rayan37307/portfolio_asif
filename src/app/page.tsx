@@ -100,9 +100,19 @@ export default async function Home() {
           </div>
 
           {/* Nav Hint (Top Left) */}
-          <div className="absolute top-12 left-12 hidden md:flex items-center gap-3 z-30">
-            <div className="w-8 h-[1px] bg-white/20" />
-            <span className="text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]">Muhammad Asif</span>
+          <div className="absolute top-8 left-6 md:top-12 md:left-12 flex items-center gap-3 z-30">
+            <div className="w-6 md:w-8 h-[1px] bg-white/20" />
+            <span className="text-white/40 text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em]">Muhammad Asif</span>
+          </div>
+
+          {/* Status Badge (Top Right) */}
+          <div className="absolute top-8 right-6 md:top-12 md:right-12 z-30">
+            <Reveal delay={0.8} direction="down">
+              <div className="px-3 md:px-4 py-1.5 md:py-2 rounded-full border border-white/10 bg-white/[0.02] backdrop-blur-md text-white/50 text-[8px] md:text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                <span className="hidden sm:inline">Operating System:</span> High Performance
+              </div>
+            </Reveal>
           </div>
 
 
