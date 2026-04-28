@@ -60,17 +60,6 @@ const PILLARS = [
     span: "",
     featured: false,
   },
-  {
-    icon: Users,
-    title: "Community Building",
-    desc: "Growing engaged, loyal audiences that drive real impact and change lives.",
-    accent: "from-cyan-500/15 to-cyan-600/5",
-    border: "hover:border-cyan-500/40",
-    iconBg: "bg-cyan-500/15 border-cyan-500/25",
-    iconColor: "text-cyan-400",
-    span: "md:col-span-2",
-    featured: false,
-  },
 ];
 
 function PillarCard({
