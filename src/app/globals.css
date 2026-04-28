@@ -447,3 +447,28 @@ body {
   background-clip: text;
   animation: shimmer 6s linear infinite;
 }
+
+/* ─── Extra Utilities ─────────────────────── */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.shadow-3xl {
+  box-shadow: 0 35px 60px -15px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes scan {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(1000%); }
+}
+.animate-scan {
+  animation: scan 3s linear infinite;
+}

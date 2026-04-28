@@ -4,9 +4,11 @@ import { ArrowRight, Play, Star, Dumbbell, Laptop, Sparkles, Brain, Code, Zap, E
 import { FaYoutube, FaFacebook, FaWhatsapp } from "react-icons/fa6";
 import { getLatestVideos } from "../lib/youtube";
 import { getSortedPostsData } from "../lib/posts";
-import { Reveal, StaggerContainer, StaggerItem, ParallaxHeroImage, AnimatedSVGLines, CountUp } from "./components/animations";
+import { Reveal, StaggerContainer, StaggerItem, ParallaxHeroImage, AnimatedSVGLines, CountUp, MagneticButton } from "./components/animations";
 import IdeaMatrix from "./components/IdeaMatrix";
 import Hero3D from "./components/Hero3D";
+import BUVisual from "./components/BUVisual";
+import AmbitionSection from "./components/AmbitionSection";
 
 const WORDS = ["DISCIPLINE", "EXECUTION", "MINDSET", "STRATEGY", "RESULTS", "ACTION", "GROWTH", "FOCUS"];
 const MARQUEE_ITEMS = [...WORDS, ...WORDS, ...WORDS];
@@ -242,54 +244,88 @@ export default async function Home() {
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
       {/* ─────────────── BACKBENCHERS UNIVERSITY ──── */}
-      <section id="masterclass" className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
-        <Reveal>
-          <div className="relative rounded-[48px] bg-[#050b18] p-8 md:p-20 flex flex-col items-center text-center overflow-hidden border border-white/5">
-            {/* Background Decorations */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,rgba(37,99,235,0.15),transparent_70%)]" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute top-[20%] left-[-5%] w-[300px] h-[300px] bg-indigo-600/5 rounded-full blur-[80px] pointer-events-none" />
+      <section id="masterclass" className="px-4 md:px-8 max-w-[1500px] mx-auto w-full">
+        <div className="relative rounded-[60px] bg-[#050b18] p-8 md:p-16 lg:p-24 overflow-hidden border border-white/5 shadow-3xl">
+          {/* Background Technical Elements */}
+          <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
+               style={{ backgroundImage: 'linear-gradient(#2563eb 1px, transparent 1px), linear-gradient(90deg, #2563eb 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+          
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600/10 via-transparent to-transparent pointer-events-none" />
+          
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Left Column: Content */}
+            <div className="flex flex-col items-start text-left">
+              <Reveal>
+                <div className="flex items-center gap-3 mb-8">
+                  <span className="w-12 h-[1px] bg-blue-500/50" />
+                  <span className="text-blue-400 text-xs font-black uppercase tracking-[0.4em]">The Academy</span>
+                </div>
+                
+                <h2 className="heading-display text-white text-[clamp(2.5rem,6vw,5rem)] mb-8 leading-[0.9] tracking-tighter">
+                  Backbenchers <br />
+                  <span className="text-blue-500">University.</span>
+                </h2>
+                
+                <p className="text-white/60 text-lg md:text-xl max-w-[550px] mb-12 font-medium leading-relaxed">
+                  The definitive operating system for high-performance individuals. We strip away the noise and install the protocols of world-class executors.
+                </p>
 
-            {/* Subtle Grid Overlay */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-                 style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+                <div className="flex flex-wrap gap-4 mb-16">
+                  <MagneticButton>
+                    <a href="https://chat.whatsapp.com/FVioaoB7Ew7EI2w5ZSaVW4" target="_blank" rel="noopener noreferrer" 
+                       className="px-10 py-5 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-500 transition-colors shadow-[0_20px_40px_rgba(37,99,235,0.2)] flex items-center gap-3 group">
+                      Join
+                      <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </MagneticButton>
+                  <a href="#curriculum" className="px-10 py-5 border border-white/10 text-white rounded-full font-bold text-lg hover:bg-white/5 transition-all">
+                    View Syllabus
+                  </a>
+                </div>
+              </Reveal>
 
-            <div className="relative z-10">
-              <span className="inline-block bg-blue-500/10 backdrop-blur-md px-4 py-1.5 rounded-full text-blue-400 text-[10px] font-black uppercase tracking-[0.3em] mb-6 border border-blue-500/20">
-                The Masterclass
-              </span>
-              <h2 className="heading-display text-white text-[clamp(2.5rem,7vw,5rem)] mb-6 leading-none tracking-tighter">
-                Backbenchers <br />
-                <span className="text-blue-500">University.</span>
-              </h2>
-              <p className="text-white/70 text-lg max-w-[650px] mx-auto mb-16 font-medium leading-relaxed">
-                Not for the apathetic. A rigorous, cohort-based curriculum designed to strip away your excuses, rebuild your mental models, and install the operating system of high performance.
-              </p>
-
-              <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-[1100px] text-left mb-16">
+              <StaggerContainer className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
                 {[
-                  { title: "Mindset Protocol", desc: "Eradicate limiting beliefs and build undeniable confidence.", icon: Brain },
-                  { title: "Execution Engine", desc: "Daily systems to guarantee deep work and compound output.", icon: Zap },
-                  { title: "The Inner Circle", desc: "Direct access to a network of like-minded builders.", icon: Target }
-                ].map((feature, i) => (
+                  { title: "Mindset", module: "01", icon: Brain },
+                  { title: "Execution", module: "02", icon: Zap },
+                  { title: "Network", module: "03", icon: Target }
+                ].map((item, i) => (
                   <StaggerItem key={i}>
-                    <div className="group bg-white/[0.03] backdrop-blur-xl p-8 rounded-[32px] border border-white/[0.05] hover:border-blue-500/40 hover:bg-white/[0.05] transition-all duration-500 h-full relative overflow-hidden">
-                      {/* Hover Glow */}
-                      <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                      
-                      <div className="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-6 border border-blue-500/20 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all">
-                        <feature.icon className="w-6 h-6 text-blue-400" />
+                    <div className="bg-white/[0.03] border border-white/5 p-6 rounded-3xl hover:bg-white/[0.05] hover:border-blue-500/30 transition-all group">
+                      <div className="flex justify-between items-start mb-4">
+                        <item.icon className="w-6 h-6 text-blue-500 group-hover:scale-110 transition-transform" />
+                        <span className="text-[10px] font-mono text-white/30 uppercase">Module {item.module}</span>
                       </div>
-                      <h3 className="heading text-xl !text-white mb-3 !font-bold">{feature.title}</h3>
-                      <p className="text-white/60 text-sm leading-relaxed group-hover:text-white/90 transition-colors">{feature.desc}</p>
+                      <h3 className="heading text-sm !text-white !font-bold tracking-wider uppercase">{item.title} Protocol</h3>
                     </div>
                   </StaggerItem>
                 ))}
               </StaggerContainer>
-
             </div>
+
+            {/* Right Column: Visual */}
+            <div className="relative">
+              <Reveal direction="right" delay={0.2}>
+                <BUVisual />
+              </Reveal>
+              
+              {/* Floating Stat Card */}
+              <div className="absolute -bottom-4 -left-4 md:-left-12 glass-dark p-6 rounded-3xl border border-white/10 animate-float z-20">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center">
+                    <Trophy className="text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Active Cohort</p>
+                    <p className="text-xl text-white font-bold">Limitless v2.0</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
-        </Reveal>
+        </div>
       </section>
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
@@ -354,113 +390,8 @@ export default async function Home() {
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
-      {/* ─────────────── PERSONAL INTERESTS (REDESIGNED) ── */}
-      <section id="interests" className="px-4 md:px-8 max-w-[1500px] mx-auto w-full">
-        <div className="bg-[#0a0f1e] rounded-[40px] p-8 md:p-20 relative overflow-hidden border border-white/5">
-          {/* Ambient Glows */}
-          <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
-
-          <Reveal>
-            <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
-              <div className="max-w-[600px]">
-                <p className="eyebrow mb-4">Beyond Work</p>
-                <h2 className="heading-display text-white text-[clamp(2.5rem,6vw,4.5rem)] leading-[1.1]">
-                  What Drives <br />
-                  <span className="text-blue-400">My Ambition.</span>
-                </h2>
-              </div>
-              <p className="text-white/50 text-lg max-w-[300px] font-medium leading-relaxed">
-                The core pillars that fuel my consistency and creativity.
-              </p>
-            </div>
-          </Reveal>
-
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 relative z-10">
-            {[
-              {
-                icon: Dumbbell,
-                title: "Fitness & Health",
-                desc: "Discipline starts with the body. Early morning workouts aren't optional—they're the foundation.",
-                tags: ["Early Riser", "Strength Training", "Mental Clarity"],
-                n: "01"
-              },
-              {
-                icon: Laptop,
-                title: "Tech & Tools",
-                desc: "Obsessed with optimizing workflows. The right system can 10x your output overnight.",
-                tags: ["Productivity", "Automation", "Workflow Design"],
-                n: "02"
-              },
-              {
-                icon: Sparkles,
-                title: "AI Specialist",
-                desc: "Living at the edge of what's possible. Exploring AI tools before they go mainstream.",
-                tags: ["Machine Learning", "Prompt Engineering", "Future Tech"],
-                n: "03"
-              },
-            ].map(({ icon: Icon, title, desc, tags, n }) => (
-              <StaggerItem key={title}>
-                <div className="group bg-white/[0.03] backdrop-blur-xl p-10 h-full relative overflow-hidden rounded-[32px] border border-white/5 hover:border-blue-400/30 transition-all duration-500">
-                  {/* Large Background Icon Outline */}
-                  <div className="absolute -right-8 -bottom-8 opacity-[0.05] group-hover:opacity-10 transition-opacity">
-                    <Icon className="w-[12rem] h-[12rem] text-blue-400 stroke-[1px]" />
-                  </div>
-
-                  <div className="w-14 h-14 rounded-2xl bg-blue-500/10 flex items-center justify-center mb-8 border border-blue-500/20 group-hover:bg-blue-500/20 transition-colors">
-                    <Icon className="w-7 h-7 text-blue-400" />
-                  </div>
-
-                  <h3 className="heading text-2xl !text-white mb-4 relative z-10 group-hover:!text-blue-300 transition-colors">{title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed mb-8 relative z-10 group-hover:text-white/80 transition-colors">{desc}</p>
-                  
-                  <div className="flex flex-wrap gap-2 mt-auto relative z-10">
-                    {tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-bold px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/60 uppercase tracking-wider">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-
-          <Reveal delay={0.2}>
-            <div className="bg-white/[0.02] backdrop-blur-md p-8 md:p-12 rounded-[32px] border border-white/5 relative z-10 overflow-hidden">
-              <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-r from-transparent to-blue-500/5 pointer-events-none" />
-              <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center relative z-10">
-                <div className="md:w-1/3 text-left">
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-                    <h3 className="heading text-2xl !text-white">Currently Exploring</h3>
-                  </div>
-                  <p className="text-white/40 text-sm">The frontier I'm diving deep into right now.</p>
-                </div>
-                <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-8">
-                  {[
-                    { icon: Brain, label: "AI Agents", sub: "Autonomous workflows" },
-                    { icon: Code, label: "No-Code Tools", sub: "Building without code" },
-                    { icon: Zap, label: "Content Velocity", sub: "Scale without burnout" },
-                  ].map(({ icon: Icon, label, sub }) => (
-                    <div key={label} className="group/item cursor-default text-left">
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0 group-hover/item:border-blue-400 transition-all">
-                          <Icon className="w-6 h-6 text-blue-400" />
-                        </div>
-                        <div>
-                          <h4 className="heading text-sm !text-white mb-1 group-hover/item:!text-blue-400 transition-colors">{label}</h4>
-                          <p className="text-white/30 text-[11px] leading-tight font-medium uppercase tracking-tighter">{sub}</p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      {/* ─────────────── AMBITION SECTION (UPGRADED) ──── */}
+      <AmbitionSection />
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
