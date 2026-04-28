@@ -34,7 +34,7 @@ export default async function Home() {
 
       {/* ─────────────── HERO (REDESIGNED - SYNTH STYLE) ────── */}
       <section className="px-4 md:px-8 pt-4">
-        <div className="relative w-full h-[85vh] min-h-[700px] rounded-[40px] overflow-hidden bg-[#0a0f1a] flex flex-col items-center justify-center">
+        <div className="relative w-full h-[85vh] min-h-[700px] rounded-[40px] overflow-hidden bg-black flex flex-col items-center justify-center">
           
           {/* Large Background Typography */}
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none overflow-hidden">
@@ -210,25 +210,34 @@ export default async function Home() {
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
       {/* ─────────────── CONTENT ECOSYSTEM (BENTO GRID) ─── */}
-      <section className="px-4 md:px-8 max-w-[1400px] mx-auto w-full">
-        <Reveal>
-          <p className="eyebrow mb-4">Ecosystem</p>
-          <h2 className="heading-display text-4xl md:text-5xl mb-4">
-            Content Pillars.
-          </h2>
-          <p className="text-muted text-lg max-w-[550px] mb-12 font-medium leading-relaxed">
-            The core disciplines that power every piece of content, strategy, and system I build.
-          </p>
-        </Reveal>
+      <section className="px-4 md:px-8 max-w-[1500px] mx-auto w-full">
+        <div className="bg-black rounded-[48px] p-8 md:p-20 relative overflow-hidden border border-white/5">
+          {/* Ambient Glows */}
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[80px] pointer-events-none" />
 
-        <IdeaMatrix />
+          <Reveal>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-8 h-[1px] bg-blue-500" />
+              <span className="text-blue-400 text-xs font-black uppercase tracking-[0.4em]">Ecosystem</span>
+            </div>
+            <h2 className="heading-display text-4xl md:text-6xl text-white mb-6">
+              Content Pillars.
+            </h2>
+            <p className="text-white/50 text-lg max-w-[550px] mb-16 font-medium leading-relaxed">
+              The core disciplines that power every piece of content, strategy, and system I build.
+            </p>
+          </Reveal>
+
+          <IdeaMatrix />
+        </div>
       </section>
 
       <div className="px-4 md:px-8"><div className="rule" /></div>
 
       {/* ─────────────── BACKBENCHERS UNIVERSITY ──── */}
       <section id="masterclass" className="px-4 md:px-8 max-w-[1500px] mx-auto w-full">
-        <div className="relative rounded-[60px] bg-[#050b18] p-8 md:p-16 lg:p-24 overflow-hidden border border-white/5 shadow-3xl">
+        <div className="relative rounded-[60px] bg-black p-8 md:p-16 lg:p-24 overflow-hidden border border-white/5 shadow-3xl">
           {/* Background Technical Elements */}
           <div className="absolute inset-0 opacity-[0.05] pointer-events-none" 
                style={{ backgroundImage: 'linear-gradient(#2563eb 1px, transparent 1px), linear-gradient(90deg, #2563eb 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
@@ -470,7 +479,7 @@ export default async function Home() {
 
       {/* ─────────────── CTA / COMMUNITY (REDESIGNED - IMAGE STYLE) ── */}
       <footer className="mt-16 px-4 md:px-8 mb-8">
-        <div className="bg-[#0a0f1e] rounded-[32px] p-12 md:p-24 flex flex-col items-center text-center relative overflow-hidden border border-white/5 shadow-2xl">
+        <div className="bg-black rounded-[32px] p-12 md:p-24 flex flex-col items-center text-center relative overflow-hidden border border-white/5 shadow-2xl">
           
           {/* Ambient Glows */}
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/15 rounded-full blur-[120px] pointer-events-none" />
@@ -478,7 +487,7 @@ export default async function Home() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.05),transparent_70%)]" />
 
           {/* Top Icon / Logo */}
-          <div className="w-20 h-20 bg-[#0a0f1a] rounded-[24px] overflow-hidden flex items-center justify-center mb-10 shadow-2xl relative z-10 border border-white/10">
+          <div className="w-20 h-20 bg-black rounded-[24px] overflow-hidden flex items-center justify-center mb-10 shadow-2xl relative z-10 border border-white/10">
             <Image 
               src="/bu_logo.jpg" 
               alt="Backbenchers University Logo" 

@@ -51,7 +51,7 @@ export default function AmbitionSection() {
         AMBITION AMBITION AMBITION
       </motion.div>
 
-      <div className="bg-[#0a0f1e]/80 backdrop-blur-sm rounded-[40px] p-8 md:p-20 relative overflow-hidden border border-white/5 z-10">
+      <div className="bg-black rounded-[40px] p-8 md:p-20 relative overflow-hidden border border-white/5 z-10">
         {/* Ambient Glows */}
         <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-blue-600/5 rounded-full blur-[100px] pointer-events-none" />
@@ -124,7 +124,7 @@ export default function AmbitionSection() {
         </StaggerContainer>
 
         <Reveal delay={0.2}>
-          <div className="bg-[#050b18] p-8 md:p-12 rounded-[32px] border border-white/5 relative z-10 overflow-hidden group/bar">
+          <div className="bg-black p-8 md:p-12 rounded-[32px] border border-white/5 relative z-10 overflow-hidden group/bar">
             {/* Live Terminal Background */}
             <div className="absolute inset-0 opacity-[0.02] font-mono text-[10px] text-blue-400 pointer-events-none p-4 break-all overflow-hidden leading-none">
               {Array.from({ length: 20 }).map((_, i) => (

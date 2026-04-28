@@ -30,7 +30,7 @@ export default function MethodSection() {
   
   return (
     <section id="method" className="px-4 md:px-8 max-w-[1500px] mx-auto w-full relative">
-      <div className="bg-[#0a0f1e] rounded-[48px] p-8 md:p-24 relative overflow-hidden border border-white/5">
+      <div className="bg-black rounded-[48px] p-8 md:p-24 relative overflow-hidden border border-white/5">
         {/* Ambient Glows */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-600/5 rounded-full blur-[100px] pointer-events-none" />
